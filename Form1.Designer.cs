@@ -77,9 +77,9 @@
             chbShowPanel.AutoSize = true;
             chbShowPanel.Location = new Point(12, 409);
             chbShowPanel.Name = "chbShowPanel";
-            chbShowPanel.Size = new Size(132, 29);
+            chbShowPanel.Size = new Size(79, 29);
             chbShowPanel.TabIndex = 6;
-            chbShowPanel.Text = "Pokaż panel";
+            chbShowPanel.Text = "Panel";
             chbShowPanel.UseVisualStyleBackColor = true;
             chbShowPanel.CheckedChanged += chbShowPanel_CheckedChanged;
             // 

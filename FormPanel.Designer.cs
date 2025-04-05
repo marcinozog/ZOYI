@@ -41,6 +41,9 @@
             label1.TabIndex = 0;
             label1.Text = "Capacity";
             label1.TextAlign = ContentAlignment.MiddleCenter;
+            label1.MouseDown += FormPanel_MouseDown;
+            label1.MouseMove += FormPanel_MouseMove;
+            label1.MouseUp += FormPanel_MouseUp;
             // 
             // label2
             // 
@@ -51,6 +54,9 @@
             label2.TabIndex = 1;
             label2.Text = "100uF";
             label2.TextAlign = ContentAlignment.MiddleCenter;
+            label2.MouseDown += FormPanel_MouseDown;
+            label2.MouseMove += FormPanel_MouseMove;
+            label2.MouseUp += FormPanel_MouseUp;
             // 
             // FormPanel
             // 

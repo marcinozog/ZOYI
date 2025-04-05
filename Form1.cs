@@ -42,6 +42,7 @@ namespace ZOYI
                 port.Close();
                 connected = false;
                 btnConnect.Text = "Po³¹cz";
+
                 readThread.Interrupt();
             }
 
@@ -99,19 +100,12 @@ namespace ZOYI
         {
             if (chbShowPanel.Checked)
             {
-                chbShowPanel.Text = "Ukryj panel";
                 formPanel.Show();
             }
             else
             {
-                chbShowPanel.Text = "Poka¿ panel";
                 formPanel.Hide();
             }
-        }
-
-        private void fontDialog1_Apply(object sender, EventArgs e)
-        {
-
         }
 
         void refreshCOMlist()
