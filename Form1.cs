@@ -28,15 +28,23 @@ namespace ZOYI
         {
             if (!connected)
             {
-                port_name = listBox1.SelectedItem.ToString();
-                port = new SerialPort(port_name, 115200, Parity.None, 8, StopBits.One);
-                port.Open();
-                connected = true;
-                btnConnect.Text = "Roz³¹cz";
-                btnConnect.BackColor = Color.LightCoral;
+                port_name = lbCOMs.SelectedItem.ToString();
+                try
+                {
+                    port = new SerialPort(port_name, 115200, Parity.None, 8, StopBits.One);
+                    port.Open();
+                    connected = true;
+                    btnConnect.Text = "Roz³¹cz " + port_name;
+                    btnConnect.BackColor = Color.LightCoral;
 
-                readThread = new Thread(new ThreadStart(ReadCOM));
-                readThread.Start();
+                    lbCOMs.Enabled = false;
+
+                    readThread = new Thread(new ThreadStart(ReadCOM));
+                    readThread.Start();
+                }
+                catch (Exception ex)
+                {
+                }
             }
             else
             {
@@ -44,6 +52,8 @@ namespace ZOYI
                 connected = false;
                 btnConnect.Text = "Po³¹cz";
                 btnConnect.BackColor = Color.LightGreen;
+
+                lbCOMs.Enabled = true;
 
                 readThread.Interrupt();
             }
@@ -79,9 +89,9 @@ namespace ZOYI
                             buff = "";
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception ex)
                     {
-                        //MessageBox.Show(e.ToString());
+                        //MessageBox.Show(ex.ToString());
                     }
                 }
 
@@ -113,11 +123,11 @@ namespace ZOYI
         void refreshCOMlist()
         {
             string[] ports = SerialPort.GetPortNames();
-            listBox1.Items.Clear();
+            lbCOMs.Items.Clear();
 
             foreach (string port in ports)
             {
-                listBox1.Items.Add(port);
+                lbCOMs.Items.Add(port);
             }
         }
     }

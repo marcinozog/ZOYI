@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             btnListCOM = new Button();
-            listBox1 = new ListBox();
+            lbCOMs = new ListBox();
             btnConnect = new Button();
             txtOutput = new TextBox();
             chbShowPanel = new CheckBox();
@@ -45,14 +45,14 @@
             btnListCOM.UseVisualStyleBackColor = true;
             btnListCOM.Click += btnListCOM_Click;
             // 
-            // listBox1
+            // lbCOMs
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 25;
-            listBox1.Location = new Point(12, 52);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(194, 154);
-            listBox1.TabIndex = 2;
+            lbCOMs.FormattingEnabled = true;
+            lbCOMs.ItemHeight = 25;
+            lbCOMs.Location = new Point(12, 52);
+            lbCOMs.Name = "lbCOMs";
+            lbCOMs.Size = new Size(194, 154);
+            lbCOMs.TabIndex = 2;
             // 
             // btnConnect
             // 
@@ -92,7 +92,7 @@
             Controls.Add(chbShowPanel);
             Controls.Add(txtOutput);
             Controls.Add(btnConnect);
-            Controls.Add(listBox1);
+            Controls.Add(lbCOMs);
             Controls.Add(btnListCOM);
             Name = "Form1";
             Text = "ZOYI Terminal";
@@ -104,7 +104,7 @@
         #endregion
 
         private Button btnListCOM;
-        private ListBox listBox1;
+        private ListBox lbCOMs;
         private Button btnConnect;
         private TextBox txtOutput;
         private CheckBox chbShowPanel;
