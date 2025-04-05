@@ -33,6 +33,8 @@
             btnConnect = new Button();
             txtOutput = new TextBox();
             chbShowPanel = new CheckBox();
+            lblBaudRate = new Label();
+            txtBaudRate = new TextBox();
             SuspendLayout();
             // 
             // btnListCOM
@@ -57,7 +59,7 @@
             // btnConnect
             // 
             btnConnect.BackColor = Color.LightGreen;
-            btnConnect.Location = new Point(12, 212);
+            btnConnect.Location = new Point(12, 268);
             btnConnect.Name = "btnConnect";
             btnConnect.Size = new Size(194, 34);
             btnConnect.TabIndex = 3;
@@ -84,11 +86,31 @@
             chbShowPanel.UseVisualStyleBackColor = true;
             chbShowPanel.CheckedChanged += chbShowPanel_CheckedChanged;
             // 
+            // lblBaudRate
+            // 
+            lblBaudRate.AutoSize = true;
+            lblBaudRate.Location = new Point(14, 228);
+            lblBaudRate.Name = "lblBaudRate";
+            lblBaudRate.Size = new Size(96, 25);
+            lblBaudRate.TabIndex = 7;
+            lblBaudRate.Text = "Baud Rate:";
+            // 
+            // txtBaudRate
+            // 
+            txtBaudRate.Location = new Point(117, 225);
+            txtBaudRate.Name = "txtBaudRate";
+            txtBaudRate.Size = new Size(89, 31);
+            txtBaudRate.TabIndex = 8;
+            txtBaudRate.Text = "115200";
+            txtBaudRate.TextAlign = HorizontalAlignment.Center;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtBaudRate);
+            Controls.Add(lblBaudRate);
             Controls.Add(chbShowPanel);
             Controls.Add(txtOutput);
             Controls.Add(btnConnect);
@@ -108,5 +130,7 @@
         private Button btnConnect;
         private TextBox txtOutput;
         private CheckBox chbShowPanel;
+        private Label lblBaudRate;
+        private TextBox txtBaudRate;
     }
 }

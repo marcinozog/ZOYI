@@ -31,13 +31,15 @@ namespace ZOYI
                 port_name = lbCOMs.SelectedItem.ToString();
                 try
                 {
-                    port = new SerialPort(port_name, 115200, Parity.None, 8, StopBits.One);
+                    int baudrate = int.Parse(txtBaudRate.Text);
+                    port = new SerialPort(port_name, baudrate, Parity.None, 8, StopBits.One);
                     port.Open();
                     connected = true;
                     btnConnect.Text = "Roz³¹cz " + port_name;
                     btnConnect.BackColor = Color.LightCoral;
 
                     lbCOMs.Enabled = false;
+                    txtBaudRate.Enabled = false;
 
                     readThread = new Thread(new ThreadStart(ReadCOM));
                     readThread.Start();
@@ -55,6 +57,7 @@ namespace ZOYI
                 btnConnect.BackColor = Color.LightGreen;
 
                 lbCOMs.Enabled = true;
+                txtBaudRate.Enabled = true;
 
                 readThread.Interrupt();
             }
