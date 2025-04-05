@@ -9,21 +9,18 @@ namespace ZOYI
         String port_name;
         bool connected = false;
         Thread readThread;
+        Form formPanel;
 
         public Form1()
         {
             InitializeComponent();
+            formPanel = new FormPanel();
+            refreshCOMlist();
         }
 
         private void btnListCOM_Click(object sender, EventArgs e)
         {
-            string[] ports = SerialPort.GetPortNames();
-            listBox1.Items.Clear();
-
-            foreach (string port in ports)
-            {
-                listBox1.Items.Add(port);
-            }
+            refreshCOMlist();
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -51,17 +48,24 @@ namespace ZOYI
 
         void ReadCOM()
         {
+            String buff = "";
             while (connected)
             {
                 if (txtOutput.InvokeRequired)
                 {
                     try
                     {
-                        char message = (char)port.ReadChar();
-                        txtOutput.Invoke(new Action(() =>
-                        {
-                            txtOutput.AppendText(message.ToString());
-                        }));
+                        char c = (char)port.ReadChar();
+                        buff += c;
+
+                        if (c == ' ') {
+                            buff += Environment.NewLine;
+                            txtOutput.Invoke(new Action(() =>
+                            {
+                                txtOutput.AppendText(buff.ToString());
+                            }));
+                            buff = "";
+                        }
                     }
                     catch (Exception e)
                     {
@@ -73,8 +77,48 @@ namespace ZOYI
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            connected = false;
-            readThread.Interrupt();
+            if (connected)
+            {
+                connected = false;
+                readThread.Interrupt();
+                formPanel.Close();
+            }
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chbShowPanel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbShowPanel.Checked)
+            {
+                chbShowPanel.Text = "Ukryj panel";
+                formPanel.Show();
+            }
+            else
+            {
+                chbShowPanel.Text = "Poka¿ panel";
+                formPanel.Hide();
+            }
+        }
+
+        private void fontDialog1_Apply(object sender, EventArgs e)
+        {
+
+        }
+
+        void refreshCOMlist()
+        {
+            string[] ports = SerialPort.GetPortNames();
+            listBox1.Items.Clear();
+
+            foreach (string port in ports)
+            {
+                listBox1.Items.Add(port);
+            }
         }
     }
 }
