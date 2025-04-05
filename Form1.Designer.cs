@@ -35,6 +35,8 @@
             chbShowPanel = new CheckBox();
             lblBaudRate = new Label();
             txtBaudRate = new TextBox();
+            btnClearLog = new Button();
+            btnSaveLog = new Button();
             SuspendLayout();
             // 
             // btnListCOM
@@ -72,7 +74,7 @@
             txtOutput.Location = new Point(517, 18);
             txtOutput.Multiline = true;
             txtOutput.Name = "txtOutput";
-            txtOutput.Size = new Size(271, 420);
+            txtOutput.Size = new Size(271, 380);
             txtOutput.TabIndex = 5;
             // 
             // chbShowPanel
@@ -104,11 +106,33 @@
             txtBaudRate.Text = "115200";
             txtBaudRate.TextAlign = HorizontalAlignment.Center;
             // 
+            // btnClearLog
+            // 
+            btnClearLog.Location = new Point(517, 404);
+            btnClearLog.Name = "btnClearLog";
+            btnClearLog.Size = new Size(112, 34);
+            btnClearLog.TabIndex = 9;
+            btnClearLog.Text = "Wyczyść";
+            btnClearLog.UseVisualStyleBackColor = true;
+            btnClearLog.Click += btnClearLog_Click;
+            // 
+            // btnSaveLog
+            // 
+            btnSaveLog.Location = new Point(635, 404);
+            btnSaveLog.Name = "btnSaveLog";
+            btnSaveLog.Size = new Size(153, 34);
+            btnSaveLog.TabIndex = 10;
+            btnSaveLog.Text = "Zapisz";
+            btnSaveLog.UseVisualStyleBackColor = true;
+            btnSaveLog.Click += btnSaveLog_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnSaveLog);
+            Controls.Add(btnClearLog);
             Controls.Add(txtBaudRate);
             Controls.Add(lblBaudRate);
             Controls.Add(chbShowPanel);
@@ -132,5 +156,7 @@
         private CheckBox chbShowPanel;
         private Label lblBaudRate;
         private TextBox txtBaudRate;
+        private Button btnClearLog;
+        private Button btnSaveLog;
     }
 }

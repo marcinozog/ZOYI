@@ -69,14 +69,15 @@ namespace ZOYI
             String buff = "";
             while (connected)
             {
-                if (txtOutput.InvokeRequired)
-                {
+                //if (txtOutput.InvokeRequired)
+                //{
                     try
                     {
                         char c = (char)port.ReadChar();
                         buff += c;
 
-                        if (c == ' ') {
+                        if (c == ' ')
+                        {
                             string[] label_value = buff.Split(':');
 
                             buff += Environment.NewLine;
@@ -89,7 +90,7 @@ namespace ZOYI
                             {
                                 formPanel.updateLabelValue(label_value[0], label_value[1]);
                             }));
-                            //formPanel.Refresh();
+
                             buff = "";
                         }
                     }
@@ -97,7 +98,7 @@ namespace ZOYI
                     {
                         //MessageBox.Show(ex.ToString());
                     }
-                }
+                //}
 
             }
         }
@@ -136,6 +137,16 @@ namespace ZOYI
 
             if (ports.Length > 0)
                 lbCOMs.SelectedIndex = 0;
+        }
+
+        private void btnClearLog_Click(object sender, EventArgs e)
+        {
+            txtOutput.Text = "";
+        }
+
+        private void btnSaveLog_Click(object sender, EventArgs e)
+        {
+            File.WriteAllText(DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") +".log", txtOutput.Text);
         }
     }
 }
