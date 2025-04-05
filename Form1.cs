@@ -28,9 +28,9 @@ namespace ZOYI
         {
             if (!connected)
             {
-                port_name = lbCOMs.SelectedItem.ToString();
                 try
                 {
+                    port_name = lbCOMs.SelectedItem.ToString();
                     int baudrate = int.Parse(txtBaudRate.Text);
                     port = new SerialPort(port_name, baudrate, Parity.None, 8, StopBits.One);
                     port.Open();
@@ -133,6 +133,9 @@ namespace ZOYI
             {
                 lbCOMs.Items.Add(port);
             }
+
+            if (ports.Length > 0)
+                lbCOMs.SelectedIndex = 0;
         }
     }
 }
