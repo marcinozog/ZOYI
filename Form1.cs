@@ -44,6 +44,7 @@ namespace ZOYI
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show(ex.Message);
                 }
             }
             else
