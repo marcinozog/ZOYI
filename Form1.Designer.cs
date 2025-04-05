@@ -56,12 +56,13 @@
             // 
             // btnConnect
             // 
+            btnConnect.BackColor = Color.LightGreen;
             btnConnect.Location = new Point(12, 212);
             btnConnect.Name = "btnConnect";
             btnConnect.Size = new Size(194, 34);
             btnConnect.TabIndex = 3;
             btnConnect.Text = "Połącz";
-            btnConnect.UseVisualStyleBackColor = true;
+            btnConnect.UseVisualStyleBackColor = false;
             btnConnect.Click += btnConnect_Click;
             // 
             // txtOutput

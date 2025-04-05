@@ -33,6 +33,7 @@ namespace ZOYI
                 port.Open();
                 connected = true;
                 btnConnect.Text = "Roz³¹cz";
+                btnConnect.BackColor = Color.LightCoral;
 
                 readThread = new Thread(new ThreadStart(ReadCOM));
                 readThread.Start();
@@ -42,6 +43,7 @@ namespace ZOYI
                 port.Close();
                 connected = false;
                 btnConnect.Text = "Po³¹cz";
+                btnConnect.BackColor = Color.LightGreen;
 
                 readThread.Interrupt();
             }
