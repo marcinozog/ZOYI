@@ -34,30 +34,30 @@
             // 
             // label1
             // 
-            label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            label1.Location = new Point(161, 27);
+            label1.Location = new Point(60, 13);
             label1.Name = "label1";
-            label1.Size = new Size(147, 45);
+            label1.Size = new Size(260, 80);
             label1.TabIndex = 0;
             label1.Text = "Capacity";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
-            label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            label2.Location = new Point(171, 132);
+            label2.Location = new Point(60, 100);
             label2.Name = "label2";
-            label2.Size = new Size(110, 45);
+            label2.Size = new Size(260, 80);
             label2.TabIndex = 1;
             label2.Text = "100uF";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FormPanel
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Desktop;
-            ClientSize = new Size(492, 210);
+            ClientSize = new Size(385, 192);
             Controls.Add(label2);
             Controls.Add(label1);
             ForeColor = SystemColors.HighlightText;
@@ -68,7 +68,6 @@
             MouseMove += FormPanel_MouseMove;
             MouseUp += FormPanel_MouseUp;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

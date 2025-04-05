@@ -20,6 +20,12 @@ namespace ZOYI
             InitializeComponent();
         }
 
+        public void updateLabelValue(string label, string value)
+        {
+            label1.Text = label;
+            label2.Text = value;
+        }
+
         private void FormPanel_MouseDown(object sender, MouseEventArgs e)
         {
             bMouseDown = true;

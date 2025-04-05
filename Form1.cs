@@ -1,5 +1,6 @@
 using System.IO.Ports;
 using System.Threading;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ZOYI
 {
@@ -9,7 +10,7 @@ namespace ZOYI
         String port_name;
         bool connected = false;
         Thread readThread;
-        Form formPanel;
+        FormPanel formPanel;
 
         public Form1()
         {
@@ -59,11 +60,19 @@ namespace ZOYI
                         buff += c;
 
                         if (c == ' ') {
+                            string[] label_value = buff.Split(':');
+
                             buff += Environment.NewLine;
                             txtOutput.Invoke(new Action(() =>
                             {
                                 txtOutput.AppendText(buff.ToString());
                             }));
+
+                            formPanel.Invoke(new Action(() =>
+                            {
+                                formPanel.updateLabelValue(label_value[0], label_value[1]);
+                            }));
+                            //formPanel.Refresh();
                             buff = "";
                         }
                     }
@@ -72,6 +81,7 @@ namespace ZOYI
                         //MessageBox.Show(e.ToString());
                     }
                 }
+
             }
         }
 
@@ -83,12 +93,6 @@ namespace ZOYI
                 readThread.Interrupt();
                 formPanel.Close();
             }
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void chbShowPanel_CheckedChanged(object sender, EventArgs e)

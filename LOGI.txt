@@ -1,0 +1,15 @@
+﻿nFCap:00.000 nFCap:00.000 nFCap:00.000 nFCap:00.000 nFCap:00.000 nFCap:00.000 nFCap:00.000 nFCap:00.000
+
+MOMResistance:0L. MOMResistance:0L. MOMResistance:0L. MOMResistance:0L. MOMResistance:0L. MOMResistance:0L
+
+KOMResistance:0.9897 KOMResistance:0.9896 KOMResistance:0.9894 KOMResistance:0.9895 KOMResistance:0.9895 KOMResistance:0.9895 KOMResistance:0.9895
+
+AElectricity:0.0000 AElectricity:0.0000 AElectricity:0.0000 AElectricity:0.0000 AElectricity:0.0000 AElectricity:0.0000
+
+OMbeep:0L. OMbeep:0L. OMbeep:0L. OMbeep:0L. OMbeep:0L. OMbeep:0L. OMbeep:0L. OMbeep:0L.
+
+OMbeep:000.05 OMbeep:000.05 OMbeep:000.05 OMbeep:000.04 OMbeep:000.05 OMbeep:000.05 OMbeep:000.06 OMbeep:000.05 OMbeep:000.05 OMbeep:000.06
+
+VDiode:0.L VDiode:0.L VDiode:0.L VDiode:0.L VDiode:0.L VDiode:0.L VDiode:0.L VDiode:0.L VDiode:0.L VDiode:0.L VDiode:0.L VDiode:0.L VDiode:0.L VDiode:0
+
+VDiode:01.820 VDiode:01.820 VDiode:01.820 VDiode:01.819 VDiode:01.819 VDiode:01.819 VDiode:01.821 VDiode:01.821 VDiode:01.821 VDiode:01.821 VDiode:01.820 VDiode:01.984
