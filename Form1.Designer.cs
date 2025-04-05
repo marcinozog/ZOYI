@@ -122,7 +122,7 @@
             btnSaveLog.Name = "btnSaveLog";
             btnSaveLog.Size = new Size(153, 34);
             btnSaveLog.TabIndex = 10;
-            btnSaveLog.Text = "Zapisz";
+            btnSaveLog.Text = "Zapisz do pliku";
             btnSaveLog.UseVisualStyleBackColor = true;
             btnSaveLog.Click += btnSaveLog_Click;
             // 
@@ -140,6 +140,8 @@
             Controls.Add(btnConnect);
             Controls.Add(lbCOMs);
             Controls.Add(btnListCOM);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "Form1";
             Text = "ZOYI Terminal";
             FormClosed += Form1_FormClosed;

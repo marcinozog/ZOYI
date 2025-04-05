@@ -1,3 +1,4 @@
+﻿using System.IO;
 using System.IO.Ports;
 using System.Threading;
 using static System.Net.Mime.MediaTypeNames;
@@ -17,6 +18,7 @@ namespace ZOYI
             InitializeComponent();
             formPanel = new FormPanel();
             refreshCOMlist();
+            Directory.CreateDirectory("logs");
         }
 
         private void btnListCOM_Click(object sender, EventArgs e)
@@ -35,7 +37,7 @@ namespace ZOYI
                     port = new SerialPort(port_name, baudrate, Parity.None, 8, StopBits.One);
                     port.Open();
                     connected = true;
-                    btnConnect.Text = "Roz��cz " + port_name;
+                    btnConnect.Text = "Rozłącz " + port_name;
                     btnConnect.BackColor = Color.LightCoral;
 
                     lbCOMs.Enabled = false;
@@ -53,7 +55,7 @@ namespace ZOYI
             {
                 port.Close();
                 connected = false;
-                btnConnect.Text = "Po��cz";
+                btnConnect.Text = "Połącz";
                 btnConnect.BackColor = Color.LightGreen;
 
                 lbCOMs.Enabled = true;
@@ -78,12 +80,13 @@ namespace ZOYI
 
                         if (c == ' ')
                         {
-                            string[] label_value = buff.Split(':');
+                            string[] label_value = parse_label_value(buff); 
 
-                            buff += Environment.NewLine;
+                            //buff += Environment.NewLine;
                             txtOutput.Invoke(new Action(() =>
                             {
-                                txtOutput.AppendText(buff.ToString());
+                                txtOutput.AppendText(label_value[0] +" : "+ label_value[1]);
+                                txtOutput.AppendText(Environment.NewLine);
                             }));
 
                             formPanel.Invoke(new Action(() =>
@@ -146,7 +149,49 @@ namespace ZOYI
 
         private void btnSaveLog_Click(object sender, EventArgs e)
         {
-            File.WriteAllText(DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") +".log", txtOutput.Text);
+            File.WriteAllText("logs\\"+DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") +".log", txtOutput.Text);
+        }
+
+        string[] parse_label_value(string buff)
+        {
+            string[] label_value = buff.Split(':');
+
+            switch(label_value[0])
+            {
+                case "MOMResistance":
+                    label_value[0] = "MΩ";
+                    label_value[1] += " MΩ";
+                    break;
+                case "OMResistance":
+                    label_value[0] = "Ω";
+                    label_value[1] += " Ω";
+                    break;
+                case "KOMResistance":
+                    label_value[0] = "KΩ";
+                    label_value[1] += " KΩ";
+                    break;
+                case "OMbeep":
+                    label_value[0] = "Buzzer";
+                    break;
+                case "VDiode":
+                    label_value[0] = "Tryb diody";
+                    label_value[1] += " mV";
+                    break;
+                case "nFCap":
+                    label_value[0] = "Kondek nF";
+                    label_value[1] += " nF";
+                    break;
+                case "uFCap":
+                    label_value[0] = "Kondek uF";
+                    label_value[1] += " uF";
+                    break;
+                case "VVoltage":
+                    label_value[0] = "DC Voltage";
+                    label_value[1] += " DC";
+                    break;
+            }
+
+            return label_value;
         }
     }
 }
