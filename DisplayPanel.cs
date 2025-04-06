@@ -66,9 +66,13 @@ namespace ZOYI
             this.BackColor = color;
         }
 
-        public void setFontColor(Color color)
+        public void setLabelFontColor(Color color)
         {
             lblLabel.ForeColor = color;
+        }
+
+        public void setValueFontColor(Color color)
+        {
             lblValue.ForeColor = color;
         }
     }

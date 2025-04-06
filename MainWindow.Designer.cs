@@ -314,6 +314,7 @@
             btnColorValue.TabIndex = 11;
             btnColorValue.Text = "Kolor wartości";
             btnColorValue.UseVisualStyleBackColor = false;
+            btnColorValue.Click += btnColorValue_Click;
             // 
             // tbAlarmLabel
             // 

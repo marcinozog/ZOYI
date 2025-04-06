@@ -249,7 +249,16 @@ namespace ZOYI
             cd.AllowFullOpen = false;
 
             if (cd.ShowDialog() == DialogResult.OK)
-                formPanel.setFontColor(cd.Color);
+                formPanel.setLabelFontColor(cd.Color);
+        }
+
+        private void btnColorValue_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            cd.AllowFullOpen = false;
+
+            if (cd.ShowDialog() == DialogResult.OK)
+                formPanel.setValueFontColor(cd.Color);
         }
     }
 }
