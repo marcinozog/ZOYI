@@ -62,24 +62,36 @@ namespace ZOYI.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string color_label_panel {
+        public string panel_label_color {
             get {
-                return ((string)(this["color_label_panel"]));
+                return ((string)(this["panel_label_color"]));
             }
             set {
-                this["color_label_panel"] = value;
+                this["panel_label_color"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string color_value_panel {
+        public string panel_value_color {
             get {
-                return ((string)(this["color_value_panel"]));
+                return ((string)(this["panel_value_color"]));
             }
             set {
-                this["color_value_panel"] = value;
+                this["panel_value_color"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string panel_bg_color {
+            get {
+                return ((string)(this["panel_bg_color"]));
+            }
+            set {
+                this["panel_bg_color"] = value;
             }
         }
     }

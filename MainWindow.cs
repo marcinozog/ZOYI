@@ -12,18 +12,24 @@ namespace ZOYI
         SerialPort port;
         String port_name;
         bool connected = false;
-        Thread readThread;
+        Thread readComThread;
         DisplayPanel displayPanel;
 
+        /*
+         * Move window section
+         */
         bool bMouseDown = false;
         Point mousePosDown = Point.Empty;
         Point currentFormLocation = Point.Empty;
 
+        /*
+         * Alarm section
+         */
         bool bAlarmEnable = false;
         string sAlarmLabel = "";
         float fAlarmValue = 0.0f;
         Thread alarmSoundThread;
-        bool bBeenPlaying = false;
+        bool bBeepPlaying = false;
 
         public MainWindow()
         {
@@ -57,8 +63,8 @@ namespace ZOYI
                     lbCOMs.Enabled = false;
                     txtBaudRate.Enabled = false;
 
-                    readThread = new Thread(new ThreadStart(ReadCOMThread));
-                    readThread.Start();
+                    readComThread = new Thread(new ThreadStart(ReadCOMThread));
+                    readComThread.Start();
                 }
                 catch (Exception ex)
                 {
@@ -75,7 +81,7 @@ namespace ZOYI
                 lbCOMs.Enabled = true;
                 txtBaudRate.Enabled = true;
 
-                readThread.Interrupt();
+                readComThread.Interrupt();
             }
 
         }
@@ -131,8 +137,9 @@ namespace ZOYI
         {
             if (connected)
             {
+                port.Close();
                 connected = false;
-                readThread.Interrupt();
+                readComThread.Interrupt();
                 displayPanel.Close();
             }
         }
@@ -324,6 +331,7 @@ namespace ZOYI
                 cbAlarmLabel.Enabled = false;
                 tbAlarmValue.Enabled = false;
                 bAlarmEnable = true;
+                fAlarmValue = float.Parse(tbAlarmValue.Text);
             }
             else
             {
@@ -339,9 +347,9 @@ namespace ZOYI
             {
                 float val = float.Parse(value, CultureInfo.InvariantCulture.NumberFormat);
 
-                if ((val >= fAlarmValue) && (!bBeenPlaying))
+                if ((val >= fAlarmValue) && (!bBeepPlaying))
                 {
-                    bBeenPlaying = true;
+                    bBeepPlaying = true;
                     alarmSoundThread = new Thread(new ThreadStart(playAlarmBeepThread));
                     alarmSoundThread.Start();
 
@@ -358,7 +366,7 @@ namespace ZOYI
         {
             SoundPlayer snd = new SoundPlayer("beep.wav");
             snd.PlaySync();
-            bBeenPlaying = false;
+            bBeepPlaying = false;
         }
     }
 }

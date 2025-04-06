@@ -11,10 +11,13 @@
     <Setting Name="lang" Type="System.String" Scope="User">
       <Value Profile="(Default)">pl</Value>
     </Setting>
-    <Setting Name="color_label_panel" Type="System.String" Scope="User">
+    <Setting Name="panel_label_color" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="color_value_panel" Type="System.String" Scope="User">
+    <Setting Name="panel_value_color" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="panel_bg_color" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

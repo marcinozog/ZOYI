@@ -18,9 +18,21 @@ namespace ZOYI
         Point mousePosDown = Point.Empty;
         Point currentFormLocation = Point.Empty;
 
+        Color color_label;
+        Color color_value;
+        Color color_bg;
+
         public DisplayPanel()
         {
             InitializeComponent();
+
+            color_label = Color.FromName(Properties.Settings.Default.panel_label_color);
+            color_value = Color.FromName(Properties.Settings.Default.panel_value_color);
+            color_bg = Color.FromName(Properties.Settings.Default.panel_bg_color);
+
+            lblLabel.ForeColor = color_label;
+            lblValue.ForeColor = color_value;
+            //this.BackColor = color_bg;
         }
 
         // update label, value, suffix
@@ -58,16 +70,22 @@ namespace ZOYI
         public void setBackgroundColor(Color color)
         {
             this.BackColor = color;
+            Properties.Settings.Default.panel_bg_color = color.ToString();
+            Properties.Settings.Default.Save();
         }
 
         public void setLabelFontColor(Color color)
         {
             lblLabel.ForeColor = color;
+            Properties.Settings.Default.panel_label_color = color.ToString();
+            Properties.Settings.Default.Save();
         }
 
         public void setValueFontColor(Color color)
         {
             lblValue.ForeColor = color;
+            Properties.Settings.Default.panel_value_color = color.ToString();
+            Properties.Settings.Default.Save();
         }
     }
 }
