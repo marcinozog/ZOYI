@@ -1,6 +1,6 @@
 ﻿namespace ZOYI
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         ///  Required designer variable.
@@ -37,23 +37,30 @@
             txtBaudRate = new TextBox();
             btnClearLog = new Button();
             btnSaveLog = new Button();
+            button1 = new Button();
+            label1 = new Label();
+            btnMinimize = new Button();
             SuspendLayout();
             // 
             // btnListCOM
             // 
-            btnListCOM.Location = new Point(12, 12);
+            btnListCOM.BackColor = SystemColors.Desktop;
+            btnListCOM.Location = new Point(12, 55);
             btnListCOM.Name = "btnListCOM";
             btnListCOM.Size = new Size(194, 34);
             btnListCOM.TabIndex = 1;
             btnListCOM.Text = "Odśwież listę portów";
-            btnListCOM.UseVisualStyleBackColor = true;
+            btnListCOM.UseVisualStyleBackColor = false;
             btnListCOM.Click += btnListCOM_Click;
             // 
             // lbCOMs
             // 
+            lbCOMs.BackColor = SystemColors.Desktop;
+            lbCOMs.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lbCOMs.ForeColor = SystemColors.HighlightText;
             lbCOMs.FormattingEnabled = true;
             lbCOMs.ItemHeight = 25;
-            lbCOMs.Location = new Point(12, 52);
+            lbCOMs.Location = new Point(12, 95);
             lbCOMs.Name = "lbCOMs";
             lbCOMs.Size = new Size(194, 154);
             lbCOMs.TabIndex = 2;
@@ -61,7 +68,8 @@
             // btnConnect
             // 
             btnConnect.BackColor = Color.LightGreen;
-            btnConnect.Location = new Point(12, 268);
+            btnConnect.ForeColor = SystemColors.Desktop;
+            btnConnect.Location = new Point(12, 311);
             btnConnect.Name = "btnConnect";
             btnConnect.Size = new Size(194, 34);
             btnConnect.TabIndex = 3;
@@ -71,7 +79,9 @@
             // 
             // txtOutput
             // 
-            txtOutput.Location = new Point(517, 18);
+            txtOutput.BackColor = SystemColors.WindowText;
+            txtOutput.ForeColor = SystemColors.HighlightText;
+            txtOutput.Location = new Point(517, 61);
             txtOutput.Multiline = true;
             txtOutput.Name = "txtOutput";
             txtOutput.Size = new Size(271, 380);
@@ -80,7 +90,7 @@
             // chbShowPanel
             // 
             chbShowPanel.AutoSize = true;
-            chbShowPanel.Location = new Point(12, 409);
+            chbShowPanel.Location = new Point(12, 452);
             chbShowPanel.Name = "chbShowPanel";
             chbShowPanel.Size = new Size(79, 29);
             chbShowPanel.TabIndex = 6;
@@ -91,7 +101,7 @@
             // lblBaudRate
             // 
             lblBaudRate.AutoSize = true;
-            lblBaudRate.Location = new Point(14, 228);
+            lblBaudRate.Location = new Point(14, 271);
             lblBaudRate.Name = "lblBaudRate";
             lblBaudRate.Size = new Size(96, 25);
             lblBaudRate.TabIndex = 7;
@@ -99,7 +109,7 @@
             // 
             // txtBaudRate
             // 
-            txtBaudRate.Location = new Point(117, 225);
+            txtBaudRate.Location = new Point(117, 268);
             txtBaudRate.Name = "txtBaudRate";
             txtBaudRate.Size = new Size(89, 31);
             txtBaudRate.TabIndex = 8;
@@ -108,29 +118,74 @@
             // 
             // btnClearLog
             // 
-            btnClearLog.Location = new Point(517, 404);
+            btnClearLog.BackColor = SystemColors.Desktop;
+            btnClearLog.Location = new Point(517, 447);
             btnClearLog.Name = "btnClearLog";
             btnClearLog.Size = new Size(112, 34);
             btnClearLog.TabIndex = 9;
             btnClearLog.Text = "Wyczyść";
-            btnClearLog.UseVisualStyleBackColor = true;
+            btnClearLog.UseVisualStyleBackColor = false;
             btnClearLog.Click += btnClearLog_Click;
             // 
             // btnSaveLog
             // 
-            btnSaveLog.Location = new Point(635, 404);
+            btnSaveLog.BackColor = SystemColors.Desktop;
+            btnSaveLog.Location = new Point(635, 447);
             btnSaveLog.Name = "btnSaveLog";
             btnSaveLog.Size = new Size(153, 34);
             btnSaveLog.TabIndex = 10;
             btnSaveLog.Text = "Zapisz do pliku";
-            btnSaveLog.UseVisualStyleBackColor = true;
+            btnSaveLog.UseVisualStyleBackColor = false;
             btnSaveLog.Click += btnSaveLog_Click;
             // 
-            // Form1
+            // button1
+            // 
+            button1.BackColor = Color.Brown;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            button1.ForeColor = SystemColors.HighlightText;
+            button1.Location = new Point(736, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(52, 34);
+            button1.TabIndex = 11;
+            button1.Text = "X";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            label1.Location = new Point(297, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(158, 30);
+            label1.TabIndex = 12;
+            label1.Text = "ZOYI Terminal";
+            label1.MouseDown += MainWindow_MouseDown;
+            label1.MouseMove += MainWindow_MouseMove;
+            label1.MouseUp += MainWindow_MouseUp;
+            // 
+            // btnMinimize
+            // 
+            btnMinimize.BackColor = Color.Brown;
+            btnMinimize.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnMinimize.ForeColor = SystemColors.HighlightText;
+            btnMinimize.Location = new Point(678, 12);
+            btnMinimize.Name = "btnMinimize";
+            btnMinimize.Size = new Size(52, 34);
+            btnMinimize.TabIndex = 13;
+            btnMinimize.Text = "__";
+            btnMinimize.UseVisualStyleBackColor = false;
+            btnMinimize.Click += btnMinimize_Click;
+            // 
+            // MainWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = SystemColors.Desktop;
+            ClientSize = new Size(800, 500);
+            Controls.Add(btnMinimize);
+            Controls.Add(label1);
+            Controls.Add(button1);
             Controls.Add(btnSaveLog);
             Controls.Add(btnClearLog);
             Controls.Add(txtBaudRate);
@@ -140,11 +195,15 @@
             Controls.Add(btnConnect);
             Controls.Add(lbCOMs);
             Controls.Add(btnListCOM);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            ForeColor = SystemColors.HighlightText;
+            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
-            Name = "Form1";
+            Name = "MainWindow";
             Text = "ZOYI Terminal";
             FormClosed += Form1_FormClosed;
+            MouseDown += MainWindow_MouseDown;
+            MouseMove += MainWindow_MouseMove;
+            MouseUp += MainWindow_MouseUp;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -160,5 +219,8 @@
         private TextBox txtBaudRate;
         private Button btnClearLog;
         private Button btnSaveLog;
+        private Button button1;
+        private Label label1;
+        private Button btnMinimize;
     }
 }

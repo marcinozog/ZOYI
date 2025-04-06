@@ -5,18 +5,23 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ZOYI
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form
     {
         SerialPort port;
         String port_name;
         bool connected = false;
         Thread readThread;
-        FormPanel formPanel;
+        DisplayPanel formPanel;
 
-        public Form1()
+        bool bMouseDown = false;
+        Point mousePosDown = Point.Empty;
+        Point currentFormLocation = Point.Empty;
+
+        public MainWindow()
         {
             InitializeComponent();
-            formPanel = new FormPanel();
+            formPanel = new DisplayPanel();
+            formPanel.StartPosition = FormStartPosition.CenterParent;
             refreshCOMlist();
             Directory.CreateDirectory("logs");
         }
@@ -73,34 +78,34 @@ namespace ZOYI
             {
                 //if (txtOutput.InvokeRequired)
                 //{
-                    try
-                    {
-                        char c = (char)port.ReadChar();
-                        buff += c;
+                try
+                {
+                    char c = (char)port.ReadChar();
+                    buff += c;
 
-                        if (c == ' ')
+                    if (c == ' ')
+                    {
+                        string[] label_value = parse_label_value(buff);
+
+                        //buff += Environment.NewLine;
+                        txtOutput.Invoke(new Action(() =>
                         {
-                            string[] label_value = parse_label_value(buff); 
+                            txtOutput.AppendText(label_value[0] + " : " + label_value[1]);
+                            txtOutput.AppendText(Environment.NewLine);
+                        }));
 
-                            //buff += Environment.NewLine;
-                            txtOutput.Invoke(new Action(() =>
-                            {
-                                txtOutput.AppendText(label_value[0] +" : "+ label_value[1]);
-                                txtOutput.AppendText(Environment.NewLine);
-                            }));
+                        formPanel.Invoke(new Action(() =>
+                        {
+                            formPanel.updateLabelValue(label_value[0], label_value[1]);
+                        }));
 
-                            formPanel.Invoke(new Action(() =>
-                            {
-                                formPanel.updateLabelValue(label_value[0], label_value[1]);
-                            }));
-
-                            buff = "";
-                        }
+                        buff = "";
                     }
-                    catch (Exception ex)
-                    {
-                        //MessageBox.Show(ex.ToString());
-                    }
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.ToString());
+                }
                 //}
 
             }
@@ -149,14 +154,14 @@ namespace ZOYI
 
         private void btnSaveLog_Click(object sender, EventArgs e)
         {
-            File.WriteAllText("logs\\"+DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") +".log", txtOutput.Text);
+            File.WriteAllText("logs\\" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".log", txtOutput.Text);
         }
 
         string[] parse_label_value(string buff)
         {
             string[] label_value = buff.Split(':');
 
-            switch(label_value[0])
+            switch (label_value[0])
             {
                 case "MOMResistance":
                     label_value[0] = "MΩ";
@@ -192,6 +197,41 @@ namespace ZOYI
             }
 
             return label_value;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void MainWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            bMouseDown = true;
+            mousePosDown = Control.MousePosition;
+            currentFormLocation = Location;
+        }
+
+        private void MainWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            bMouseDown = false;
+            mousePosDown = Point.Empty;
+            currentFormLocation = Point.Empty;
+        }
+
+        private void MainWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (bMouseDown)
+            {
+                var currentPos = Control.MousePosition;
+                var distX = currentPos.X - mousePosDown.X;
+                var distY = currentPos.Y - mousePosDown.Y;
+                Location = new Point(currentFormLocation.X + distX, currentFormLocation.Y + distY);
+            }
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

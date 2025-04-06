@@ -10,20 +10,32 @@ using System.Windows.Forms;
 
 namespace ZOYI
 {
-    public partial class FormPanel : Form
+    public partial class DisplayPanel : Form
     {
         bool bMouseDown = false;
         Point mousePosDown = Point.Empty;
         Point currentFormLocation = Point.Empty;
-        public FormPanel()
+
+        bool alarmo_on = false;
+        string alarm_label = "";
+        int alarm_value = 0;
+
+        DisplayPanelSettings disp_settings;
+
+        public DisplayPanel()
         {
             InitializeComponent();
         }
 
         public void updateLabelValue(string label, string value)
         {
-            label1.Text = label;
-            label2.Text = value;
+            lblLabel.Text = label;
+            lblValue.Text = value;
+
+            if (alarmo_on)
+            {
+
+            }
         }
 
         private void FormPanel_MouseDown(object sender, MouseEventArgs e)
@@ -49,6 +61,12 @@ namespace ZOYI
                 var distY = currentPos.Y - mousePosDown.Y;
                 Location = new Point(currentFormLocation.X + distX, currentFormLocation.Y + distY);
             }
+        }
+
+        private void DisplayPanel_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            disp_settings = new DisplayPanelSettings();
+            disp_settings.ShowDialog();
         }
     }
 }
