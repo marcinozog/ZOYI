@@ -22,11 +22,15 @@ namespace ZOYI
         string alarm_label = "";
         float alarm_value = 0.0f;
 
+        Thread soundThread;
+        bool beep_playing = false;
+
         public DisplayPanel()
         {
             InitializeComponent();
         }
 
+        // update label, value, suffix
         public void updatePanel(string[] lvs)
         {
             lblLabel.Text = lvs[0];
@@ -39,21 +43,31 @@ namespace ZOYI
             
         }
 
+        void playBeep()
+        {
+            SoundPlayer snd = new SoundPlayer("beep.wav");
+            snd.PlaySync();
+            beep_playing = false;
+        }
+
         public void alarm(string label, string value)
         {
             try
             {
                 float val = float.Parse(value, CultureInfo.InvariantCulture.NumberFormat);
-                if(val >= alarm_value)
+
+                if((val >= alarm_value) && (!beep_playing))
                 {
-                    SoundPlayer snd = new SoundPlayer("beep.wav");
-                    snd.Play();
+                    beep_playing = true;
+                    soundThread = new Thread(new ThreadStart(playBeep));
+                    soundThread.Start();
+
                 }
                 //MessageBox.Show(value + "---" + val.ToString());
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
 
         }
