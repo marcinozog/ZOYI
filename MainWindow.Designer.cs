@@ -101,7 +101,8 @@
             txtOutput.Location = new Point(6, 6);
             txtOutput.Multiline = true;
             txtOutput.Name = "txtOutput";
-            txtOutput.Size = new Size(317, 393);
+            txtOutput.ScrollBars = ScrollBars.Vertical;
+            txtOutput.Size = new Size(354, 393);
             txtOutput.TabIndex = 5;
             // 
             // chbShowPanel
@@ -136,7 +137,7 @@
             // btnClearLog
             // 
             btnClearLog.BackColor = SystemColors.Desktop;
-            btnClearLog.Location = new Point(329, 6);
+            btnClearLog.Location = new Point(366, 6);
             btnClearLog.Name = "btnClearLog";
             btnClearLog.Size = new Size(153, 34);
             btnClearLog.TabIndex = 9;
@@ -147,7 +148,7 @@
             // btnSaveLog
             // 
             btnSaveLog.BackColor = SystemColors.Desktop;
-            btnSaveLog.Location = new Point(329, 46);
+            btnSaveLog.Location = new Point(366, 46);
             btnSaveLog.Name = "btnSaveLog";
             btnSaveLog.Size = new Size(153, 34);
             btnSaveLog.TabIndex = 10;
@@ -251,7 +252,7 @@
             // 
             cbAlarmLabel.DropDownStyle = ComboBoxStyle.DropDownList;
             cbAlarmLabel.FormattingEnabled = true;
-            cbAlarmLabel.Items.AddRange(new object[] { "Ohm", "Voltage", "Resistance", "Diode" });
+            cbAlarmLabel.Items.AddRange(new object[] { "Voltage", "Ohm", "Resistance", "Capacity", "Diode" });
             cbAlarmLabel.Location = new Point(293, 74);
             cbAlarmLabel.Name = "cbAlarmLabel";
             cbAlarmLabel.Size = new Size(150, 33);
@@ -266,6 +267,7 @@
             chbAlarm.TabIndex = 10;
             chbAlarm.Text = "Alarm";
             chbAlarm.UseVisualStyleBackColor = true;
+            chbAlarm.CheckedChanged += chbAlarm_CheckedChanged;
             // 
             // label2
             // 
@@ -315,6 +317,7 @@
             tbAlarmValue.Name = "tbAlarmValue";
             tbAlarmValue.Size = new Size(150, 31);
             tbAlarmValue.TabIndex = 13;
+            tbAlarmValue.Text = "5";
             // 
             // btnColorValue
             // 
@@ -334,7 +337,7 @@
             label4.Name = "label4";
             label4.Size = new Size(103, 25);
             label4.TabIndex = 15;
-            label4.Text = "Wersja 0.05";
+            label4.Text = "Wersja 0.07";
             // 
             // MainWindow
             // 

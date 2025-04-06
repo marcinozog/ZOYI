@@ -39,11 +39,11 @@
             lblLabel.Name = "lblLabel";
             lblLabel.Size = new Size(260, 80);
             lblLabel.TabIndex = 0;
-            lblLabel.Text = "Capacity";
+            lblLabel.Text = "Podłącz miernik";
             lblLabel.TextAlign = ContentAlignment.MiddleCenter;
-            lblLabel.MouseDown += FormPanel_MouseDown;
-            lblLabel.MouseMove += FormPanel_MouseMove;
-            lblLabel.MouseUp += FormPanel_MouseUp;
+            lblLabel.MouseDown += displayPanel_MouseDown;
+            lblLabel.MouseMove += displayPanel_MouseMove;
+            lblLabel.MouseUp += displayPanel_MouseUp;
             // 
             // lblValue
             // 
@@ -52,11 +52,11 @@
             lblValue.Name = "lblValue";
             lblValue.Size = new Size(260, 80);
             lblValue.TabIndex = 1;
-            lblValue.Text = "100uF";
+            lblValue.Text = "ZOYI 703s";
             lblValue.TextAlign = ContentAlignment.MiddleCenter;
-            lblValue.MouseDown += FormPanel_MouseDown;
-            lblValue.MouseMove += FormPanel_MouseMove;
-            lblValue.MouseUp += FormPanel_MouseUp;
+            lblValue.MouseDown += displayPanel_MouseDown;
+            lblValue.MouseMove += displayPanel_MouseMove;
+            lblValue.MouseUp += displayPanel_MouseUp;
             // 
             // DisplayPanel
             // 
@@ -69,10 +69,10 @@
             ForeColor = SystemColors.HighlightText;
             FormBorderStyle = FormBorderStyle.None;
             Name = "DisplayPanel";
-            Text = "FormPanel";
-            MouseDown += FormPanel_MouseDown;
-            MouseMove += FormPanel_MouseMove;
-            MouseUp += FormPanel_MouseUp;
+            Text = "displayPanel";
+            MouseDown += displayPanel_MouseDown;
+            MouseMove += displayPanel_MouseMove;
+            MouseUp += displayPanel_MouseUp;
             ResumeLayout(false);
         }
 

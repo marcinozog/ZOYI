@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.IO.Ports;
+using System.Media;
 using System.Threading;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -11,7 +12,7 @@ namespace ZOYI
         String port_name;
         bool connected = false;
         Thread readThread;
-        DisplayPanel formPanel;
+        DisplayPanel displayPanel;
 
         bool bMouseDown = false;
         Point mousePosDown = Point.Empty;
@@ -20,10 +21,11 @@ namespace ZOYI
         public MainWindow()
         {
             InitializeComponent();
-            formPanel = new DisplayPanel();
-            formPanel.StartPosition = FormStartPosition.CenterParent;
+            displayPanel = new DisplayPanel();
+            displayPanel.StartPosition = FormStartPosition.CenterParent;
             refreshCOMlist();
             Directory.CreateDirectory("logs");
+            cbAlarmLabel.SelectedItem = "Voltage";
         }
 
         private void btnListCOM_Click(object sender, EventArgs e)
@@ -85,21 +87,25 @@ namespace ZOYI
 
                     if (c == ' ')
                     {
-                        string[] label_value = parse_label_value(buff);
+                        string[] lvs = parse_label_value_suffix(buff);
+                        buff = "";
 
                         //buff += Environment.NewLine;
                         txtOutput.Invoke(new Action(() =>
                         {
-                            txtOutput.AppendText(label_value[0] + " : " + label_value[1]);
+                            txtOutput.AppendText(lvs[0] + " : " + lvs[1] + " " + lvs[2]);
                             txtOutput.AppendText(Environment.NewLine);
                         }));
 
-                        formPanel.Invoke(new Action(() =>
+                        // wyjątek kiedy panel ukryty
+                        try
                         {
-                            formPanel.updateLabelValue(label_value[0], label_value[1]);
-                        }));
-
-                        buff = "";
+                            displayPanel.Invoke(new Action(() =>
+                            {
+                                displayPanel.updatePanel(lvs);
+                            }));
+                        }
+                        catch (Exception ex) { } 
                     }
                 }
                 catch (Exception ex)
@@ -117,7 +123,7 @@ namespace ZOYI
             {
                 connected = false;
                 readThread.Interrupt();
-                formPanel.Close();
+                displayPanel.Close();
             }
         }
 
@@ -125,11 +131,11 @@ namespace ZOYI
         {
             if (chbShowPanel.Checked)
             {
-                formPanel.Show();
+                displayPanel.Show();
             }
             else
             {
-                formPanel.Hide();
+                displayPanel.Hide();
             }
         }
 
@@ -157,46 +163,89 @@ namespace ZOYI
             File.WriteAllText("logs\\" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".log", txtOutput.Text);
         }
 
-        string[] parse_label_value(string buff)
+        string[] parse_label_value_suffix(string buff)
         {
             string[] label_value = buff.Split(':');
+            // label, value, suffix
+            string[] ret = new string[3];
+            ret[1] = label_value[1];
 
             switch (label_value[0])
             {
+                case "Electricity":
+                    //label_value[0] = "Ampery";
+                    //label_value[1] += " A";
+                    ret[0] = "Ampery";
+                    ret[2] += "A";
+                    break;
+                case "AElectricity":
+                    //label_value[0] = "Ampery";
+                    //label_value[1] += " A";
+                    ret[0] = "Ampery";
+                    ret[2] = "A";
+                    break;
+                case "mAElectricity":
+                    //label_value[0] = "Ampery";
+                    //label_value[1] += " mA";
+                    ret[0] = "Ampery";
+                    ret[2] = "mA";
+                    break;
                 case "MOMResistance":
-                    label_value[0] = "MΩ";
-                    label_value[1] += " MΩ";
+                    //label_value[0] = "Rezystancja";
+                    //label_value[1] += " MΩ";
+                    ret[0] = "Rezystancja";
+                    ret[2] = "MΩ";
                     break;
                 case "OMResistance":
-                    label_value[0] = "Ω";
-                    label_value[1] += " Ω";
+                    //label_value[0] = "Rezystancja";
+                    //label_value[1] += " Ω";
+                    ret[0] = "Rezystancja";
+                    ret[2] = "Ω";
                     break;
                 case "KOMResistance":
-                    label_value[0] = "KΩ";
-                    label_value[1] += " KΩ";
+                    //label_value[0] = "Rezystancja";
+                    //label_value[1] += " KΩ";
+                    ret[0] = "Rezystancja";
+                    ret[2] = "KΩ";
                     break;
                 case "OMbeep":
-                    label_value[0] = "Buzzer";
+                    //label_value[0] = "Buzzer";
+                    ret[0] = "Buzzer";
+                    ret[2] = "";
                     break;
                 case "VDiode":
-                    label_value[0] = "Tryb diody";
-                    label_value[1] += " mV";
+                    //label_value[0] = "Tryb diody";
+                    //label_value[1] += " mV";
+                    ret[0] = "Tryb diody";
+                    ret[2] = "mV";
                     break;
                 case "nFCap":
-                    label_value[0] = "Kondek nF";
-                    label_value[1] += " nF";
+                    //label_value[0] = "Pojemność nF";
+                    //label_value[1] += " nF";
+                    ret[0] = "Pojemność nF";
+                    ret[2] = "nF";
                     break;
                 case "uFCap":
-                    label_value[0] = "Kondek uF";
-                    label_value[1] += " uF";
+                    //label_value[0] = "Pojemność uF";
+                    //label_value[1] += " uF";
+                    ret[0] = "Pojemność uF";
+                    ret[2] = "uF";
+                    break;
+                case "mFCap":
+                    //label_value[0] = "Pojemność mF";
+                    //label_value[1] += " mF";
+                    ret[0] = "Pojemność mF";
+                    ret[2] = "mF";
                     break;
                 case "VVoltage":
-                    label_value[0] = "DC Voltage";
-                    label_value[1] += " DC";
+                    //label_value[0] = "DC Voltage";
+                    //label_value[1] += " DC";
+                    ret[0] = "DC Voltage";
+                    ret[2] = "DC";
                     break;
             }
 
-            return label_value;
+            return ret;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -240,7 +289,7 @@ namespace ZOYI
             cd.AllowFullOpen = false;
 
             if (cd.ShowDialog() == DialogResult.OK)
-                formPanel.setBackgroundColor(cd.Color);
+                displayPanel.setBackgroundColor(cd.Color);
         }
 
         private void btnColorLabel_Click(object sender, EventArgs e)
@@ -249,7 +298,7 @@ namespace ZOYI
             cd.AllowFullOpen = false;
 
             if (cd.ShowDialog() == DialogResult.OK)
-                formPanel.setLabelFontColor(cd.Color);
+                displayPanel.setLabelFontColor(cd.Color);
         }
 
         private void btnColorValue_Click(object sender, EventArgs e)
@@ -258,7 +307,22 @@ namespace ZOYI
             cd.AllowFullOpen = false;
 
             if (cd.ShowDialog() == DialogResult.OK)
-                formPanel.setValueFontColor(cd.Color);
+                displayPanel.setValueFontColor(cd.Color);
+        }
+
+        private void chbAlarm_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbAlarm.Checked)
+            {
+                displayPanel.enable_alarm(true);
+                displayPanel.set_alarm_label(cbAlarmLabel.Text);
+                displayPanel.set_alarm_value(tbAlarmValue.Text);
+            }
+            else
+            {
+                displayPanel.enable_alarm(false);
+            }
+
         }
     }
 }
