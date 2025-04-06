@@ -18,13 +18,6 @@ namespace ZOYI
         Point mousePosDown = Point.Empty;
         Point currentFormLocation = Point.Empty;
 
-        bool alarm_enable = false;
-        string alarm_label = "";
-        float alarm_value = 0.0f;
-
-        Thread soundThread;
-        bool beep_playing = false;
-
         public DisplayPanel()
         {
             InitializeComponent();
@@ -35,63 +28,6 @@ namespace ZOYI
         {
             lblLabel.Text = lvs[0];
             lblValue.Text = lvs[1] + " " + lvs[2];
-
-            if (alarm_enable)
-            {
-                alarm(lvs[0], lvs[1]);
-            }
-            
-        }
-
-        void playBeep()
-        {
-            SoundPlayer snd = new SoundPlayer("beep.wav");
-            snd.PlaySync();
-            beep_playing = false;
-        }
-
-        public void alarm(string label, string value)
-        {
-            try
-            {
-                float val = float.Parse(value, CultureInfo.InvariantCulture.NumberFormat);
-
-                if((val >= alarm_value) && (!beep_playing))
-                {
-                    beep_playing = true;
-                    soundThread = new Thread(new ThreadStart(playBeep));
-                    soundThread.Start();
-
-                }
-                //MessageBox.Show(value + "---" + val.ToString());
-            }
-            catch(Exception ex)
-            {
-                //MessageBox.Show(ex.Message);
-            }
-
-        }
-
-        public void enable_alarm(bool val)
-        {
-            alarm_enable = val;
-        }
-
-        public void set_alarm_label(string label)
-        {
-            alarm_label = label;
-        }
-
-        public void set_alarm_value(string value)
-        {
-            try
-            {
-                alarm_value = float.Parse(value, CultureInfo.InvariantCulture.NumberFormat);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void displayPanel_MouseDown(object sender, MouseEventArgs e)

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 using System.IO.Ports;
 using System.Media;
 using System.Threading;
@@ -17,6 +18,12 @@ namespace ZOYI
         bool bMouseDown = false;
         Point mousePosDown = Point.Empty;
         Point currentFormLocation = Point.Empty;
+
+        bool bAlarmEnable = false;
+        string sAlarmLabel = "";
+        float fAlarmValue = 0.0f;
+        Thread alarmSoundThread;
+        bool bBeenPlaying = false;
 
         public MainWindow()
         {
@@ -50,7 +57,7 @@ namespace ZOYI
                     lbCOMs.Enabled = false;
                     txtBaudRate.Enabled = false;
 
-                    readThread = new Thread(new ThreadStart(ReadCOM));
+                    readThread = new Thread(new ThreadStart(ReadCOMThread));
                     readThread.Start();
                 }
                 catch (Exception ex)
@@ -73,7 +80,7 @@ namespace ZOYI
 
         }
 
-        void ReadCOM()
+        void ReadCOMThread()
         {
             String buff = "";
             while (connected)
@@ -87,6 +94,7 @@ namespace ZOYI
 
                     if (c == ' ')
                     {
+                        // label, value, suffix
                         string[] lvs = parse_label_value_suffix(buff);
                         buff = "";
 
@@ -105,7 +113,10 @@ namespace ZOYI
                                 displayPanel.updatePanel(lvs);
                             }));
                         }
-                        catch (Exception ex) { } 
+                        catch (Exception ex) { }
+
+                        if (bAlarmEnable)
+                            alarmProcess(lvs[0], lvs[1]);
                     }
                 }
                 catch (Exception ex)
@@ -113,11 +124,10 @@ namespace ZOYI
                     //MessageBox.Show(ex.ToString());
                 }
                 //}
-
             }
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (connected)
             {
@@ -163,6 +173,11 @@ namespace ZOYI
             File.WriteAllText("logs\\" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".log", txtOutput.Text);
         }
 
+        /*
+         * 
+         * Parse data from COM port
+         * 
+         */
         string[] parse_label_value_suffix(string buff)
         {
             string[] label_value = buff.Split(':');
@@ -173,73 +188,50 @@ namespace ZOYI
             switch (label_value[0])
             {
                 case "Electricity":
-                    //label_value[0] = "Ampery";
-                    //label_value[1] += " A";
                     ret[0] = "Ampery";
                     ret[2] += "A";
                     break;
                 case "AElectricity":
-                    //label_value[0] = "Ampery";
-                    //label_value[1] += " A";
                     ret[0] = "Ampery";
                     ret[2] = "A";
                     break;
                 case "mAElectricity":
-                    //label_value[0] = "Ampery";
-                    //label_value[1] += " mA";
                     ret[0] = "Ampery";
                     ret[2] = "mA";
                     break;
                 case "MOMResistance":
-                    //label_value[0] = "Rezystancja";
-                    //label_value[1] += " MΩ";
                     ret[0] = "Rezystancja";
                     ret[2] = "MΩ";
                     break;
                 case "OMResistance":
-                    //label_value[0] = "Rezystancja";
-                    //label_value[1] += " Ω";
                     ret[0] = "Rezystancja";
                     ret[2] = "Ω";
                     break;
                 case "KOMResistance":
-                    //label_value[0] = "Rezystancja";
-                    //label_value[1] += " KΩ";
                     ret[0] = "Rezystancja";
                     ret[2] = "KΩ";
                     break;
                 case "OMbeep":
-                    //label_value[0] = "Buzzer";
                     ret[0] = "Buzzer";
                     ret[2] = "";
                     break;
                 case "VDiode":
-                    //label_value[0] = "Tryb diody";
-                    //label_value[1] += " mV";
                     ret[0] = "Tryb diody";
                     ret[2] = "mV";
                     break;
                 case "nFCap":
-                    //label_value[0] = "Pojemność nF";
-                    //label_value[1] += " nF";
                     ret[0] = "Pojemność nF";
                     ret[2] = "nF";
                     break;
                 case "uFCap":
-                    //label_value[0] = "Pojemność uF";
-                    //label_value[1] += " uF";
                     ret[0] = "Pojemność uF";
                     ret[2] = "uF";
                     break;
                 case "mFCap":
-                    //label_value[0] = "Pojemność mF";
-                    //label_value[1] += " mF";
                     ret[0] = "Pojemność mF";
                     ret[2] = "mF";
                     break;
                 case "VVoltage":
-                    //label_value[0] = "DC Voltage";
-                    //label_value[1] += " DC";
                     ret[0] = "DC Voltage";
                     ret[2] = "DC";
                     break;
@@ -253,6 +245,11 @@ namespace ZOYI
             System.Windows.Forms.Application.Exit();
         }
 
+        /*
+         * 
+         * Move window section
+         * 
+         */
         private void MainWindow_MouseDown(object sender, MouseEventArgs e)
         {
             bMouseDown = true;
@@ -283,6 +280,11 @@ namespace ZOYI
             this.WindowState = FormWindowState.Minimized;
         }
 
+        /*
+         * 
+         * Colors section
+         * 
+         */
         private void btnColorBg_Click(object sender, EventArgs e)
         {
             ColorDialog cd = new ColorDialog();
@@ -310,19 +312,53 @@ namespace ZOYI
                 displayPanel.setValueFontColor(cd.Color);
         }
 
+        /*
+         * 
+         * Alarm section
+         * 
+         */
         private void chbAlarm_CheckedChanged(object sender, EventArgs e)
         {
             if (chbAlarm.Checked)
             {
-                displayPanel.enable_alarm(true);
-                displayPanel.set_alarm_label(cbAlarmLabel.Text);
-                displayPanel.set_alarm_value(tbAlarmValue.Text);
+                cbAlarmLabel.Enabled = false;
+                tbAlarmValue.Enabled = false;
+                bAlarmEnable = true;
             }
             else
             {
-                displayPanel.enable_alarm(false);
+                cbAlarmLabel.Enabled = true;
+                tbAlarmValue.Enabled = true;
+                bAlarmEnable = false;
             }
+        }
 
+        private void alarmProcess(string label, string value)
+        {
+            try
+            {
+                float val = float.Parse(value, CultureInfo.InvariantCulture.NumberFormat);
+
+                if ((val >= fAlarmValue) && (!bBeenPlaying))
+                {
+                    bBeenPlaying = true;
+                    alarmSoundThread = new Thread(new ThreadStart(playAlarmBeepThread));
+                    alarmSoundThread.Start();
+
+                }
+                //MessageBox.Show(value + "---" + val.ToString());
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+            }
+        }
+
+        void playAlarmBeepThread()
+        {
+            SoundPlayer snd = new SoundPlayer("beep.wav");
+            snd.PlaySync();
+            bBeenPlaying = false;
         }
     }
 }

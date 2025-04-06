@@ -44,19 +44,21 @@
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
             groupBox1 = new GroupBox();
+            btnColorBg = new Button();
+            btnColorLabel = new Button();
+            btnColorValue = new Button();
+            tabPage3 = new TabPage();
             cbAlarmLabel = new ComboBox();
             chbAlarm = new CheckBox();
             label2 = new Label();
-            btnColorBg = new Button();
             label3 = new Label();
-            btnColorLabel = new Button();
             tbAlarmValue = new TextBox();
-            btnColorValue = new Button();
             label4 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             groupBox1.SuspendLayout();
+            tabPage3.SuspendLayout();
             SuspendLayout();
             // 
             // btnListCOM
@@ -199,6 +201,7 @@
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
             tabControl1.Location = new Point(228, 55);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -232,13 +235,8 @@
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.Desktop;
-            groupBox1.Controls.Add(cbAlarmLabel);
-            groupBox1.Controls.Add(chbAlarm);
-            groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(btnColorBg);
-            groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(btnColorLabel);
-            groupBox1.Controls.Add(tbAlarmValue);
             groupBox1.Controls.Add(btnColorValue);
             groupBox1.ForeColor = SystemColors.HighlightText;
             groupBox1.Location = new Point(6, 6);
@@ -247,37 +245,6 @@
             groupBox1.TabIndex = 16;
             groupBox1.TabStop = false;
             groupBox1.Text = "Panel miernika";
-            // 
-            // cbAlarmLabel
-            // 
-            cbAlarmLabel.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbAlarmLabel.FormattingEnabled = true;
-            cbAlarmLabel.Items.AddRange(new object[] { "Voltage", "Ohm", "Resistance", "Capacity", "Diode" });
-            cbAlarmLabel.Location = new Point(293, 74);
-            cbAlarmLabel.Name = "cbAlarmLabel";
-            cbAlarmLabel.Size = new Size(150, 33);
-            cbAlarmLabel.TabIndex = 17;
-            // 
-            // chbAlarm
-            // 
-            chbAlarm.AutoSize = true;
-            chbAlarm.Location = new Point(196, 32);
-            chbAlarm.Name = "chbAlarm";
-            chbAlarm.Size = new Size(85, 29);
-            chbAlarm.TabIndex = 10;
-            chbAlarm.Text = "Alarm";
-            chbAlarm.UseVisualStyleBackColor = true;
-            chbAlarm.CheckedChanged += chbAlarm_CheckedChanged;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label2.Location = new Point(196, 117);
-            label2.Name = "label2";
-            label2.Size = new Size(87, 25);
-            label2.TabIndex = 15;
-            label2.Text = "Wartość:";
             // 
             // btnColorBg
             // 
@@ -290,16 +257,6 @@
             btnColorBg.UseVisualStyleBackColor = false;
             btnColorBg.Click += btnColorBg_Click;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label3.Location = new Point(196, 77);
-            label3.Name = "label3";
-            label3.Size = new Size(86, 25);
-            label3.TabIndex = 14;
-            label3.Text = "Etykieta:";
-            // 
             // btnColorLabel
             // 
             btnColorLabel.BackColor = SystemColors.Desktop;
@@ -310,14 +267,6 @@
             btnColorLabel.Text = "Kolor etykiety";
             btnColorLabel.UseVisualStyleBackColor = false;
             btnColorLabel.Click += btnColorLabel_Click;
-            // 
-            // tbAlarmValue
-            // 
-            tbAlarmValue.Location = new Point(293, 112);
-            tbAlarmValue.Name = "tbAlarmValue";
-            tbAlarmValue.Size = new Size(150, 31);
-            tbAlarmValue.TabIndex = 13;
-            tbAlarmValue.Text = "5";
             // 
             // btnColorValue
             // 
@@ -330,6 +279,70 @@
             btnColorValue.UseVisualStyleBackColor = false;
             btnColorValue.Click += btnColorValue_Click;
             // 
+            // tabPage3
+            // 
+            tabPage3.BackColor = SystemColors.Desktop;
+            tabPage3.Controls.Add(cbAlarmLabel);
+            tabPage3.Controls.Add(chbAlarm);
+            tabPage3.Controls.Add(label2);
+            tabPage3.Controls.Add(label3);
+            tabPage3.Controls.Add(tbAlarmValue);
+            tabPage3.Location = new Point(4, 34);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(552, 405);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Alarm";
+            // 
+            // cbAlarmLabel
+            // 
+            cbAlarmLabel.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbAlarmLabel.FormattingEnabled = true;
+            cbAlarmLabel.Items.AddRange(new object[] { "Voltage", "Ohm", "Resistance", "Capacity", "Diode" });
+            cbAlarmLabel.Location = new Point(103, 48);
+            cbAlarmLabel.Name = "cbAlarmLabel";
+            cbAlarmLabel.Size = new Size(150, 33);
+            cbAlarmLabel.TabIndex = 22;
+            // 
+            // chbAlarm
+            // 
+            chbAlarm.AutoSize = true;
+            chbAlarm.Location = new Point(6, 6);
+            chbAlarm.Name = "chbAlarm";
+            chbAlarm.Size = new Size(85, 29);
+            chbAlarm.TabIndex = 18;
+            chbAlarm.Text = "Alarm";
+            chbAlarm.UseVisualStyleBackColor = true;
+            chbAlarm.CheckedChanged += chbAlarm_CheckedChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label2.Location = new Point(6, 91);
+            label2.Name = "label2";
+            label2.Size = new Size(87, 25);
+            label2.TabIndex = 21;
+            label2.Text = "Wartość:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label3.Location = new Point(6, 51);
+            label3.Name = "label3";
+            label3.Size = new Size(86, 25);
+            label3.TabIndex = 20;
+            label3.Text = "Etykieta:";
+            // 
+            // tbAlarmValue
+            // 
+            tbAlarmValue.Location = new Point(103, 86);
+            tbAlarmValue.Name = "tbAlarmValue";
+            tbAlarmValue.Size = new Size(150, 31);
+            tbAlarmValue.TabIndex = 19;
+            tbAlarmValue.Text = "5";
+            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -337,7 +350,7 @@
             label4.Name = "label4";
             label4.Size = new Size(103, 25);
             label4.TabIndex = 15;
-            label4.Text = "Wersja 0.07";
+            label4.Text = "Wersja 0.08";
             // 
             // MainWindow
             // 
@@ -361,7 +374,7 @@
             MaximizeBox = false;
             Name = "MainWindow";
             Text = "ZOYI Terminal";
-            FormClosed += Form1_FormClosed;
+            FormClosed += MainWindow_FormClosed;
             MouseDown += MainWindow_MouseDown;
             MouseMove += MainWindow_MouseMove;
             MouseUp += MainWindow_MouseUp;
@@ -370,7 +383,8 @@
             tabPage1.PerformLayout();
             tabPage2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -392,15 +406,16 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private Label label2;
-        private Label label3;
-        private TextBox tbAlarmValue;
         private Button btnColorValue;
-        private CheckBox chbAlarm;
         private Button btnColorLabel;
         private Button btnColorBg;
         private GroupBox groupBox1;
-        private ComboBox cbAlarmLabel;
         private Label label4;
+        private TabPage tabPage3;
+        private ComboBox cbAlarmLabel;
+        private CheckBox chbAlarm;
+        private Label label2;
+        private Label label3;
+        private TextBox tbAlarmValue;
     }
 }
