@@ -44,6 +44,7 @@
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
             groupBox1 = new GroupBox();
+            cbAlarmLabel = new ComboBox();
             chbAlarm = new CheckBox();
             label2 = new Label();
             btnColorBg = new Button();
@@ -51,7 +52,7 @@
             btnColorLabel = new Button();
             tbAlarmValue = new TextBox();
             btnColorValue = new Button();
-            tbAlarmLabel = new TextBox();
+            label4 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -106,7 +107,7 @@
             // chbShowPanel
             // 
             chbShowPanel.AutoSize = true;
-            chbShowPanel.Location = new Point(12, 465);
+            chbShowPanel.Location = new Point(14, 400);
             chbShowPanel.Name = "chbShowPanel";
             chbShowPanel.Size = new Size(79, 29);
             chbShowPanel.TabIndex = 6;
@@ -171,11 +172,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label1.Location = new Point(297, 9);
+            label1.Location = new Point(196, 12);
             label1.Name = "label1";
-            label1.Size = new Size(158, 30);
+            label1.Size = new Size(370, 30);
             label1.TabIndex = 12;
-            label1.Text = "ZOYI Terminal";
+            label1.Text = "ZOYI 703s Osciloscope Multimeter";
             label1.MouseDown += MainWindow_MouseDown;
             label1.MouseMove += MainWindow_MouseMove;
             label1.MouseUp += MainWindow_MouseUp;
@@ -230,6 +231,7 @@
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.Desktop;
+            groupBox1.Controls.Add(cbAlarmLabel);
             groupBox1.Controls.Add(chbAlarm);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(btnColorBg);
@@ -237,7 +239,6 @@
             groupBox1.Controls.Add(btnColorLabel);
             groupBox1.Controls.Add(tbAlarmValue);
             groupBox1.Controls.Add(btnColorValue);
-            groupBox1.Controls.Add(tbAlarmLabel);
             groupBox1.ForeColor = SystemColors.HighlightText;
             groupBox1.Location = new Point(6, 6);
             groupBox1.Name = "groupBox1";
@@ -245,6 +246,16 @@
             groupBox1.TabIndex = 16;
             groupBox1.TabStop = false;
             groupBox1.Text = "Panel miernika";
+            // 
+            // cbAlarmLabel
+            // 
+            cbAlarmLabel.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbAlarmLabel.FormattingEnabled = true;
+            cbAlarmLabel.Items.AddRange(new object[] { "Ohm", "Voltage", "Resistance", "Diode" });
+            cbAlarmLabel.Location = new Point(293, 74);
+            cbAlarmLabel.Name = "cbAlarmLabel";
+            cbAlarmLabel.Size = new Size(150, 33);
+            cbAlarmLabel.TabIndex = 17;
             // 
             // chbAlarm
             // 
@@ -316,12 +327,14 @@
             btnColorValue.UseVisualStyleBackColor = false;
             btnColorValue.Click += btnColorValue_Click;
             // 
-            // tbAlarmLabel
+            // label4
             // 
-            tbAlarmLabel.Location = new Point(293, 74);
-            tbAlarmLabel.Name = "tbAlarmLabel";
-            tbAlarmLabel.Size = new Size(150, 31);
-            tbAlarmLabel.TabIndex = 12;
+            label4.AutoSize = true;
+            label4.Location = new Point(12, 473);
+            label4.Name = "label4";
+            label4.Size = new Size(103, 25);
+            label4.TabIndex = 15;
+            label4.Text = "Wersja 0.05";
             // 
             // MainWindow
             // 
@@ -329,6 +342,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Desktop;
             ClientSize = new Size(800, 514);
+            Controls.Add(label4);
             Controls.Add(tabControl1);
             Controls.Add(btnMinimize);
             Controls.Add(label1);
@@ -378,11 +392,12 @@
         private Label label2;
         private Label label3;
         private TextBox tbAlarmValue;
-        private TextBox tbAlarmLabel;
         private Button btnColorValue;
         private CheckBox chbAlarm;
         private Button btnColorLabel;
         private Button btnColorBg;
         private GroupBox groupBox1;
+        private ComboBox cbAlarmLabel;
+        private Label label4;
     }
 }
