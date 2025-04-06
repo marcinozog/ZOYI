@@ -41,7 +41,6 @@
             lblLabel.TabIndex = 0;
             lblLabel.Text = "Capacity";
             lblLabel.TextAlign = ContentAlignment.MiddleCenter;
-            lblLabel.MouseDoubleClick += DisplayPanel_MouseDoubleClick;
             lblLabel.MouseDown += FormPanel_MouseDown;
             lblLabel.MouseMove += FormPanel_MouseMove;
             lblLabel.MouseUp += FormPanel_MouseUp;
@@ -55,7 +54,6 @@
             lblValue.TabIndex = 1;
             lblValue.Text = "100uF";
             lblValue.TextAlign = ContentAlignment.MiddleCenter;
-            lblValue.MouseDoubleClick += DisplayPanel_MouseDoubleClick;
             lblValue.MouseDown += FormPanel_MouseDown;
             lblValue.MouseMove += FormPanel_MouseMove;
             lblValue.MouseUp += FormPanel_MouseUp;
@@ -72,7 +70,6 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "DisplayPanel";
             Text = "FormPanel";
-            MouseDoubleClick += DisplayPanel_MouseDoubleClick;
             MouseDown += FormPanel_MouseDown;
             MouseMove += FormPanel_MouseMove;
             MouseUp += FormPanel_MouseUp;

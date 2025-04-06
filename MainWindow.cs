@@ -233,5 +233,23 @@ namespace ZOYI
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void btnColorBg_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            cd.AllowFullOpen = false;
+
+            if (cd.ShowDialog() == DialogResult.OK)
+                formPanel.setBackgroundColor(cd.Color);
+        }
+
+        private void btnColorLabel_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            cd.AllowFullOpen = false;
+
+            if (cd.ShowDialog() == DialogResult.OK)
+                formPanel.setFontColor(cd.Color);
+        }
     }
 }

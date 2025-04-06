@@ -20,8 +20,6 @@ namespace ZOYI
         string alarm_label = "";
         int alarm_value = 0;
 
-        DisplayPanelSettings disp_settings;
-
         public DisplayPanel()
         {
             InitializeComponent();
@@ -63,10 +61,15 @@ namespace ZOYI
             }
         }
 
-        private void DisplayPanel_MouseDoubleClick(object sender, MouseEventArgs e)
+        public void setBackgroundColor(Color color)
         {
-            disp_settings = new DisplayPanelSettings();
-            disp_settings.ShowDialog();
+            this.BackColor = color;
+        }
+
+        public void setFontColor(Color color)
+        {
+            lblLabel.ForeColor = color;
+            lblValue.ForeColor = color;
         }
     }
 }
