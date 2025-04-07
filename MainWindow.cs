@@ -1,9 +1,5 @@
 ﻿using System.Globalization;
-using System.IO;
 using System.IO.Ports;
-using System.Media;
-using System.Threading;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ZOYI
 {
@@ -347,14 +343,19 @@ namespace ZOYI
             {
                 float val = float.Parse(value, CultureInfo.InvariantCulture.NumberFormat);
 
-                if ((val >= fAlarmValue) && (!bBeepPlaying))
+                bool bthreshold = false;
+                if (rbValueOver.Checked)
+                    bthreshold = val > fAlarmValue;
+                else
+                    bthreshold = val < fAlarmValue;
+
+                if (bthreshold && (!bBeepPlaying))
                 {
                     bBeepPlaying = true;
                     alarmSoundThread = new Thread(new ThreadStart(playAlarmBeepThread));
                     alarmSoundThread.Start();
 
                 }
-                //MessageBox.Show(value + "---" + val.ToString());
             }
             catch (Exception ex)
             {
@@ -364,8 +365,8 @@ namespace ZOYI
 
         void playAlarmBeepThread()
         {
-            SoundPlayer snd = new SoundPlayer("beep.wav");
-            snd.PlaySync();
+            //SoundPlayer snd = new SoundPlayer("beep.wav");
+            //snd.PlaySync();
             bBeepPlaying = false;
         }
     }

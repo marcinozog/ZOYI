@@ -48,6 +48,8 @@
             btnColorLabel = new Button();
             btnColorValue = new Button();
             tabPage3 = new TabPage();
+            rbValueUnder = new RadioButton();
+            rbValueOver = new RadioButton();
             cbAlarmLabel = new ComboBox();
             chbAlarm = new CheckBox();
             label2 = new Label();
@@ -282,6 +284,8 @@
             // tabPage3
             // 
             tabPage3.BackColor = SystemColors.Desktop;
+            tabPage3.Controls.Add(rbValueUnder);
+            tabPage3.Controls.Add(rbValueOver);
             tabPage3.Controls.Add(cbAlarmLabel);
             tabPage3.Controls.Add(chbAlarm);
             tabPage3.Controls.Add(label2);
@@ -294,12 +298,36 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Alarm";
             // 
+            // rbValueUnder
+            // 
+            rbValueUnder.AutoSize = true;
+            rbValueUnder.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            rbValueUnder.Location = new Point(103, 128);
+            rbValueUnder.Name = "rbValueUnder";
+            rbValueUnder.Size = new Size(50, 29);
+            rbValueUnder.TabIndex = 24;
+            rbValueUnder.Text = ">";
+            rbValueUnder.UseVisualStyleBackColor = true;
+            // 
+            // rbValueOver
+            // 
+            rbValueOver.AutoSize = true;
+            rbValueOver.Checked = true;
+            rbValueOver.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            rbValueOver.Location = new Point(103, 98);
+            rbValueOver.Name = "rbValueOver";
+            rbValueOver.Size = new Size(50, 29);
+            rbValueOver.TabIndex = 23;
+            rbValueOver.TabStop = true;
+            rbValueOver.Text = "<";
+            rbValueOver.UseVisualStyleBackColor = true;
+            // 
             // cbAlarmLabel
             // 
             cbAlarmLabel.DropDownStyle = ComboBoxStyle.DropDownList;
             cbAlarmLabel.FormattingEnabled = true;
             cbAlarmLabel.Items.AddRange(new object[] { "Voltage", "Ohm", "Resistance", "Capacity", "Diode" });
-            cbAlarmLabel.Location = new Point(103, 48);
+            cbAlarmLabel.Location = new Point(159, 48);
             cbAlarmLabel.Name = "cbAlarmLabel";
             cbAlarmLabel.Size = new Size(150, 33);
             cbAlarmLabel.TabIndex = 22;
@@ -319,7 +347,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label2.Location = new Point(6, 91);
+            label2.Location = new Point(6, 112);
             label2.Name = "label2";
             label2.Size = new Size(87, 25);
             label2.TabIndex = 21;
@@ -337,7 +365,7 @@
             // 
             // tbAlarmValue
             // 
-            tbAlarmValue.Location = new Point(103, 86);
+            tbAlarmValue.Location = new Point(159, 112);
             tbAlarmValue.Name = "tbAlarmValue";
             tbAlarmValue.Size = new Size(150, 31);
             tbAlarmValue.TabIndex = 19;
@@ -417,5 +445,7 @@
         private Label label2;
         private Label label3;
         private TextBox tbAlarmValue;
+        private RadioButton rbValueUnder;
+        private RadioButton rbValueOver;
     }
 }
