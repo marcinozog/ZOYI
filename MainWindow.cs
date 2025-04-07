@@ -329,7 +329,7 @@ namespace ZOYI
                 cbAlarmLabel.Enabled = false;
                 tbAlarmValue.Enabled = false;
                 bAlarmEnable = true;
-                fAlarmValue = float.Parse(tbAlarmValue.Text);
+                fAlarmValue = float.Parse(tbAlarmValue.Text.Replace('.', ','));
             }
             else
             {
