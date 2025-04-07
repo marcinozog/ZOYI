@@ -69,10 +69,9 @@
             // btnListCOM
             // 
             btnListCOM.BackColor = SystemColors.Desktop;
-            btnListCOM.Location = new Point(8, 39);
-            btnListCOM.Margin = new Padding(2);
+            btnListCOM.Location = new Point(11, 68);
             btnListCOM.Name = "btnListCOM";
-            btnListCOM.Size = new Size(136, 23);
+            btnListCOM.Size = new Size(194, 48);
             btnListCOM.TabIndex = 1;
             btnListCOM.Text = "Odśwież listę portów";
             btnListCOM.UseVisualStyleBackColor = false;
@@ -84,21 +83,19 @@
             lbCOMs.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lbCOMs.ForeColor = SystemColors.HighlightText;
             lbCOMs.FormattingEnabled = true;
-            lbCOMs.ItemHeight = 15;
-            lbCOMs.Location = new Point(8, 66);
-            lbCOMs.Margin = new Padding(2);
+            lbCOMs.ItemHeight = 25;
+            lbCOMs.Location = new Point(11, 122);
             lbCOMs.Name = "lbCOMs";
-            lbCOMs.Size = new Size(137, 94);
+            lbCOMs.Size = new Size(194, 179);
             lbCOMs.TabIndex = 2;
             // 
             // btnConnect
             // 
             btnConnect.BackColor = Color.LightGreen;
             btnConnect.ForeColor = SystemColors.Desktop;
-            btnConnect.Location = new Point(8, 193);
-            btnConnect.Margin = new Padding(2);
+            btnConnect.Location = new Point(11, 354);
             btnConnect.Name = "btnConnect";
-            btnConnect.Size = new Size(136, 24);
+            btnConnect.Size = new Size(194, 48);
             btnConnect.TabIndex = 3;
             btnConnect.Text = "Połącz";
             btnConnect.UseVisualStyleBackColor = false;
@@ -108,21 +105,19 @@
             // 
             txtOutput.BackColor = SystemColors.WindowText;
             txtOutput.ForeColor = SystemColors.HighlightText;
-            txtOutput.Location = new Point(4, 4);
-            txtOutput.Margin = new Padding(2);
+            txtOutput.Location = new Point(6, 7);
             txtOutput.Multiline = true;
             txtOutput.Name = "txtOutput";
             txtOutput.ScrollBars = ScrollBars.Vertical;
-            txtOutput.Size = new Size(249, 237);
+            txtOutput.Size = new Size(354, 392);
             txtOutput.TabIndex = 5;
             // 
             // chbShowPanel
             // 
             chbShowPanel.AutoSize = true;
-            chbShowPanel.Location = new Point(10, 250);
-            chbShowPanel.Margin = new Padding(2);
+            chbShowPanel.Location = new Point(14, 436);
             chbShowPanel.Name = "chbShowPanel";
-            chbShowPanel.Size = new Size(55, 19);
+            chbShowPanel.Size = new Size(79, 29);
             chbShowPanel.TabIndex = 6;
             chbShowPanel.Text = "Panel";
             chbShowPanel.UseVisualStyleBackColor = true;
@@ -131,19 +126,17 @@
             // lblBaudRate
             // 
             lblBaudRate.AutoSize = true;
-            lblBaudRate.Location = new Point(8, 169);
-            lblBaudRate.Margin = new Padding(2, 0, 2, 0);
+            lblBaudRate.Location = new Point(11, 317);
             lblBaudRate.Name = "lblBaudRate";
-            lblBaudRate.Size = new Size(63, 15);
+            lblBaudRate.Size = new Size(96, 25);
             lblBaudRate.TabIndex = 7;
             lblBaudRate.Text = "Baud Rate:";
             // 
             // txtBaudRate
             // 
-            txtBaudRate.Location = new Point(80, 166);
-            txtBaudRate.Margin = new Padding(2);
+            txtBaudRate.Location = new Point(114, 313);
             txtBaudRate.Name = "txtBaudRate";
-            txtBaudRate.Size = new Size(64, 23);
+            txtBaudRate.Size = new Size(90, 31);
             txtBaudRate.TabIndex = 8;
             txtBaudRate.Text = "115200";
             txtBaudRate.TextAlign = HorizontalAlignment.Center;
@@ -151,10 +144,9 @@
             // btnClearLog
             // 
             btnClearLog.BackColor = SystemColors.Desktop;
-            btnClearLog.Location = new Point(256, 4);
-            btnClearLog.Margin = new Padding(2);
+            btnClearLog.Location = new Point(366, 7);
             btnClearLog.Name = "btnClearLog";
-            btnClearLog.Size = new Size(107, 25);
+            btnClearLog.Size = new Size(153, 48);
             btnClearLog.TabIndex = 9;
             btnClearLog.Text = "Wyczyść";
             btnClearLog.UseVisualStyleBackColor = false;
@@ -163,10 +155,9 @@
             // btnSaveLog
             // 
             btnSaveLog.BackColor = SystemColors.Desktop;
-            btnSaveLog.Location = new Point(256, 33);
-            btnSaveLog.Margin = new Padding(2);
+            btnSaveLog.Location = new Point(366, 61);
             btnSaveLog.Name = "btnSaveLog";
-            btnSaveLog.Size = new Size(107, 23);
+            btnSaveLog.Size = new Size(153, 48);
             btnSaveLog.TabIndex = 10;
             btnSaveLog.Text = "Zapisz do pliku";
             btnSaveLog.UseVisualStyleBackColor = false;
@@ -177,10 +168,9 @@
             button1.BackColor = Color.Brown;
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             button1.ForeColor = SystemColors.HighlightText;
-            button1.Location = new Point(515, 7);
-            button1.Margin = new Padding(2);
+            button1.Location = new Point(736, 12);
             button1.Name = "button1";
-            button1.Size = new Size(36, 29);
+            button1.Size = new Size(51, 48);
             button1.TabIndex = 11;
             button1.Text = "X";
             button1.UseVisualStyleBackColor = false;
@@ -190,10 +180,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label1.Location = new Point(137, 7);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(196, 12);
             label1.Name = "label1";
-            label1.Size = new Size(250, 20);
+            label1.Size = new Size(370, 30);
             label1.TabIndex = 12;
             label1.Text = "ZOYI 703s Osciloscope Multimeter";
             label1.MouseDown += MainWindow_MouseDown;
@@ -205,10 +194,9 @@
             btnMinimize.BackColor = Color.Brown;
             btnMinimize.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnMinimize.ForeColor = SystemColors.HighlightText;
-            btnMinimize.Location = new Point(475, 7);
-            btnMinimize.Margin = new Padding(2);
+            btnMinimize.Location = new Point(679, 12);
             btnMinimize.Name = "btnMinimize";
-            btnMinimize.Size = new Size(36, 29);
+            btnMinimize.Size = new Size(51, 48);
             btnMinimize.TabIndex = 13;
             btnMinimize.Text = "__";
             btnMinimize.UseVisualStyleBackColor = false;
@@ -219,11 +207,10 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
-            tabControl1.Location = new Point(160, 40);
-            tabControl1.Margin = new Padding(2);
+            tabControl1.Location = new Point(229, 67);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(392, 266);
+            tabControl1.Size = new Size(560, 443);
             tabControl1.TabIndex = 14;
             // 
             // tabPage1
@@ -232,11 +219,10 @@
             tabPage1.Controls.Add(txtOutput);
             tabPage1.Controls.Add(btnClearLog);
             tabPage1.Controls.Add(btnSaveLog);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Margin = new Padding(2);
+            tabPage1.Location = new Point(4, 34);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(2);
-            tabPage1.Size = new Size(384, 238);
+            tabPage1.Padding = new Padding(3, 3, 3, 3);
+            tabPage1.Size = new Size(552, 405);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Logi";
             // 
@@ -244,11 +230,10 @@
             // 
             tabPage2.BackColor = SystemColors.Desktop;
             tabPage2.Controls.Add(groupBox1);
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Margin = new Padding(2);
+            tabPage2.Location = new Point(4, 34);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(2);
-            tabPage2.Size = new Size(384, 238);
+            tabPage2.Padding = new Padding(3, 3, 3, 3);
+            tabPage2.Size = new Size(552, 405);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Ustawienia";
             // 
@@ -261,11 +246,9 @@
             groupBox1.Controls.Add(btnPanelColorLabel);
             groupBox1.Controls.Add(btnPanelColorValue);
             groupBox1.ForeColor = SystemColors.HighlightText;
-            groupBox1.Location = new Point(4, 6);
-            groupBox1.Margin = new Padding(2);
+            groupBox1.Location = new Point(6, 10);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(322, 118);
+            groupBox1.Size = new Size(460, 197);
             groupBox1.TabIndex = 16;
             groupBox1.TabStop = false;
             groupBox1.Text = "Panel miernika";
@@ -273,21 +256,19 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(9, 59);
-            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Location = new Point(13, 98);
             label5.Name = "label5";
-            label5.Size = new Size(89, 15);
+            label5.Size = new Size(136, 25);
             label5.TabIndex = 13;
             label5.Text = "Przeźroczystość";
             // 
             // tbPanelOpacity
             // 
-            tbPanelOpacity.Location = new Point(113, 59);
-            tbPanelOpacity.Margin = new Padding(2);
+            tbPanelOpacity.Location = new Point(161, 98);
             tbPanelOpacity.Maximum = 100;
             tbPanelOpacity.Minimum = 20;
             tbPanelOpacity.Name = "tbPanelOpacity";
-            tbPanelOpacity.Size = new Size(202, 45);
+            tbPanelOpacity.Size = new Size(289, 69);
             tbPanelOpacity.TabIndex = 12;
             tbPanelOpacity.Value = 100;
             tbPanelOpacity.Scroll += tbPanelOpacity_Scroll;
@@ -295,10 +276,9 @@
             // btnPanelColorBg
             // 
             btnPanelColorBg.BackColor = SystemColors.Desktop;
-            btnPanelColorBg.Location = new Point(9, 19);
-            btnPanelColorBg.Margin = new Padding(2);
+            btnPanelColorBg.Location = new Point(13, 32);
             btnPanelColorBg.Name = "btnPanelColorBg";
-            btnPanelColorBg.Size = new Size(99, 29);
+            btnPanelColorBg.Size = new Size(141, 48);
             btnPanelColorBg.TabIndex = 8;
             btnPanelColorBg.Text = "Kolor tła";
             btnPanelColorBg.UseVisualStyleBackColor = false;
@@ -307,10 +287,9 @@
             // btnPanelColorLabel
             // 
             btnPanelColorLabel.BackColor = SystemColors.Desktop;
-            btnPanelColorLabel.Location = new Point(113, 19);
-            btnPanelColorLabel.Margin = new Padding(2);
+            btnPanelColorLabel.Location = new Point(161, 32);
             btnPanelColorLabel.Name = "btnPanelColorLabel";
-            btnPanelColorLabel.Size = new Size(99, 29);
+            btnPanelColorLabel.Size = new Size(141, 48);
             btnPanelColorLabel.TabIndex = 9;
             btnPanelColorLabel.Text = "Kolor etykiety";
             btnPanelColorLabel.UseVisualStyleBackColor = false;
@@ -319,10 +298,9 @@
             // btnPanelColorValue
             // 
             btnPanelColorValue.BackColor = SystemColors.Desktop;
-            btnPanelColorValue.Location = new Point(216, 19);
-            btnPanelColorValue.Margin = new Padding(2);
+            btnPanelColorValue.Location = new Point(309, 32);
             btnPanelColorValue.Name = "btnPanelColorValue";
-            btnPanelColorValue.Size = new Size(99, 29);
+            btnPanelColorValue.Size = new Size(141, 48);
             btnPanelColorValue.TabIndex = 11;
             btnPanelColorValue.Text = "Kolor wartości";
             btnPanelColorValue.UseVisualStyleBackColor = false;
@@ -338,11 +316,10 @@
             tabPage3.Controls.Add(label2);
             tabPage3.Controls.Add(label3);
             tabPage3.Controls.Add(tbAlarmValue);
-            tabPage3.Location = new Point(4, 24);
-            tabPage3.Margin = new Padding(2);
+            tabPage3.Location = new Point(4, 34);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(2);
-            tabPage3.Size = new Size(384, 238);
+            tabPage3.Padding = new Padding(3, 3, 3, 3);
+            tabPage3.Size = new Size(552, 405);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Alarm";
             // 
@@ -350,10 +327,9 @@
             // 
             rbValueUnder.AutoSize = true;
             rbValueUnder.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            rbValueUnder.Location = new Point(72, 77);
-            rbValueUnder.Margin = new Padding(2);
+            rbValueUnder.Location = new Point(103, 128);
             rbValueUnder.Name = "rbValueUnder";
-            rbValueUnder.Size = new Size(33, 19);
+            rbValueUnder.Size = new Size(50, 29);
             rbValueUnder.TabIndex = 24;
             rbValueUnder.Text = "<";
             rbValueUnder.UseVisualStyleBackColor = true;
@@ -363,10 +339,9 @@
             rbValueOver.AutoSize = true;
             rbValueOver.Checked = true;
             rbValueOver.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            rbValueOver.Location = new Point(72, 59);
-            rbValueOver.Margin = new Padding(2);
+            rbValueOver.Location = new Point(103, 98);
             rbValueOver.Name = "rbValueOver";
-            rbValueOver.Size = new Size(33, 19);
+            rbValueOver.Size = new Size(50, 29);
             rbValueOver.TabIndex = 23;
             rbValueOver.TabStop = true;
             rbValueOver.Text = ">";
@@ -377,19 +352,17 @@
             cbAlarmLabel.DropDownStyle = ComboBoxStyle.DropDownList;
             cbAlarmLabel.FormattingEnabled = true;
             cbAlarmLabel.Items.AddRange(new object[] { "Voltage", "Ohm", "Resistance", "Capacity", "Diode" });
-            cbAlarmLabel.Location = new Point(111, 29);
-            cbAlarmLabel.Margin = new Padding(2);
+            cbAlarmLabel.Location = new Point(159, 48);
             cbAlarmLabel.Name = "cbAlarmLabel";
-            cbAlarmLabel.Size = new Size(106, 23);
+            cbAlarmLabel.Size = new Size(150, 33);
             cbAlarmLabel.TabIndex = 22;
             // 
             // chbAlarm
             // 
             chbAlarm.AutoSize = true;
-            chbAlarm.Location = new Point(7, 4);
-            chbAlarm.Margin = new Padding(2);
+            chbAlarm.Location = new Point(10, 7);
             chbAlarm.Name = "chbAlarm";
-            chbAlarm.Size = new Size(58, 19);
+            chbAlarm.Size = new Size(85, 29);
             chbAlarm.TabIndex = 18;
             chbAlarm.Text = "Alarm";
             chbAlarm.UseVisualStyleBackColor = true;
@@ -399,10 +372,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label2.Location = new Point(4, 67);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(6, 112);
             label2.Name = "label2";
-            label2.Size = new Size(56, 15);
+            label2.Size = new Size(87, 25);
             label2.TabIndex = 21;
             label2.Text = "Wartość:";
             // 
@@ -410,38 +382,35 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label3.Location = new Point(4, 31);
-            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Location = new Point(6, 52);
             label3.Name = "label3";
-            label3.Size = new Size(55, 15);
+            label3.Size = new Size(86, 25);
             label3.TabIndex = 20;
             label3.Text = "Etykieta:";
             // 
             // tbAlarmValue
             // 
-            tbAlarmValue.Location = new Point(111, 67);
-            tbAlarmValue.Margin = new Padding(2);
+            tbAlarmValue.Location = new Point(159, 112);
             tbAlarmValue.Name = "tbAlarmValue";
-            tbAlarmValue.Size = new Size(106, 23);
+            tbAlarmValue.Size = new Size(150, 31);
             tbAlarmValue.TabIndex = 19;
             tbAlarmValue.Text = "5";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(8, 291);
-            label4.Margin = new Padding(2, 0, 2, 0);
+            label4.Location = new Point(11, 485);
             label4.Name = "label4";
-            label4.Size = new Size(66, 15);
+            label4.Size = new Size(103, 25);
             label4.TabIndex = 15;
             label4.Text = "Wersja 0.12";
             // 
             // MainWindow
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Desktop;
-            ClientSize = new Size(560, 315);
+            ClientSize = new Size(800, 525);
             Controls.Add(label4);
             Controls.Add(tabControl1);
             Controls.Add(btnMinimize);
@@ -455,7 +424,6 @@
             Controls.Add(btnListCOM);
             ForeColor = SystemColors.HighlightText;
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2);
             MaximizeBox = false;
             Name = "MainWindow";
             Text = "ZOYI Terminal";
