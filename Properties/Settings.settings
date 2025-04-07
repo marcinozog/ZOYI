@@ -12,13 +12,13 @@
       <Value Profile="(Default)">pl</Value>
     </Setting>
     <Setting Name="panel_label_color" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">White</Value>
     </Setting>
     <Setting Name="panel_value_color" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">White</Value>
     </Setting>
     <Setting Name="panel_bg_color" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Black</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -35,6 +35,7 @@
             // lblLabel
             // 
             lblLabel.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblLabel.ForeColor = SystemColors.HighlightText;
             lblLabel.Location = new Point(60, 13);
             lblLabel.Name = "lblLabel";
             lblLabel.Size = new Size(260, 80);
@@ -48,6 +49,7 @@
             // lblValue
             // 
             lblValue.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblValue.ForeColor = SystemColors.HighlightText;
             lblValue.Location = new Point(60, 100);
             lblValue.Name = "lblValue";
             lblValue.Size = new Size(260, 80);
