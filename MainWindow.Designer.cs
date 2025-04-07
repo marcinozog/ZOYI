@@ -44,9 +44,11 @@
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
             groupBox1 = new GroupBox();
-            btnColorBg = new Button();
-            btnColorLabel = new Button();
-            btnColorValue = new Button();
+            label5 = new Label();
+            tbPanelOpacity = new TrackBar();
+            btnPanelColorBg = new Button();
+            btnPanelColorLabel = new Button();
+            btnPanelColorValue = new Button();
             tabPage3 = new TabPage();
             rbValueUnder = new RadioButton();
             rbValueOver = new RadioButton();
@@ -60,6 +62,7 @@
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)tbPanelOpacity).BeginInit();
             tabPage3.SuspendLayout();
             SuspendLayout();
             // 
@@ -237,49 +240,71 @@
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.Desktop;
-            groupBox1.Controls.Add(btnColorBg);
-            groupBox1.Controls.Add(btnColorLabel);
-            groupBox1.Controls.Add(btnColorValue);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(tbPanelOpacity);
+            groupBox1.Controls.Add(btnPanelColorBg);
+            groupBox1.Controls.Add(btnPanelColorLabel);
+            groupBox1.Controls.Add(btnPanelColorValue);
             groupBox1.ForeColor = SystemColors.HighlightText;
-            groupBox1.Location = new Point(6, 6);
+            groupBox1.Location = new Point(6, 10);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(460, 168);
             groupBox1.TabIndex = 16;
             groupBox1.TabStop = false;
             groupBox1.Text = "Panel miernika";
             // 
-            // btnColorBg
+            // label5
             // 
-            btnColorBg.BackColor = SystemColors.Desktop;
-            btnColorBg.Location = new Point(13, 32);
-            btnColorBg.Name = "btnColorBg";
-            btnColorBg.Size = new Size(142, 34);
-            btnColorBg.TabIndex = 8;
-            btnColorBg.Text = "Kolor tła";
-            btnColorBg.UseVisualStyleBackColor = false;
-            btnColorBg.Click += btnColorBg_Click;
+            label5.AutoSize = true;
+            label5.Location = new Point(13, 93);
+            label5.Name = "label5";
+            label5.Size = new Size(136, 25);
+            label5.TabIndex = 13;
+            label5.Text = "Przeźroczystość";
             // 
-            // btnColorLabel
+            // tbPanelOpacity
             // 
-            btnColorLabel.BackColor = SystemColors.Desktop;
-            btnColorLabel.Location = new Point(13, 72);
-            btnColorLabel.Name = "btnColorLabel";
-            btnColorLabel.Size = new Size(141, 34);
-            btnColorLabel.TabIndex = 9;
-            btnColorLabel.Text = "Kolor etykiety";
-            btnColorLabel.UseVisualStyleBackColor = false;
-            btnColorLabel.Click += btnColorLabel_Click;
+            tbPanelOpacity.Location = new Point(161, 93);
+            tbPanelOpacity.Maximum = 100;
+            tbPanelOpacity.Minimum = 20;
+            tbPanelOpacity.Name = "tbPanelOpacity";
+            tbPanelOpacity.Size = new Size(289, 69);
+            tbPanelOpacity.TabIndex = 12;
+            tbPanelOpacity.Value = 100;
+            tbPanelOpacity.Scroll += tbPanelOpacity_Scroll;
             // 
-            // btnColorValue
+            // btnPanelColorBg
             // 
-            btnColorValue.BackColor = SystemColors.Desktop;
-            btnColorValue.Location = new Point(13, 112);
-            btnColorValue.Name = "btnColorValue";
-            btnColorValue.Size = new Size(142, 34);
-            btnColorValue.TabIndex = 11;
-            btnColorValue.Text = "Kolor wartości";
-            btnColorValue.UseVisualStyleBackColor = false;
-            btnColorValue.Click += btnColorValue_Click;
+            btnPanelColorBg.BackColor = SystemColors.Desktop;
+            btnPanelColorBg.Location = new Point(13, 32);
+            btnPanelColorBg.Name = "btnPanelColorBg";
+            btnPanelColorBg.Size = new Size(142, 34);
+            btnPanelColorBg.TabIndex = 8;
+            btnPanelColorBg.Text = "Kolor tła";
+            btnPanelColorBg.UseVisualStyleBackColor = false;
+            btnPanelColorBg.Click += btnColorBg_Click;
+            // 
+            // btnPanelColorLabel
+            // 
+            btnPanelColorLabel.BackColor = SystemColors.Desktop;
+            btnPanelColorLabel.Location = new Point(161, 32);
+            btnPanelColorLabel.Name = "btnPanelColorLabel";
+            btnPanelColorLabel.Size = new Size(141, 34);
+            btnPanelColorLabel.TabIndex = 9;
+            btnPanelColorLabel.Text = "Kolor etykiety";
+            btnPanelColorLabel.UseVisualStyleBackColor = false;
+            btnPanelColorLabel.Click += btnColorLabel_Click;
+            // 
+            // btnPanelColorValue
+            // 
+            btnPanelColorValue.BackColor = SystemColors.Desktop;
+            btnPanelColorValue.Location = new Point(308, 32);
+            btnPanelColorValue.Name = "btnPanelColorValue";
+            btnPanelColorValue.Size = new Size(142, 34);
+            btnPanelColorValue.TabIndex = 11;
+            btnPanelColorValue.Text = "Kolor wartości";
+            btnPanelColorValue.UseVisualStyleBackColor = false;
+            btnPanelColorValue.Click += btnColorValue_Click;
             // 
             // tabPage3
             // 
@@ -306,7 +331,7 @@
             rbValueUnder.Name = "rbValueUnder";
             rbValueUnder.Size = new Size(50, 29);
             rbValueUnder.TabIndex = 24;
-            rbValueUnder.Text = ">";
+            rbValueUnder.Text = "<";
             rbValueUnder.UseVisualStyleBackColor = true;
             // 
             // rbValueOver
@@ -319,7 +344,7 @@
             rbValueOver.Size = new Size(50, 29);
             rbValueOver.TabIndex = 23;
             rbValueOver.TabStop = true;
-            rbValueOver.Text = "<";
+            rbValueOver.Text = ">";
             rbValueOver.UseVisualStyleBackColor = true;
             // 
             // cbAlarmLabel
@@ -335,7 +360,7 @@
             // chbAlarm
             // 
             chbAlarm.AutoSize = true;
-            chbAlarm.Location = new Point(6, 6);
+            chbAlarm.Location = new Point(10, 6);
             chbAlarm.Name = "chbAlarm";
             chbAlarm.Size = new Size(85, 29);
             chbAlarm.TabIndex = 18;
@@ -378,7 +403,7 @@
             label4.Name = "label4";
             label4.Size = new Size(103, 25);
             label4.TabIndex = 15;
-            label4.Text = "Wersja 0.10";
+            label4.Text = "Wersja 0.12";
             // 
             // MainWindow
             // 
@@ -411,6 +436,8 @@
             tabPage1.PerformLayout();
             tabPage2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)tbPanelOpacity).EndInit();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
             ResumeLayout(false);
@@ -434,9 +461,9 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private Button btnColorValue;
-        private Button btnColorLabel;
-        private Button btnColorBg;
+        private Button btnPanelColorValue;
+        private Button btnPanelColorLabel;
+        private Button btnPanelColorBg;
         private GroupBox groupBox1;
         private Label label4;
         private TabPage tabPage3;
@@ -447,5 +474,7 @@
         private TextBox tbAlarmValue;
         private RadioButton rbValueUnder;
         private RadioButton rbValueOver;
+        private TrackBar tbPanelOpacity;
+        private Label label5;
     }
 }

@@ -30,17 +30,21 @@
         {
             lblLabel = new Label();
             lblValue = new Label();
+            panelResize = new Panel();
+            tableLayoutPanel = new TableLayoutPanel();
+            tableLayoutPanel.SuspendLayout();
             SuspendLayout();
             // 
             // lblLabel
             // 
-            lblLabel.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblLabel.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             lblLabel.ForeColor = SystemColors.HighlightText;
-            lblLabel.Location = new Point(60, 13);
+            lblLabel.Location = new Point(3, 0);
             lblLabel.Name = "lblLabel";
-            lblLabel.Size = new Size(260, 80);
+            lblLabel.Size = new Size(365, 93);
             lblLabel.TabIndex = 0;
-            lblLabel.Text = "Podłącz miernik";
+            lblLabel.Text = "ZOYI 703s";
             lblLabel.TextAlign = ContentAlignment.MiddleCenter;
             lblLabel.MouseDown += displayPanel_MouseDown;
             lblLabel.MouseMove += displayPanel_MouseMove;
@@ -48,26 +52,53 @@
             // 
             // lblValue
             // 
-            lblValue.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblValue.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblValue.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             lblValue.ForeColor = SystemColors.HighlightText;
-            lblValue.Location = new Point(60, 100);
+            lblValue.Location = new Point(3, 93);
             lblValue.Name = "lblValue";
-            lblValue.Size = new Size(260, 80);
+            lblValue.Size = new Size(365, 93);
             lblValue.TabIndex = 1;
-            lblValue.Text = "ZOYI 703s";
+            lblValue.Text = "Podłącz miernik";
             lblValue.TextAlign = ContentAlignment.MiddleCenter;
             lblValue.MouseDown += displayPanel_MouseDown;
             lblValue.MouseMove += displayPanel_MouseMove;
             lblValue.MouseUp += displayPanel_MouseUp;
+            // 
+            // panelResize
+            // 
+            panelResize.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            panelResize.Cursor = Cursors.SizeNWSE;
+            panelResize.Location = new Point(380, 196);
+            panelResize.Name = "panelResize";
+            panelResize.Size = new Size(33, 31);
+            panelResize.TabIndex = 2;
+            panelResize.MouseDown += panelResize_MouseDown;
+            panelResize.MouseMove += panelResize_MouseMove;
+            panelResize.MouseUp += panelResize_MouseUp;
+            // 
+            // tableLayoutPanel
+            // 
+            tableLayoutPanel.ColumnCount = 1;
+            tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel.Controls.Add(lblValue, 0, 1);
+            tableLayoutPanel.Controls.Add(lblLabel, 0, 0);
+            tableLayoutPanel.Location = new Point(12, 10);
+            tableLayoutPanel.Name = "tableLayoutPanel";
+            tableLayoutPanel.RowCount = 2;
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel.Size = new Size(371, 186);
+            tableLayoutPanel.TabIndex = 3;
             // 
             // DisplayPanel
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Desktop;
-            ClientSize = new Size(385, 192);
-            Controls.Add(lblValue);
-            Controls.Add(lblLabel);
+            ClientSize = new Size(413, 226);
+            Controls.Add(tableLayoutPanel);
+            Controls.Add(panelResize);
             ForeColor = SystemColors.HighlightText;
             FormBorderStyle = FormBorderStyle.None;
             Name = "DisplayPanel";
@@ -75,6 +106,7 @@
             MouseDown += displayPanel_MouseDown;
             MouseMove += displayPanel_MouseMove;
             MouseUp += displayPanel_MouseUp;
+            tableLayoutPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -82,5 +114,7 @@
 
         private Label lblLabel;
         private Label lblValue;
+        private Panel panelResize;
+        private TableLayoutPanel tableLayoutPanel;
     }
 }

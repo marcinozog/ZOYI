@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.IO.Ports;
+using System.Media;
 
 namespace ZOYI
 {
@@ -288,6 +289,7 @@ namespace ZOYI
          * Colors section
          * 
          */
+
         private void btnColorBg_Click(object sender, EventArgs e)
         {
             ColorDialog cd = new ColorDialog();
@@ -365,9 +367,14 @@ namespace ZOYI
 
         void playAlarmBeepThread()
         {
-            //SoundPlayer snd = new SoundPlayer("beep.wav");
-            //snd.PlaySync();
+            SoundPlayer snd = new SoundPlayer("beep.wav");
+            snd.PlaySync();
             bBeepPlaying = false;
+        }
+
+        private void tbPanelOpacity_Scroll(object sender, EventArgs e)
+        {
+            displayPanel.changeOpacity(tbPanelOpacity.Value);
         }
     }
 }

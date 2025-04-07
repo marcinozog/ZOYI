@@ -1,37 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms.Design;
-
-namespace ZOYI
-{
-    internal class Settings
-    {
-        int baudrate;
-        string default_com = "";
-        string lang = "";
-        string color_label_panel = "";
-        string color_value_panel = "";
-
-        public void load_settings()
-        {
-            int baudrate = Properties.Settings.Default.baudrate;
-            string default_com = Properties.Settings.Default.default_com;
-            string lang = Properties.Settings.Default.lang;
-            string color_label_panel = Properties.Settings.Default.panel_label_color;
-            string color_value_panel = Properties.Settings.Default.panel_value_color;
+﻿namespace ZOYI.Properties {
+    
+    
+    // This class allows you to handle specific events on the settings class:
+    //  The SettingChanging event is raised before a setting's value is changed.
+    //  The PropertyChanged event is raised after a setting's value is changed.
+    //  The SettingsLoaded event is raised after the setting values are loaded.
+    //  The SettingsSaving event is raised before the setting values are saved.
+    internal sealed partial class Settings {
+        
+        public Settings() {
+            // // To add event handlers for saving and changing settings, uncomment the lines below:
+            //
+            // this.SettingChanging += this.SettingChangingEventHandler;
+            //
+            // this.SettingsSaving += this.SettingsSavingEventHandler;
+            //
         }
-
-        public void save_settings()
-        {
-            Properties.Settings.Default.baudrate = baudrate;
-            Properties.Settings.Default.default_com = default_com;
-            Properties.Settings.Default.lang = lang;
-            Properties.Settings.Default.panel_label_color = color_label_panel;
-            Properties.Settings.Default.panel_value_color = color_value_panel;
-            Properties.Settings.Default.Save();
+        
+        private void SettingChangingEventHandler(object sender, System.Configuration.SettingChangingEventArgs e) {
+            // Add code to handle the SettingChangingEvent event here.
+        }
+        
+        private void SettingsSavingEventHandler(object sender, System.ComponentModel.CancelEventArgs e) {
+            // Add code to handle the SettingsSaving event here.
         }
     }
 }

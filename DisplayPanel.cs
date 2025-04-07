@@ -14,9 +14,16 @@ namespace ZOYI
 {
     public partial class DisplayPanel : Form
     {
-        bool bMouseDown = false;
-        Point mousePosDown = Point.Empty;
-        Point currentFormLocation = Point.Empty;
+        // Window move
+        bool bDispalyMouseDown = false;
+        Point pDisplayMousePosDown = Point.Empty;
+        Point pDisplayCurrentFormLocation = Point.Empty;
+
+        // Window resize
+        bool bResizeMouseDown = false;
+        Point pResizeMousePosDown = Point.Empty;
+        Size szCurrentFormSize = Size.Empty;
+        Size szCurrentTableSize = Size.Empty;
 
         Color color_label;
         Color color_value;
@@ -42,31 +49,41 @@ namespace ZOYI
             lblValue.Text = lvs[1] + " " + lvs[2];
         }
 
+        /*
+         * 
+         * Window move section
+         * 
+         */
         private void displayPanel_MouseDown(object sender, MouseEventArgs e)
         {
-            bMouseDown = true;
-            mousePosDown = Control.MousePosition;
-            currentFormLocation = Location;
+            bDispalyMouseDown = true;
+            pDisplayMousePosDown = Control.MousePosition;
+            pDisplayCurrentFormLocation = Location;
         }
 
         private void displayPanel_MouseUp(object sender, MouseEventArgs e)
         {
-            bMouseDown = false;
-            mousePosDown = Point.Empty;
-            currentFormLocation = Point.Empty;
+            bDispalyMouseDown = false;
+            pDisplayMousePosDown = Point.Empty;
+            pDisplayCurrentFormLocation = Point.Empty;
         }
 
         private void displayPanel_MouseMove(object sender, MouseEventArgs e)
         {
-            if (bMouseDown)
+            if (bDispalyMouseDown)
             {
                 var currentPos = Control.MousePosition;
-                var distX = currentPos.X - mousePosDown.X;
-                var distY = currentPos.Y - mousePosDown.Y;
-                Location = new Point(currentFormLocation.X + distX, currentFormLocation.Y + distY);
+                var distX = currentPos.X - pDisplayMousePosDown.X;
+                var distY = currentPos.Y - pDisplayMousePosDown.Y;
+                Location = new Point(pDisplayCurrentFormLocation.X + distX, pDisplayCurrentFormLocation.Y + distY);
             }
         }
 
+        /*
+         * 
+         * Colors section
+         * 
+         */
         public void setBackgroundColor(Color color)
         {
             this.BackColor = color;
@@ -86,6 +103,56 @@ namespace ZOYI
             lblValue.ForeColor = color;
             Properties.Settings.Default.panel_value_color = ColorTranslator.ToHtml(color); ;
             Properties.Settings.Default.Save();
+        }
+
+        public void changeOpacity(int val)
+        {
+            double opacity = val / 100.0;
+            this.Opacity = opacity;
+        }
+
+        /*
+         * 
+         * Resize panel section
+         * 
+         */
+        private void panelResize_MouseDown(object sender, MouseEventArgs e)
+        {
+            bResizeMouseDown = true;
+            pResizeMousePosDown = Control.MousePosition;
+            szCurrentFormSize = this.Size;
+            szCurrentTableSize = tableLayoutPanel.Size;
+        }
+
+        private void panelResize_MouseUp(object sender, MouseEventArgs e)
+        {
+            bResizeMouseDown = false;
+            pResizeMousePosDown = Point.Empty;
+            szCurrentFormSize = Size.Empty;
+            szCurrentTableSize = Size.Empty;
+        }
+
+        private void panelResize_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (bResizeMouseDown)
+            {
+                var currentPos = Control.MousePosition;
+                var distX = currentPos.X - pResizeMousePosDown.X;
+                var distY = currentPos.Y - pResizeMousePosDown.Y;
+                this.Size = new Size(szCurrentFormSize.Width + distX, szCurrentFormSize.Height + distY);
+                tableLayoutPanel.Size = new Size(szCurrentTableSize.Width + distX, szCurrentTableSize.Height + distY);
+
+                try
+                {
+                    Font labelOldFont = lblLabel.Font;
+                    //float fontOldSize = labelOldFont.Size;
+                    float fontNewSize = lblLabel.Height / 3;
+                    Font labelNewFont = new Font(labelOldFont.FontFamily, fontNewSize, labelOldFont.Style);
+                    lblLabel.Font = labelNewFont;
+                    lblValue.Font = labelNewFont;
+                }
+                catch { }
+            }
         }
     }
 }
