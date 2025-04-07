@@ -42,7 +42,7 @@
             lblLabel.ForeColor = SystemColors.HighlightText;
             lblLabel.Location = new Point(3, 0);
             lblLabel.Name = "lblLabel";
-            lblLabel.Size = new Size(365, 93);
+            lblLabel.Size = new Size(383, 102);
             lblLabel.TabIndex = 0;
             lblLabel.Text = "ZOYI 703s";
             lblLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -55,9 +55,9 @@
             lblValue.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblValue.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             lblValue.ForeColor = SystemColors.HighlightText;
-            lblValue.Location = new Point(3, 93);
+            lblValue.Location = new Point(3, 102);
             lblValue.Name = "lblValue";
-            lblValue.Size = new Size(365, 93);
+            lblValue.Size = new Size(383, 102);
             lblValue.TabIndex = 1;
             lblValue.Text = "Podłącz miernik";
             lblValue.TextAlign = ContentAlignment.MiddleCenter;
@@ -88,7 +88,7 @@
             tableLayoutPanel.RowCount = 2;
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel.Size = new Size(371, 186);
+            tableLayoutPanel.Size = new Size(389, 204);
             tableLayoutPanel.TabIndex = 3;
             // 
             // DisplayPanel
@@ -97,8 +97,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Desktop;
             ClientSize = new Size(413, 226);
-            Controls.Add(tableLayoutPanel);
             Controls.Add(panelResize);
+            Controls.Add(tableLayoutPanel);
             ForeColor = SystemColors.HighlightText;
             FormBorderStyle = FormBorderStyle.None;
             Name = "DisplayPanel";
