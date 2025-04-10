@@ -23,8 +23,8 @@ namespace ZOYI
          * Alarm section
          */
         bool bAlarmEnable = false;
-        string sAlarmLabel = "";
-        float fAlarmValue = 0.0f;
+        float fAlarmOverValue = 0.0f;
+        float fAlarmUnderValue = 0.0f;
         Thread alarmSoundThread;
         bool bBeepPlaying = false;
 
@@ -326,42 +326,41 @@ namespace ZOYI
         {
             if (chbAlarm.Checked)
             {
-                cbAlarmLabel.Enabled = false;
-                tbAlarmValue.Enabled = false;
+                plAlarm.Enabled = false;
                 bAlarmEnable = true;
-                fAlarmValue = float.Parse(tbAlarmValue.Text.Replace('.', ','));
+                float.TryParse(tbAlarmOverValue.Text.Replace('.', ','), out fAlarmOverValue);
+                float.TryParse(tbAlarmUnderValue.Text.Replace('.', ','), out fAlarmUnderValue);
             }
             else
             {
-                cbAlarmLabel.Enabled = true;
-                tbAlarmValue.Enabled = true;
+                plAlarm.Enabled = true;
                 bAlarmEnable = false;
             }
         }
 
         private void alarmProcess(string label, string value)
         {
-            try
+            if (!bBeepPlaying)
             {
-                float val = float.Parse(value, CultureInfo.InvariantCulture.NumberFormat);
-
-                bool bthreshold = false;
-                if (rbValueOver.Checked)
-                    bthreshold = val > fAlarmValue;
-                else
-                    bthreshold = val < fAlarmValue;
-
-                if (bthreshold && (!bBeepPlaying))
+                try
                 {
-                    bBeepPlaying = true;
-                    alarmSoundThread = new Thread(new ThreadStart(playAlarmBeepThread));
-                    alarmSoundThread.Start();
+                    // break if fail - don't use TryParse
+                    float val = float.Parse(value);
+                    bool bOverThreshold = (cbValueOver.Checked && (val > fAlarmOverValue));
+                    bool bUnderThreshold = (cbValueUnder.Checked && (val < fAlarmUnderValue));
 
+                    if (bOverThreshold || bUnderThreshold)
+                    {
+                        bBeepPlaying = true;
+                        alarmSoundThread = new Thread(new ThreadStart(playAlarmBeepThread));
+                        alarmSoundThread.Start();
+
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show(ex.Message);
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.Message);
+                }
             }
         }
 

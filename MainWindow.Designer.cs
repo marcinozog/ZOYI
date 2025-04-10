@@ -50,13 +50,17 @@
             btnPanelColorLabel = new Button();
             btnPanelColorValue = new Button();
             tabPage3 = new TabPage();
-            rbValueUnder = new RadioButton();
-            rbValueOver = new RadioButton();
+            label7 = new Label();
+            label6 = new Label();
+            plAlarm = new Panel();
             cbAlarmLabel = new ComboBox();
+            tbAlarmUnderValue = new TextBox();
+            cbValueUnder = new CheckBox();
+            tbAlarmOverValue = new TextBox();
+            cbValueOver = new CheckBox();
             chbAlarm = new CheckBox();
             label2 = new Label();
             label3 = new Label();
-            tbAlarmValue = new TextBox();
             label4 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -64,6 +68,7 @@
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tbPanelOpacity).BeginInit();
             tabPage3.SuspendLayout();
+            plAlarm.SuspendLayout();
             SuspendLayout();
             // 
             // btnListCOM
@@ -221,7 +226,7 @@
             tabPage1.Controls.Add(btnSaveLog);
             tabPage1.Location = new Point(4, 34);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 3, 3, 3);
+            tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(552, 405);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Logi";
@@ -232,7 +237,7 @@
             tabPage2.Controls.Add(groupBox1);
             tabPage2.Location = new Point(4, 34);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 3, 3, 3);
+            tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(552, 405);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Ustawienia";
@@ -309,53 +314,96 @@
             // tabPage3
             // 
             tabPage3.BackColor = SystemColors.Desktop;
-            tabPage3.Controls.Add(rbValueUnder);
-            tabPage3.Controls.Add(rbValueOver);
-            tabPage3.Controls.Add(cbAlarmLabel);
+            tabPage3.Controls.Add(label7);
+            tabPage3.Controls.Add(label6);
+            tabPage3.Controls.Add(plAlarm);
             tabPage3.Controls.Add(chbAlarm);
             tabPage3.Controls.Add(label2);
             tabPage3.Controls.Add(label3);
-            tabPage3.Controls.Add(tbAlarmValue);
             tabPage3.Location = new Point(4, 34);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3, 3, 3, 3);
+            tabPage3.Padding = new Padding(3);
             tabPage3.Size = new Size(552, 405);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Alarm";
             // 
-            // rbValueUnder
+            // label7
             // 
-            rbValueUnder.AutoSize = true;
-            rbValueUnder.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            rbValueUnder.Location = new Point(103, 128);
-            rbValueUnder.Name = "rbValueUnder";
-            rbValueUnder.Size = new Size(50, 29);
-            rbValueUnder.TabIndex = 24;
-            rbValueUnder.Text = "<";
-            rbValueUnder.UseVisualStyleBackColor = true;
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label7.Location = new Point(86, 146);
+            label7.Name = "label7";
+            label7.Size = new Size(25, 25);
+            label7.TabIndex = 30;
+            label7.Text = "<";
             // 
-            // rbValueOver
+            // label6
             // 
-            rbValueOver.AutoSize = true;
-            rbValueOver.Checked = true;
-            rbValueOver.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            rbValueOver.Location = new Point(103, 98);
-            rbValueOver.Name = "rbValueOver";
-            rbValueOver.Size = new Size(50, 29);
-            rbValueOver.TabIndex = 23;
-            rbValueOver.TabStop = true;
-            rbValueOver.Text = ">";
-            rbValueOver.UseVisualStyleBackColor = true;
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label6.Location = new Point(86, 113);
+            label6.Name = "label6";
+            label6.Size = new Size(25, 25);
+            label6.TabIndex = 29;
+            label6.Text = ">";
+            // 
+            // plAlarm
+            // 
+            plAlarm.Controls.Add(cbAlarmLabel);
+            plAlarm.Controls.Add(tbAlarmUnderValue);
+            plAlarm.Controls.Add(cbValueUnder);
+            plAlarm.Controls.Add(tbAlarmOverValue);
+            plAlarm.Controls.Add(cbValueOver);
+            plAlarm.Location = new Point(114, 56);
+            plAlarm.Name = "plAlarm";
+            plAlarm.Size = new Size(200, 134);
+            plAlarm.TabIndex = 26;
             // 
             // cbAlarmLabel
             // 
             cbAlarmLabel.DropDownStyle = ComboBoxStyle.DropDownList;
             cbAlarmLabel.FormattingEnabled = true;
             cbAlarmLabel.Items.AddRange(new object[] { "Voltage", "Ohm", "Resistance", "Capacity", "Diode" });
-            cbAlarmLabel.Location = new Point(159, 48);
+            cbAlarmLabel.Location = new Point(36, 11);
             cbAlarmLabel.Name = "cbAlarmLabel";
             cbAlarmLabel.Size = new Size(150, 33);
             cbAlarmLabel.TabIndex = 22;
+            // 
+            // tbAlarmUnderValue
+            // 
+            tbAlarmUnderValue.Location = new Point(36, 89);
+            tbAlarmUnderValue.Name = "tbAlarmUnderValue";
+            tbAlarmUnderValue.Size = new Size(150, 31);
+            tbAlarmUnderValue.TabIndex = 25;
+            tbAlarmUnderValue.Text = "4";
+            // 
+            // cbValueUnder
+            // 
+            cbValueUnder.AutoSize = true;
+            cbValueUnder.Location = new Point(3, 95);
+            cbValueUnder.Name = "cbValueUnder";
+            cbValueUnder.Size = new Size(22, 21);
+            cbValueUnder.TabIndex = 28;
+            cbValueUnder.UseVisualStyleBackColor = true;
+            // 
+            // tbAlarmOverValue
+            // 
+            tbAlarmOverValue.Location = new Point(36, 54);
+            tbAlarmOverValue.Name = "tbAlarmOverValue";
+            tbAlarmOverValue.Size = new Size(150, 31);
+            tbAlarmOverValue.TabIndex = 19;
+            tbAlarmOverValue.Text = "5";
+            // 
+            // cbValueOver
+            // 
+            cbValueOver.AutoSize = true;
+            cbValueOver.Checked = true;
+            cbValueOver.CheckState = CheckState.Checked;
+            cbValueOver.Location = new Point(3, 60);
+            cbValueOver.Name = "cbValueOver";
+            cbValueOver.Size = new Size(22, 21);
+            cbValueOver.TabIndex = 27;
+            cbValueOver.UseVisualStyleBackColor = true;
             // 
             // chbAlarm
             // 
@@ -372,7 +420,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label2.Location = new Point(6, 112);
+            label2.Location = new Point(0, 125);
             label2.Name = "label2";
             label2.Size = new Size(87, 25);
             label2.TabIndex = 21;
@@ -382,19 +430,11 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label3.Location = new Point(6, 52);
+            label3.Location = new Point(0, 70);
             label3.Name = "label3";
             label3.Size = new Size(86, 25);
             label3.TabIndex = 20;
             label3.Text = "Etykieta:";
-            // 
-            // tbAlarmValue
-            // 
-            tbAlarmValue.Location = new Point(159, 112);
-            tbAlarmValue.Name = "tbAlarmValue";
-            tbAlarmValue.Size = new Size(150, 31);
-            tbAlarmValue.TabIndex = 19;
-            tbAlarmValue.Text = "5";
             // 
             // label4
             // 
@@ -403,7 +443,7 @@
             label4.Name = "label4";
             label4.Size = new Size(103, 25);
             label4.TabIndex = 15;
-            label4.Text = "Wersja 0.12";
+            label4.Text = "Wersja 0.13";
             // 
             // MainWindow
             // 
@@ -440,6 +480,8 @@
             ((System.ComponentModel.ISupportInitialize)tbPanelOpacity).EndInit();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
+            plAlarm.ResumeLayout(false);
+            plAlarm.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -471,10 +513,14 @@
         private CheckBox chbAlarm;
         private Label label2;
         private Label label3;
-        private TextBox tbAlarmValue;
-        private RadioButton rbValueUnder;
-        private RadioButton rbValueOver;
+        private TextBox tbAlarmOverValue;
         private TrackBar tbPanelOpacity;
         private Label label5;
+        private Label label6;
+        private CheckBox cbValueUnder;
+        private CheckBox cbValueOver;
+        private Panel plAlarm;
+        private TextBox tbAlarmUnderValue;
+        private Label label7;
     }
 }
