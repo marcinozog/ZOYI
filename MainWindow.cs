@@ -222,6 +222,8 @@ namespace ZOYI
                 case "VDiode":
                     ret[0] = "Tryb diody";
                     ret[2] = "mV";
+                    if (!ret[1].Contains("0,"))
+                        ret[2] = "V";
                     break;
                 case "nFCap":
                     ret[0] = "Pojemność nF";
@@ -238,6 +240,10 @@ namespace ZOYI
                 case "VVoltage":
                     ret[0] = "DC Voltage";
                     ret[2] = "DC";
+                    break;
+                default:
+                    ret[0] = label_value[0];
+                    ret[2] = "";
                     break;
             }
 
