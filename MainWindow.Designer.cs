@@ -31,7 +31,7 @@
             btnListCOM = new Button();
             lbCOMs = new ListBox();
             btnConnect = new Button();
-            txtOutput = new TextBox();
+            tbComOutput = new TextBox();
             chbShowPanel = new CheckBox();
             lblBaudRate = new Label();
             txtBaudRate = new TextBox();
@@ -42,6 +42,7 @@
             btnMinimize = new Button();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            cbCOMrawmode = new CheckBox();
             tabPage2 = new TabPage();
             groupBox1 = new GroupBox();
             label5 = new Label();
@@ -111,16 +112,16 @@
             btnConnect.UseVisualStyleBackColor = false;
             btnConnect.Click += btnConnect_Click;
             // 
-            // txtOutput
+            // tbComOutput
             // 
-            txtOutput.BackColor = SystemColors.WindowText;
-            txtOutput.ForeColor = SystemColors.HighlightText;
-            txtOutput.Location = new Point(6, 7);
-            txtOutput.Multiline = true;
-            txtOutput.Name = "txtOutput";
-            txtOutput.ScrollBars = ScrollBars.Vertical;
-            txtOutput.Size = new Size(354, 392);
-            txtOutput.TabIndex = 5;
+            tbComOutput.BackColor = SystemColors.WindowText;
+            tbComOutput.ForeColor = SystemColors.HighlightText;
+            tbComOutput.Location = new Point(6, 7);
+            tbComOutput.Multiline = true;
+            tbComOutput.Name = "tbComOutput";
+            tbComOutput.ScrollBars = ScrollBars.Vertical;
+            tbComOutput.Size = new Size(354, 392);
+            tbComOutput.TabIndex = 5;
             // 
             // chbShowPanel
             // 
@@ -227,7 +228,8 @@
             // tabPage1
             // 
             tabPage1.BackColor = SystemColors.Desktop;
-            tabPage1.Controls.Add(txtOutput);
+            tabPage1.Controls.Add(cbCOMrawmode);
+            tabPage1.Controls.Add(tbComOutput);
             tabPage1.Controls.Add(btnClearLog);
             tabPage1.Controls.Add(btnSaveLog);
             tabPage1.Location = new Point(4, 34);
@@ -236,6 +238,17 @@
             tabPage1.Size = new Size(552, 405);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Logi";
+            // 
+            // cbCOMrawmode
+            // 
+            cbCOMrawmode.AutoSize = true;
+            cbCOMrawmode.Location = new Point(368, 115);
+            cbCOMrawmode.Name = "cbCOMrawmode";
+            cbCOMrawmode.Size = new Size(129, 29);
+            cbCOMrawmode.TabIndex = 11;
+            cbCOMrawmode.Text = "RAW mode";
+            cbCOMrawmode.UseVisualStyleBackColor = true;
+            cbCOMrawmode.CheckedChanged += cbCOMrawmode_CheckedChanged;
             // 
             // tabPage2
             // 
@@ -464,7 +477,7 @@
             btnLinksRefresh.TabIndex = 2;
             btnLinksRefresh.Text = "Odśwież";
             btnLinksRefresh.UseVisualStyleBackColor = false;
-            btnLinksRefresh.Click += this.btnLinksRefresh_Click;
+            btnLinksRefresh.Click += btnLinksRefresh_Click;
             // 
             // btnLinksEdit
             // 
@@ -475,7 +488,7 @@
             btnLinksEdit.TabIndex = 1;
             btnLinksEdit.Text = "Edytuj";
             btnLinksEdit.UseVisualStyleBackColor = false;
-            btnLinksEdit.Click += this.btnLinksEdit_Click;
+            btnLinksEdit.Click += btnLinksEdit_Click;
             // 
             // panelLinks
             // 
@@ -541,7 +554,7 @@
         private Button btnListCOM;
         private ListBox lbCOMs;
         private Button btnConnect;
-        private TextBox txtOutput;
+        private TextBox tbComOutput;
         private CheckBox chbShowPanel;
         private Label lblBaudRate;
         private TextBox txtBaudRate;
@@ -576,5 +589,6 @@
         private Button btnLinksRefresh;
         private Button btnLinksEdit;
         private Panel panelLinks;
+        private CheckBox cbCOMrawmode;
     }
 }

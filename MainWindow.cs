@@ -11,6 +11,7 @@ namespace ZOYI
         bool connected = false;
         Thread readComThread;
         DisplayPanel displayPanel;
+        bool bCOMrawmode = false;
 
         /*
          * Move window section
@@ -95,33 +96,43 @@ namespace ZOYI
                 try
                 {
                     char c = (char)port.ReadChar();
-                    buff += c;
-
-                    if (c == ' ')
+                    if (bCOMrawmode)
                     {
-                        // label, value, suffix
-                        string[] lvs = parse_label_value_suffix(buff);
-                        buff = "";
-
-                        //buff += Environment.NewLine;
-                        txtOutput.Invoke(new Action(() =>
+                        tbComOutput.Invoke(new Action(() =>
                         {
-                            txtOutput.AppendText(lvs[0] + " : " + lvs[1] + " " + lvs[2]);
-                            txtOutput.AppendText(Environment.NewLine);
+                            tbComOutput.AppendText(c.ToString());
                         }));
+                    }
+                    else
+                    {
+                        buff += c;
 
-                        // wyjątek kiedy panel ukryty
-                        try
+                        if (c == ' ')
                         {
-                            displayPanel.Invoke(new Action(() =>
-                            {
-                                displayPanel.updatePanel(lvs);
-                            }));
-                        }
-                        catch (Exception ex) { }
+                            // label, value, suffix
+                            string[] lvs = parse_label_value_suffix(buff);
+                            buff = "";
 
-                        if (bAlarmEnable)
-                            alarmProcess(lvs[0], lvs[1]);
+                            //buff += Environment.NewLine;
+                            tbComOutput.Invoke(new Action(() =>
+                            {
+                                tbComOutput.AppendText(lvs[0] + " : " + lvs[1] + " " + lvs[2]);
+                                tbComOutput.AppendText(Environment.NewLine);
+                            }));
+
+                            // wyjątek kiedy panel ukryty
+                            try
+                            {
+                                displayPanel.Invoke(new Action(() =>
+                                {
+                                    displayPanel.updatePanel(lvs);
+                                }));
+                            }
+                            catch (Exception ex) { }
+
+                            if (bAlarmEnable)
+                                alarmProcess(lvs[0], lvs[1]);
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -171,12 +182,12 @@ namespace ZOYI
 
         private void btnClearLog_Click(object sender, EventArgs e)
         {
-            txtOutput.Text = "";
+            tbComOutput.Text = "";
         }
 
         private void btnSaveLog_Click(object sender, EventArgs e)
         {
-            File.WriteAllText("logs\\" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".log", txtOutput.Text);
+            File.WriteAllText("logs\\" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".log", tbComOutput.Text);
         }
 
         /*
@@ -385,6 +396,14 @@ namespace ZOYI
         private void tbPanelOpacity_Scroll(object sender, EventArgs e)
         {
             displayPanel.changeOpacity(tbPanelOpacity.Value);
+        }
+
+        private void cbCOMrawmode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbCOMrawmode.Checked)
+                bCOMrawmode = true;
+            else
+                bCOMrawmode = false;
         }
     }
 }
