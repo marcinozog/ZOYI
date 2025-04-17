@@ -102,7 +102,9 @@
             ForeColor = SystemColors.HighlightText;
             FormBorderStyle = FormBorderStyle.None;
             Name = "DisplayPanel";
+            StartPosition = FormStartPosition.Manual;
             Text = "displayPanel";
+            FormClosed += DisplayPanel_FormClosed;
             MouseDown += displayPanel_MouseDown;
             MouseMove += displayPanel_MouseMove;
             MouseUp += displayPanel_MouseUp;

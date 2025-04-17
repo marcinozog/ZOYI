@@ -20,5 +20,17 @@
     <Setting Name="panel_bg_color" Type="System.String" Scope="User">
       <Value Profile="(Default)">Black</Value>
     </Setting>
+    <Setting Name="main_form_pos_x" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="main_form_pos_y" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="panel_form_pos_x" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="panel_form_pos_y" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -32,8 +32,9 @@ namespace ZOYI
         public MainWindow()
         {
             InitializeComponent();
+            this.Location = new Point(Properties.Settings.Default.main_form_pos_x, Properties.Settings.Default.main_form_pos_y);
             displayPanel = new DisplayPanel();
-            displayPanel.StartPosition = FormStartPosition.CenterParent;
+            //displayPanel.StartPosition = FormStartPosition.CenterParent;
             refreshCOMlist();
             Directory.CreateDirectory("logs");
             cbAlarmLabel.SelectedItem = "Voltage";
@@ -152,6 +153,10 @@ namespace ZOYI
                 readComThread.Interrupt();
                 displayPanel.Close();
             }
+
+            Properties.Settings.Default.main_form_pos_x = this.Location.X;
+            Properties.Settings.Default.main_form_pos_y = this.Location.Y;
+            Properties.Settings.Default.Save();
         }
 
         private void chbShowPanel_CheckedChanged(object sender, EventArgs e)

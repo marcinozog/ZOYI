@@ -32,6 +32,7 @@ namespace ZOYI
         public DisplayPanel()
         {
             InitializeComponent();
+            this.Location = new Point(Properties.Settings.Default.panel_form_pos_x, Properties.Settings.Default.panel_form_pos_y);
 
             color_label = ColorTranslator.FromHtml(Properties.Settings.Default.panel_label_color);
             color_value = ColorTranslator.FromHtml(Properties.Settings.Default.panel_value_color);
@@ -153,6 +154,13 @@ namespace ZOYI
                 }
                 catch { }
             }
+        }
+
+        private void DisplayPanel_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Properties.Settings.Default.panel_form_pos_x = this.Location.X;
+            Properties.Settings.Default.panel_form_pos_y = this.Location.Y;
+            Properties.Settings.Default.Save();
         }
     }
 }
