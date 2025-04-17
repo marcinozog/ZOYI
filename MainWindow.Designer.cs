@@ -61,6 +61,10 @@
             chbAlarm = new CheckBox();
             label2 = new Label();
             label3 = new Label();
+            tabLinks = new TabPage();
+            btnLinksRefresh = new Button();
+            btnLinksEdit = new Button();
+            panelLinks = new Panel();
             label4 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -69,6 +73,7 @@
             ((System.ComponentModel.ISupportInitialize)tbPanelOpacity).BeginInit();
             tabPage3.SuspendLayout();
             plAlarm.SuspendLayout();
+            tabLinks.SuspendLayout();
             SuspendLayout();
             // 
             // btnListCOM
@@ -212,6 +217,7 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
+            tabControl1.Controls.Add(tabLinks);
             tabControl1.Location = new Point(229, 67);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -436,6 +442,49 @@
             label3.TabIndex = 20;
             label3.Text = "Etykieta:";
             // 
+            // tabLinks
+            // 
+            tabLinks.BackColor = Color.Black;
+            tabLinks.Controls.Add(btnLinksRefresh);
+            tabLinks.Controls.Add(btnLinksEdit);
+            tabLinks.Controls.Add(panelLinks);
+            tabLinks.Location = new Point(4, 34);
+            tabLinks.Name = "tabLinks";
+            tabLinks.Padding = new Padding(3);
+            tabLinks.Size = new Size(552, 405);
+            tabLinks.TabIndex = 3;
+            tabLinks.Text = "Linki";
+            // 
+            // btnLinksRefresh
+            // 
+            btnLinksRefresh.BackColor = Color.Black;
+            btnLinksRefresh.Location = new Point(406, 46);
+            btnLinksRefresh.Name = "btnLinksRefresh";
+            btnLinksRefresh.Size = new Size(140, 34);
+            btnLinksRefresh.TabIndex = 2;
+            btnLinksRefresh.Text = "Odśwież";
+            btnLinksRefresh.UseVisualStyleBackColor = false;
+            btnLinksRefresh.Click += this.btnLinksRefresh_Click;
+            // 
+            // btnLinksEdit
+            // 
+            btnLinksEdit.BackColor = Color.Black;
+            btnLinksEdit.Location = new Point(406, 6);
+            btnLinksEdit.Name = "btnLinksEdit";
+            btnLinksEdit.Size = new Size(140, 34);
+            btnLinksEdit.TabIndex = 1;
+            btnLinksEdit.Text = "Edytuj";
+            btnLinksEdit.UseVisualStyleBackColor = false;
+            btnLinksEdit.Click += this.btnLinksEdit_Click;
+            // 
+            // panelLinks
+            // 
+            panelLinks.BorderStyle = BorderStyle.FixedSingle;
+            panelLinks.Location = new Point(6, 6);
+            panelLinks.Name = "panelLinks";
+            panelLinks.Size = new Size(394, 393);
+            panelLinks.TabIndex = 0;
+            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -443,7 +492,7 @@
             label4.Name = "label4";
             label4.Size = new Size(103, 25);
             label4.TabIndex = 15;
-            label4.Text = "Wersja 0.13";
+            label4.Text = "Wersja 0.14";
             // 
             // MainWindow
             // 
@@ -482,6 +531,7 @@
             tabPage3.PerformLayout();
             plAlarm.ResumeLayout(false);
             plAlarm.PerformLayout();
+            tabLinks.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -522,5 +572,9 @@
         private Panel plAlarm;
         private TextBox tbAlarmUnderValue;
         private Label label7;
+        private TabPage tabLinks;
+        private Button btnLinksRefresh;
+        private Button btnLinksEdit;
+        private Panel panelLinks;
     }
 }

@@ -36,6 +36,8 @@ namespace ZOYI
             refreshCOMlist();
             Directory.CreateDirectory("logs");
             cbAlarmLabel.SelectedItem = "Voltage";
+
+            refreshLinks();
         }
 
         private void btnListCOM_Click(object sender, EventArgs e)
@@ -334,8 +336,10 @@ namespace ZOYI
             {
                 plAlarm.Enabled = false;
                 bAlarmEnable = true;
-                float.TryParse(tbAlarmOverValue.Text.Replace('.', ','), out fAlarmOverValue);
-                float.TryParse(tbAlarmUnderValue.Text.Replace('.', ','), out fAlarmUnderValue);
+                //float.TryParse(tbAlarmOverValue.Text.Replace('.', ','), out fAlarmOverValue);
+                //float.TryParse(tbAlarmUnderValue.Text.Replace('.', ','), out fAlarmUnderValue);
+                fAlarmOverValue = float.Parse(tbAlarmOverValue.Text.Replace('.', ','), CultureInfo.InvariantCulture.NumberFormat);
+                fAlarmUnderValue = float.Parse(tbAlarmUnderValue.Text.Replace('.', ','), CultureInfo.InvariantCulture.NumberFormat);
             }
             else
             {
@@ -351,7 +355,8 @@ namespace ZOYI
                 try
                 {
                     // break if fail - don't use TryParse
-                    float val = float.Parse(value);
+                    //float val = float.Parse(value);
+                    float val = float.Parse(value, CultureInfo.InvariantCulture.NumberFormat);
                     bool bOverThreshold = (cbValueOver.Checked && (val > fAlarmOverValue));
                     bool bUnderThreshold = (cbValueUnder.Checked && (val < fAlarmUnderValue));
 
