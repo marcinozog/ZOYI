@@ -9,10 +9,13 @@ namespace ZOYI
 {
     public partial class MainWindow : Form
     {
+        string links_path = "Links.txt";
+
         private void btnLinksEdit_Click(object sender, EventArgs e)
         {
             Process.Start("notepad.exe", "Links.txt");
         }
+
         private void btnLinksRefresh_Click(object sender, EventArgs e)
         {
             refreshLinks();
@@ -20,9 +23,12 @@ namespace ZOYI
 
         private void refreshLinks()
         {
+            if (!File.Exists(links_path))
+                File.Create(links_path).Close();
+
             int xPos = 10;
             int yPos = 10;
-            foreach (string line in File.ReadLines("Links.txt"))
+            foreach (string line in File.ReadLines(links_path))
             {
                 string[] link = line.Split(" ");
 
