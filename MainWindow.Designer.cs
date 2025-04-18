@@ -67,6 +67,7 @@
             btnLinksEdit = new Button();
             panelLinks = new Panel();
             label4 = new Label();
+            pictureBox1 = new PictureBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -75,6 +76,7 @@
             tabPage3.SuspendLayout();
             plAlarm.SuspendLayout();
             tabLinks.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnListCOM
@@ -191,7 +193,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label1.Location = new Point(196, 12);
+            label1.Location = new Point(196, 21);
             label1.Name = "label1";
             label1.Size = new Size(370, 30);
             label1.TabIndex = 12;
@@ -508,12 +510,23 @@
             label4.TabIndex = 15;
             label4.Text = "Wersja 0.15";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.logo;
+            pictureBox1.Location = new Point(14, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(48, 48);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 16;
+            pictureBox1.TabStop = false;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Desktop;
             ClientSize = new Size(800, 525);
+            Controls.Add(pictureBox1);
             Controls.Add(label4);
             Controls.Add(tabControl1);
             Controls.Add(btnMinimize);
@@ -547,6 +560,7 @@
             plAlarm.ResumeLayout(false);
             plAlarm.PerformLayout();
             tabLinks.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -592,5 +606,6 @@
         private Button btnLinksEdit;
         private Panel panelLinks;
         private CheckBox cbCOMrawmode;
+        private PictureBox pictureBox1;
     }
 }
