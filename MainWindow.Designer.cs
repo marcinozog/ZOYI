@@ -471,9 +471,9 @@
             // btnLinksRefresh
             // 
             btnLinksRefresh.BackColor = Color.Black;
-            btnLinksRefresh.Location = new Point(406, 46);
+            btnLinksRefresh.Location = new Point(406, 60);
             btnLinksRefresh.Name = "btnLinksRefresh";
-            btnLinksRefresh.Size = new Size(140, 34);
+            btnLinksRefresh.Size = new Size(140, 48);
             btnLinksRefresh.TabIndex = 2;
             btnLinksRefresh.Text = "Odśwież";
             btnLinksRefresh.UseVisualStyleBackColor = false;
@@ -484,7 +484,7 @@
             btnLinksEdit.BackColor = Color.Black;
             btnLinksEdit.Location = new Point(406, 6);
             btnLinksEdit.Name = "btnLinksEdit";
-            btnLinksEdit.Size = new Size(140, 34);
+            btnLinksEdit.Size = new Size(140, 48);
             btnLinksEdit.TabIndex = 1;
             btnLinksEdit.Text = "Edytuj";
             btnLinksEdit.UseVisualStyleBackColor = false;
@@ -505,7 +505,7 @@
             label4.Name = "label4";
             label4.Size = new Size(103, 25);
             label4.TabIndex = 15;
-            label4.Text = "Wersja 0.14";
+            label4.Text = "Wersja 0.15";
             // 
             // MainWindow
             // 

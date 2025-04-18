@@ -1,2 +1,2 @@
-﻿Youtube www.youtube.com
-Nasa www.nasa.gov
+﻿Youtube|www.youtube.com
+Nasa gov|www.nasa.gov
