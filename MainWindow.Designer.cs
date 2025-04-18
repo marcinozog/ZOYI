@@ -492,6 +492,7 @@
             // 
             // panelLinks
             // 
+            panelLinks.AutoScroll = true;
             panelLinks.BorderStyle = BorderStyle.FixedSingle;
             panelLinks.Location = new Point(6, 6);
             panelLinks.Name = "panelLinks";

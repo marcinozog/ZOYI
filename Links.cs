@@ -33,20 +33,50 @@ namespace ZOYI
             int xPos = 10;
 
             int linkHeight = 31;
-            int columnWidth = panelLinks.Width / 3;
+            int columnWidth = 200;
 
-            foreach (string line in File.ReadLines("Links.txt"))
+            bool bOddColor = true;
+
+            foreach (string line in File.ReadLines(links_path))
             {
                 string[] link = line.Split("|");
 
-                LinkLabel ll = new LinkLabel() { Left = xPos, Top = yPos, Width = 100, Height = linkHeight, Text = link[0], LinkColor = Color.DodgerBlue };
-                ll.Links.Add(0, 20, link[1]);
+                LinkLabel ll = new LinkLabel()
+                {
+                    Left = xPos,
+                    Top = yPos,
+                    Width = columnWidth,
+                    Height = linkHeight,
+                    Text = link[0],
+                    LinkColor = bOddColor ? Color.DeepSkyBlue : Color.LightGreen,
+                    AutoSize = false
+                };
+                ll.Links.Add(0, 40, link[1]);
                 ll.LinkClicked += new LinkLabelLinkClickedEventHandler(openUrl);
 
-                panelLinks.Controls.Add(ll);
-                yPos += linkHeight;
+                // change label color
+                bOddColor = !bOddColor;
 
-                if ((yPos + linkHeight) > panelLinks.Height)
+                panelLinks.Controls.Add(ll);
+
+                Size labelSize = TextRenderer.MeasureText(
+                    ll.Text,
+                    ll.Font,
+                    new Size(columnWidth, int.MaxValue),
+                    TextFormatFlags.WordBreak
+                );
+
+                // for max two lines of link label
+                if (labelSize.Height > linkHeight)
+                {
+                    ll.Height = 2 * linkHeight;
+                    yPos += ll.Height;
+                }
+                else
+                    yPos += linkHeight;
+
+                // next column
+                if ((yPos + (2 * linkHeight)) > panelLinks.Height)
                 {
                     yPos = yStartPos;
                     xPos += columnWidth;
