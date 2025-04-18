@@ -33,7 +33,7 @@ namespace ZOYI
             int xPos = 10;
 
             int linkHeight = 31;
-            int columnWidth = 200;
+            int columnWidth = panelLinks.Width/2;
 
             bool bOddColor = true;
 
