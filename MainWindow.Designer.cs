@@ -29,20 +29,24 @@
         private void InitializeComponent()
         {
             btnListCOM = new Button();
-            lbCOMs = new ListBox();
-            btnConnect = new Button();
+            lbListCOMs = new ListBox();
+            btnComConnect = new Button();
             tbComOutput = new TextBox();
             chbShowPanel = new CheckBox();
             lblBaudRate = new Label();
-            txtBaudRate = new TextBox();
+            tbCOMBaudrate = new TextBox();
             btnClearLog = new Button();
             btnSaveLog = new Button();
             button1 = new Button();
             label1 = new Label();
             btnMinimize = new Button();
             tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
-            cbCOMrawmode = new CheckBox();
+            tabPageCOM = new TabPage();
+            groupBox2 = new GroupBox();
+            button2 = new Button();
+            rbCOMparseRaw = new RadioButton();
+            rbCOMparseLua = new RadioButton();
+            rbCOMparseStd = new RadioButton();
             tabPage2 = new TabPage();
             groupBox1 = new GroupBox();
             label5 = new Label();
@@ -62,73 +66,78 @@
             chbAlarm = new CheckBox();
             label2 = new Label();
             label3 = new Label();
-            tabLinks = new TabPage();
-            btnLinksRefresh = new Button();
-            btnLinksEdit = new Button();
-            panelLinks = new Panel();
+            tabTools = new TabPage();
+            btnToolsRefresh = new Button();
+            btnToolsEdit = new Button();
+            panelTools = new Panel();
             label4 = new Label();
             pictureBox1 = new PictureBox();
+            label8 = new Label();
+            lblComConnStatus = new Label();
+            label9 = new Label();
+            lblBTSPPconnStatus = new Label();
             tabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
+            tabPageCOM.SuspendLayout();
+            groupBox2.SuspendLayout();
             tabPage2.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tbPanelOpacity).BeginInit();
             tabPage3.SuspendLayout();
             plAlarm.SuspendLayout();
-            tabLinks.SuspendLayout();
+            tabTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnListCOM
             // 
             btnListCOM.BackColor = SystemColors.Desktop;
-            btnListCOM.Location = new Point(11, 68);
+            btnListCOM.Location = new Point(6, 6);
             btnListCOM.Name = "btnListCOM";
-            btnListCOM.Size = new Size(194, 48);
+            btnListCOM.Size = new Size(226, 60);
             btnListCOM.TabIndex = 1;
             btnListCOM.Text = "Odśwież listę portów";
             btnListCOM.UseVisualStyleBackColor = false;
             btnListCOM.Click += btnListCOM_Click;
             // 
-            // lbCOMs
+            // lbListCOMs
             // 
-            lbCOMs.BackColor = SystemColors.Desktop;
-            lbCOMs.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lbCOMs.ForeColor = SystemColors.HighlightText;
-            lbCOMs.FormattingEnabled = true;
-            lbCOMs.ItemHeight = 25;
-            lbCOMs.Location = new Point(11, 122);
-            lbCOMs.Name = "lbCOMs";
-            lbCOMs.Size = new Size(194, 179);
-            lbCOMs.TabIndex = 2;
+            lbListCOMs.BackColor = SystemColors.Desktop;
+            lbListCOMs.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lbListCOMs.ForeColor = SystemColors.HighlightText;
+            lbListCOMs.FormattingEnabled = true;
+            lbListCOMs.ItemHeight = 25;
+            lbListCOMs.Location = new Point(6, 71);
+            lbListCOMs.Name = "lbListCOMs";
+            lbListCOMs.Size = new Size(226, 279);
+            lbListCOMs.TabIndex = 2;
             // 
-            // btnConnect
+            // btnComConnect
             // 
-            btnConnect.BackColor = Color.LightGreen;
-            btnConnect.ForeColor = SystemColors.Desktop;
-            btnConnect.Location = new Point(11, 354);
-            btnConnect.Name = "btnConnect";
-            btnConnect.Size = new Size(194, 48);
-            btnConnect.TabIndex = 3;
-            btnConnect.Text = "Połącz";
-            btnConnect.UseVisualStyleBackColor = false;
-            btnConnect.Click += btnConnect_Click;
+            btnComConnect.BackColor = Color.LightGreen;
+            btnComConnect.ForeColor = SystemColors.Desktop;
+            btnComConnect.Location = new Point(6, 416);
+            btnComConnect.Name = "btnComConnect";
+            btnComConnect.Size = new Size(226, 60);
+            btnComConnect.TabIndex = 3;
+            btnComConnect.Text = "Połącz";
+            btnComConnect.UseVisualStyleBackColor = false;
+            btnComConnect.Click += btnComConnect_Click;
             // 
             // tbComOutput
             // 
             tbComOutput.BackColor = SystemColors.WindowText;
             tbComOutput.ForeColor = SystemColors.HighlightText;
-            tbComOutput.Location = new Point(6, 7);
+            tbComOutput.Location = new Point(238, 6);
             tbComOutput.Multiline = true;
             tbComOutput.Name = "tbComOutput";
             tbComOutput.ScrollBars = ScrollBars.Vertical;
-            tbComOutput.Size = new Size(354, 392);
+            tbComOutput.Size = new Size(371, 470);
             tbComOutput.TabIndex = 5;
             // 
             // chbShowPanel
             // 
             chbShowPanel.AutoSize = true;
-            chbShowPanel.Location = new Point(14, 436);
+            chbShowPanel.Location = new Point(621, 447);
             chbShowPanel.Name = "chbShowPanel";
             chbShowPanel.Size = new Size(79, 29);
             chbShowPanel.TabIndex = 6;
@@ -139,27 +148,27 @@
             // lblBaudRate
             // 
             lblBaudRate.AutoSize = true;
-            lblBaudRate.Location = new Point(11, 317);
+            lblBaudRate.Location = new Point(3, 373);
             lblBaudRate.Name = "lblBaudRate";
             lblBaudRate.Size = new Size(96, 25);
             lblBaudRate.TabIndex = 7;
             lblBaudRate.Text = "Baud Rate:";
             // 
-            // txtBaudRate
+            // tbCOMBaudrate
             // 
-            txtBaudRate.Location = new Point(114, 313);
-            txtBaudRate.Name = "txtBaudRate";
-            txtBaudRate.Size = new Size(90, 31);
-            txtBaudRate.TabIndex = 8;
-            txtBaudRate.Text = "115200";
-            txtBaudRate.TextAlign = HorizontalAlignment.Center;
+            tbCOMBaudrate.Location = new Point(142, 370);
+            tbCOMBaudrate.Name = "tbCOMBaudrate";
+            tbCOMBaudrate.Size = new Size(90, 31);
+            tbCOMBaudrate.TabIndex = 8;
+            tbCOMBaudrate.Text = "115200";
+            tbCOMBaudrate.TextAlign = HorizontalAlignment.Center;
             // 
             // btnClearLog
             // 
             btnClearLog.BackColor = SystemColors.Desktop;
-            btnClearLog.Location = new Point(366, 7);
+            btnClearLog.Location = new Point(615, 6);
             btnClearLog.Name = "btnClearLog";
-            btnClearLog.Size = new Size(153, 48);
+            btnClearLog.Size = new Size(226, 60);
             btnClearLog.TabIndex = 9;
             btnClearLog.Text = "Wyczyść";
             btnClearLog.UseVisualStyleBackColor = false;
@@ -168,9 +177,9 @@
             // btnSaveLog
             // 
             btnSaveLog.BackColor = SystemColors.Desktop;
-            btnSaveLog.Location = new Point(366, 61);
+            btnSaveLog.Location = new Point(615, 72);
             btnSaveLog.Name = "btnSaveLog";
-            btnSaveLog.Size = new Size(153, 48);
+            btnSaveLog.Size = new Size(226, 60);
             btnSaveLog.TabIndex = 10;
             btnSaveLog.Text = "Zapisz do pliku";
             btnSaveLog.UseVisualStyleBackColor = false;
@@ -181,7 +190,7 @@
             button1.BackColor = Color.Brown;
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             button1.ForeColor = SystemColors.HighlightText;
-            button1.Location = new Point(736, 12);
+            button1.Location = new Point(818, 12);
             button1.Name = "button1";
             button1.Size = new Size(51, 48);
             button1.TabIndex = 11;
@@ -193,7 +202,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label1.Location = new Point(196, 21);
+            label1.Location = new Point(257, 20);
             label1.Name = "label1";
             label1.Size = new Size(370, 30);
             label1.TabIndex = 12;
@@ -207,7 +216,7 @@
             btnMinimize.BackColor = Color.Brown;
             btnMinimize.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnMinimize.ForeColor = SystemColors.HighlightText;
-            btnMinimize.Location = new Point(679, 12);
+            btnMinimize.Location = new Point(761, 12);
             btnMinimize.Name = "btnMinimize";
             btnMinimize.Size = new Size(51, 48);
             btnMinimize.TabIndex = 13;
@@ -217,40 +226,97 @@
             // 
             // tabControl1
             // 
-            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPageCOM);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
-            tabControl1.Controls.Add(tabLinks);
-            tabControl1.Location = new Point(229, 67);
+            tabControl1.Controls.Add(tabTools);
+            tabControl1.Location = new Point(14, 67);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(560, 443);
+            tabControl1.Size = new Size(855, 534);
             tabControl1.TabIndex = 14;
             // 
-            // tabPage1
+            // tabPageCOM
             // 
-            tabPage1.BackColor = SystemColors.Desktop;
-            tabPage1.Controls.Add(cbCOMrawmode);
-            tabPage1.Controls.Add(tbComOutput);
-            tabPage1.Controls.Add(btnClearLog);
-            tabPage1.Controls.Add(btnSaveLog);
-            tabPage1.Location = new Point(4, 34);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(552, 405);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Logi";
+            tabPageCOM.BackColor = SystemColors.Desktop;
+            tabPageCOM.Controls.Add(groupBox2);
+            tabPageCOM.Controls.Add(tbComOutput);
+            tabPageCOM.Controls.Add(btnClearLog);
+            tabPageCOM.Controls.Add(btnSaveLog);
+            tabPageCOM.Controls.Add(chbShowPanel);
+            tabPageCOM.Controls.Add(btnListCOM);
+            tabPageCOM.Controls.Add(lbListCOMs);
+            tabPageCOM.Controls.Add(btnComConnect);
+            tabPageCOM.Controls.Add(lblBaudRate);
+            tabPageCOM.Controls.Add(tbCOMBaudrate);
+            tabPageCOM.Location = new Point(4, 34);
+            tabPageCOM.Name = "tabPageCOM";
+            tabPageCOM.Padding = new Padding(3);
+            tabPageCOM.Size = new Size(847, 496);
+            tabPageCOM.TabIndex = 0;
+            tabPageCOM.Text = "COM";
             // 
-            // cbCOMrawmode
+            // groupBox2
             // 
-            cbCOMrawmode.AutoSize = true;
-            cbCOMrawmode.Location = new Point(368, 115);
-            cbCOMrawmode.Name = "cbCOMrawmode";
-            cbCOMrawmode.Size = new Size(129, 29);
-            cbCOMrawmode.TabIndex = 11;
-            cbCOMrawmode.Text = "RAW mode";
-            cbCOMrawmode.UseVisualStyleBackColor = true;
-            cbCOMrawmode.CheckedChanged += cbCOMrawmode_CheckedChanged;
+            groupBox2.Controls.Add(button2);
+            groupBox2.Controls.Add(rbCOMparseRaw);
+            groupBox2.Controls.Add(rbCOMparseLua);
+            groupBox2.Controls.Add(rbCOMparseStd);
+            groupBox2.ForeColor = SystemColors.HighlightText;
+            groupBox2.Location = new Point(615, 138);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(226, 174);
+            groupBox2.TabIndex = 12;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Tryb wyświetlania";
+            // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.Desktop;
+            button2.FlatStyle = FlatStyle.Popup;
+            button2.ForeColor = SystemColors.Highlight;
+            button2.Location = new Point(66, 77);
+            button2.Name = "button2";
+            button2.Size = new Size(98, 40);
+            button2.TabIndex = 15;
+            button2.Text = "Edytuj";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += btnCOMluaEdit_Click;
+            // 
+            // rbCOMparseRaw
+            // 
+            rbCOMparseRaw.AutoSize = true;
+            rbCOMparseRaw.Location = new Point(6, 117);
+            rbCOMparseRaw.Name = "rbCOMparseRaw";
+            rbCOMparseRaw.Size = new Size(76, 29);
+            rbCOMparseRaw.TabIndex = 14;
+            rbCOMparseRaw.Text = "RAW";
+            rbCOMparseRaw.UseVisualStyleBackColor = true;
+            rbCOMparseRaw.CheckedChanged += rbComParse_CheckedChanged;
+            // 
+            // rbCOMparseLua
+            // 
+            rbCOMparseLua.AutoSize = true;
+            rbCOMparseLua.Location = new Point(6, 82);
+            rbCOMparseLua.Name = "rbCOMparseLua";
+            rbCOMparseLua.Size = new Size(64, 29);
+            rbCOMparseLua.TabIndex = 13;
+            rbCOMparseLua.Text = "Lua";
+            rbCOMparseLua.UseVisualStyleBackColor = true;
+            rbCOMparseLua.CheckedChanged += rbComParse_CheckedChanged;
+            // 
+            // rbCOMparseStd
+            // 
+            rbCOMparseStd.AutoSize = true;
+            rbCOMparseStd.Checked = true;
+            rbCOMparseStd.Location = new Point(6, 47);
+            rbCOMparseStd.Name = "rbCOMparseStd";
+            rbCOMparseStd.Size = new Size(108, 29);
+            rbCOMparseStd.TabIndex = 12;
+            rbCOMparseStd.TabStop = true;
+            rbCOMparseStd.Text = "Standard";
+            rbCOMparseStd.UseVisualStyleBackColor = true;
+            rbCOMparseStd.CheckedChanged += rbComParse_CheckedChanged;
             // 
             // tabPage2
             // 
@@ -274,7 +340,7 @@
             groupBox1.ForeColor = SystemColors.HighlightText;
             groupBox1.Location = new Point(6, 10);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(460, 197);
+            groupBox1.Size = new Size(540, 226);
             groupBox1.TabIndex = 16;
             groupBox1.TabStop = false;
             groupBox1.Text = "Panel miernika";
@@ -282,7 +348,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(13, 98);
+            label5.Location = new Point(13, 141);
             label5.Name = "label5";
             label5.Size = new Size(136, 25);
             label5.TabIndex = 13;
@@ -290,7 +356,7 @@
             // 
             // tbPanelOpacity
             // 
-            tbPanelOpacity.Location = new Point(161, 98);
+            tbPanelOpacity.Location = new Point(161, 141);
             tbPanelOpacity.Maximum = 100;
             tbPanelOpacity.Minimum = 20;
             tbPanelOpacity.Name = "tbPanelOpacity";
@@ -304,7 +370,7 @@
             btnPanelColorBg.BackColor = SystemColors.Desktop;
             btnPanelColorBg.Location = new Point(13, 32);
             btnPanelColorBg.Name = "btnPanelColorBg";
-            btnPanelColorBg.Size = new Size(141, 48);
+            btnPanelColorBg.Size = new Size(141, 60);
             btnPanelColorBg.TabIndex = 8;
             btnPanelColorBg.Text = "Kolor tła";
             btnPanelColorBg.UseVisualStyleBackColor = false;
@@ -315,7 +381,7 @@
             btnPanelColorLabel.BackColor = SystemColors.Desktop;
             btnPanelColorLabel.Location = new Point(161, 32);
             btnPanelColorLabel.Name = "btnPanelColorLabel";
-            btnPanelColorLabel.Size = new Size(141, 48);
+            btnPanelColorLabel.Size = new Size(141, 60);
             btnPanelColorLabel.TabIndex = 9;
             btnPanelColorLabel.Text = "Kolor etykiety";
             btnPanelColorLabel.UseVisualStyleBackColor = false;
@@ -326,7 +392,7 @@
             btnPanelColorValue.BackColor = SystemColors.Desktop;
             btnPanelColorValue.Location = new Point(309, 32);
             btnPanelColorValue.Name = "btnPanelColorValue";
-            btnPanelColorValue.Size = new Size(141, 48);
+            btnPanelColorValue.Size = new Size(141, 60);
             btnPanelColorValue.TabIndex = 11;
             btnPanelColorValue.Text = "Kolor wartości";
             btnPanelColorValue.UseVisualStyleBackColor = false;
@@ -457,58 +523,58 @@
             label3.TabIndex = 20;
             label3.Text = "Etykieta:";
             // 
-            // tabLinks
+            // tabTools
             // 
-            tabLinks.BackColor = Color.Black;
-            tabLinks.Controls.Add(btnLinksRefresh);
-            tabLinks.Controls.Add(btnLinksEdit);
-            tabLinks.Controls.Add(panelLinks);
-            tabLinks.Location = new Point(4, 34);
-            tabLinks.Name = "tabLinks";
-            tabLinks.Padding = new Padding(3);
-            tabLinks.Size = new Size(552, 405);
-            tabLinks.TabIndex = 3;
-            tabLinks.Text = "Linki";
+            tabTools.BackColor = Color.Black;
+            tabTools.Controls.Add(btnToolsRefresh);
+            tabTools.Controls.Add(btnToolsEdit);
+            tabTools.Controls.Add(panelTools);
+            tabTools.Location = new Point(4, 34);
+            tabTools.Name = "tabTools";
+            tabTools.Padding = new Padding(3);
+            tabTools.Size = new Size(552, 405);
+            tabTools.TabIndex = 3;
+            tabTools.Text = "Tools";
             // 
-            // btnLinksRefresh
+            // btnToolsRefresh
             // 
-            btnLinksRefresh.BackColor = Color.Black;
-            btnLinksRefresh.Location = new Point(406, 60);
-            btnLinksRefresh.Name = "btnLinksRefresh";
-            btnLinksRefresh.Size = new Size(140, 48);
-            btnLinksRefresh.TabIndex = 2;
-            btnLinksRefresh.Text = "Odśwież";
-            btnLinksRefresh.UseVisualStyleBackColor = false;
-            btnLinksRefresh.Click += btnLinksRefresh_Click;
+            btnToolsRefresh.BackColor = Color.Black;
+            btnToolsRefresh.Location = new Point(406, 72);
+            btnToolsRefresh.Name = "btnToolsRefresh";
+            btnToolsRefresh.Size = new Size(140, 60);
+            btnToolsRefresh.TabIndex = 2;
+            btnToolsRefresh.Text = "Odśwież";
+            btnToolsRefresh.UseVisualStyleBackColor = false;
+            btnToolsRefresh.Click += btnToolsRefresh_Click;
             // 
-            // btnLinksEdit
+            // btnToolsEdit
             // 
-            btnLinksEdit.BackColor = Color.Black;
-            btnLinksEdit.Location = new Point(406, 6);
-            btnLinksEdit.Name = "btnLinksEdit";
-            btnLinksEdit.Size = new Size(140, 48);
-            btnLinksEdit.TabIndex = 1;
-            btnLinksEdit.Text = "Edytuj";
-            btnLinksEdit.UseVisualStyleBackColor = false;
-            btnLinksEdit.Click += btnLinksEdit_Click;
+            btnToolsEdit.BackColor = Color.Black;
+            btnToolsEdit.Location = new Point(406, 6);
+            btnToolsEdit.Name = "btnToolsEdit";
+            btnToolsEdit.Size = new Size(140, 60);
+            btnToolsEdit.TabIndex = 1;
+            btnToolsEdit.Text = "Edytuj";
+            btnToolsEdit.UseVisualStyleBackColor = false;
+            btnToolsEdit.Click += btnToolsEdit_Click;
             // 
-            // panelLinks
+            // panelTools
             // 
-            panelLinks.AutoScroll = true;
-            panelLinks.BorderStyle = BorderStyle.FixedSingle;
-            panelLinks.Location = new Point(6, 6);
-            panelLinks.Name = "panelLinks";
-            panelLinks.Size = new Size(394, 393);
-            panelLinks.TabIndex = 0;
+            panelTools.AutoScroll = true;
+            panelTools.BorderStyle = BorderStyle.FixedSingle;
+            panelTools.Location = new Point(6, 6);
+            panelTools.Name = "panelTools";
+            panelTools.Size = new Size(394, 393);
+            panelTools.TabIndex = 0;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(11, 485);
+            label4.Location = new Point(766, 604);
             label4.Name = "label4";
             label4.Size = new Size(103, 25);
             label4.TabIndex = 15;
-            label4.Text = "Wersja 0.15";
+            label4.Text = "Wersja 0.20";
             // 
             // pictureBox1
             // 
@@ -520,24 +586,62 @@
             pictureBox1.TabIndex = 16;
             pictureBox1.TabStop = false;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(10, 604);
+            label8.Name = "label8";
+            label8.Size = new Size(57, 25);
+            label8.TabIndex = 17;
+            label8.Text = "COM:";
+            // 
+            // lblComConnStatus
+            // 
+            lblComConnStatus.AutoSize = true;
+            lblComConnStatus.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            lblComConnStatus.ForeColor = Color.LightGreen;
+            lblComConnStatus.Location = new Point(73, 604);
+            lblComConnStatus.Name = "lblComConnStatus";
+            lblComConnStatus.Size = new Size(99, 25);
+            lblComConnStatus.TabIndex = 18;
+            lblComConnStatus.Text = "rozłączony";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(212, 604);
+            label9.Name = "label9";
+            label9.Size = new Size(79, 25);
+            label9.TabIndex = 19;
+            label9.Text = "BT (SPP):";
+            // 
+            // lblBTSPPconnStatus
+            // 
+            lblBTSPPconnStatus.AutoSize = true;
+            lblBTSPPconnStatus.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            lblBTSPPconnStatus.ForeColor = Color.LightGreen;
+            lblBTSPPconnStatus.Location = new Point(297, 604);
+            lblBTSPPconnStatus.Name = "lblBTSPPconnStatus";
+            lblBTSPPconnStatus.Size = new Size(99, 25);
+            lblBTSPPconnStatus.TabIndex = 20;
+            lblBTSPPconnStatus.Text = "rozłączony";
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Desktop;
-            ClientSize = new Size(800, 525);
+            ClientSize = new Size(881, 638);
+            Controls.Add(lblBTSPPconnStatus);
+            Controls.Add(label9);
+            Controls.Add(lblComConnStatus);
+            Controls.Add(label8);
             Controls.Add(pictureBox1);
             Controls.Add(label4);
             Controls.Add(tabControl1);
             Controls.Add(btnMinimize);
             Controls.Add(label1);
             Controls.Add(button1);
-            Controls.Add(txtBaudRate);
-            Controls.Add(lblBaudRate);
-            Controls.Add(chbShowPanel);
-            Controls.Add(btnConnect);
-            Controls.Add(lbCOMs);
-            Controls.Add(btnListCOM);
             ForeColor = SystemColors.HighlightText;
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
@@ -549,8 +653,10 @@
             MouseMove += MainWindow_MouseMove;
             MouseUp += MainWindow_MouseUp;
             tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
+            tabPageCOM.ResumeLayout(false);
+            tabPageCOM.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             tabPage2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -559,7 +665,7 @@
             tabPage3.PerformLayout();
             plAlarm.ResumeLayout(false);
             plAlarm.PerformLayout();
-            tabLinks.ResumeLayout(false);
+            tabTools.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -568,19 +674,19 @@
         #endregion
 
         private Button btnListCOM;
-        private ListBox lbCOMs;
-        private Button btnConnect;
+        private ListBox lbListCOMs;
+        private Button btnComConnect;
         private TextBox tbComOutput;
         private CheckBox chbShowPanel;
         private Label lblBaudRate;
-        private TextBox txtBaudRate;
+        private TextBox tbCOMBaudrate;
         private Button btnClearLog;
         private Button btnSaveLog;
         private Button button1;
         private Label label1;
         private Button btnMinimize;
         private TabControl tabControl1;
-        private TabPage tabPage1;
+        private TabPage tabPageCOM;
         private TabPage tabPage2;
         private Button btnPanelColorValue;
         private Button btnPanelColorLabel;
@@ -601,11 +707,19 @@
         private Panel plAlarm;
         private TextBox tbAlarmUnderValue;
         private Label label7;
-        private TabPage tabLinks;
-        private Button btnLinksRefresh;
-        private Button btnLinksEdit;
-        private Panel panelLinks;
-        private CheckBox cbCOMrawmode;
+        private TabPage tabTools;
+        private Button btnToolsRefresh;
+        private Button btnToolsEdit;
+        private Panel panelTools;
         private PictureBox pictureBox1;
+        private GroupBox groupBox2;
+        private Button button2;
+        private RadioButton rbCOMparseRaw;
+        private RadioButton rbCOMparseLua;
+        private RadioButton rbCOMparseStd;
+        private Label label8;
+        private Label lblComConnStatus;
+        private Label label9;
+        private Label lblBTSPPconnStatus;
     }
 }

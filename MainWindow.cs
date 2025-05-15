@@ -1,17 +1,28 @@
 ﻿using System.Globalization;
 using System.IO.Ports;
 using System.Media;
+using ZOYIv2;
 
 namespace ZOYI
 {
     public partial class MainWindow : Form
     {
-        SerialPort port;
-        String port_name;
-        bool connected = false;
-        Thread readComThread;
+        public enum PARSE_MODE
+        {
+            STD,
+            LUA,
+            RAW
+        }
+
+        LabelValueSuffix lvs;
+
+        COMx comx;
         DisplayPanel displayPanel;
-        bool bCOMrawmode = false;
+
+        MLua mLua;
+        string luaPath = "MLua\\parse.lua";
+        Tools tools;
+        string toolsPath = "Tools\\Tools.txt";
 
         /*
          * Move window section
@@ -32,127 +43,31 @@ namespace ZOYI
         public MainWindow()
         {
             InitializeComponent();
-            this.Location = new Point(Properties.Settings.Default.main_form_pos_x, Properties.Settings.Default.main_form_pos_y);
+            this.Location = new Point(Properties.Settings.Default.main_form_pos_x,
+                Properties.Settings.Default.main_form_pos_y);
+
             displayPanel = new DisplayPanel();
             //displayPanel.StartPosition = FormStartPosition.CenterParent;
-            refreshCOMlist();
+
             Directory.CreateDirectory("logs");
             cbAlarmLabel.SelectedItem = "Voltage";
 
-            refreshLinks();
-        }
+            lvs = new LabelValueSuffix();
 
-        private void btnListCOM_Click(object sender, EventArgs e)
-        {
+            comx = new COMx();
+            mLua = new MLua();
+
+            tools = new Tools(toolsPath, panelTools);
+            tools.refreshTools();
+
             refreshCOMlist();
-        }
-
-        private void btnConnect_Click(object sender, EventArgs e)
-        {
-            if (!connected)
-            {
-                try
-                {
-                    port_name = lbCOMs.SelectedItem.ToString();
-                    int baudrate = int.Parse(txtBaudRate.Text);
-                    port = new SerialPort(port_name, baudrate, Parity.None, 8, StopBits.One);
-                    port.Open();
-                    connected = true;
-                    btnConnect.Text = "Rozłącz " + port_name;
-                    btnConnect.BackColor = Color.LightCoral;
-
-                    lbCOMs.Enabled = false;
-                    txtBaudRate.Enabled = false;
-
-                    readComThread = new Thread(new ThreadStart(ReadCOMThread));
-                    readComThread.Start();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            else
-            {
-                port.Close();
-                connected = false;
-                btnConnect.Text = "Połącz";
-                btnConnect.BackColor = Color.LightGreen;
-
-                lbCOMs.Enabled = true;
-                txtBaudRate.Enabled = true;
-
-                readComThread.Interrupt();
-            }
-
-        }
-
-        void ReadCOMThread()
-        {
-            String buff = "";
-            while (connected)
-            {
-                //if (txtOutput.InvokeRequired)
-                //{
-                try
-                {
-                    char c = (char)port.ReadChar();
-                    if (bCOMrawmode)
-                    {
-                        tbComOutput.Invoke(new Action(() =>
-                        {
-                            tbComOutput.AppendText(c.ToString());
-                        }));
-                    }
-                    else
-                    {
-                        buff += c;
-
-                        if (c == ' ')
-                        {
-                            // label, value, suffix
-                            string[] lvs = parse_label_value_suffix(buff);
-                            buff = "";
-
-                            //buff += Environment.NewLine;
-                            tbComOutput.Invoke(new Action(() =>
-                            {
-                                tbComOutput.AppendText(lvs[0] + " : " + lvs[1] + " " + lvs[2]);
-                                tbComOutput.AppendText(Environment.NewLine);
-                            }));
-
-                            // wyjątek kiedy panel ukryty
-                            try
-                            {
-                                displayPanel.Invoke(new Action(() =>
-                                {
-                                    displayPanel.updatePanel(lvs);
-                                }));
-                            }
-                            catch (Exception ex) { }
-
-                            if (bAlarmEnable)
-                                alarmProcess(lvs[0], lvs[1]);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    //MessageBox.Show(ex.ToString());
-                }
-                //}
-            }
         }
 
         private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (connected)
-            {
-                port.Close();
-                connected = false;
-                readComThread.Interrupt();
-                displayPanel.Close();
-            }
+            //bCOMconnected = false;
+            comx.disconnect();
+            displayPanel.Close();
 
             Properties.Settings.Default.main_form_pos_x = this.Location.X;
             Properties.Settings.Default.main_form_pos_y = this.Location.Y;
@@ -171,20 +86,6 @@ namespace ZOYI
             }
         }
 
-        void refreshCOMlist()
-        {
-            string[] ports = SerialPort.GetPortNames();
-            lbCOMs.Items.Clear();
-
-            foreach (string port in ports)
-            {
-                lbCOMs.Items.Add(port);
-            }
-
-            if (ports.Length > 0)
-                lbCOMs.SelectedIndex = 0;
-        }
-
         private void btnClearLog_Click(object sender, EventArgs e)
         {
             tbComOutput.Text = "";
@@ -200,7 +101,7 @@ namespace ZOYI
          * Parse data from COM port
          * 
          */
-        string[] parse_label_value_suffix(string buff)
+        string[] parseLabelValueSuffix_STD(string buff)
         {
             string[] label_value = buff.Split(':');
             // label, value, suffix
@@ -370,9 +271,10 @@ namespace ZOYI
             {
                 try
                 {
-                    // break if fail - don't use TryParse
-                    //float val = float.Parse(value);
-                    float val = float.Parse(value, CultureInfo.InvariantCulture.NumberFormat);
+                    // must break if fail - don't use TryParse
+                    float val = float.Parse(value.Replace('.', ','));
+                    //float val = float.Parse(value.Replace('.', ','), CultureInfo.InvariantCulture.NumberFormat);
+
                     bool bOverThreshold = (cbValueOver.Checked && (val > fAlarmOverValue));
                     bool bUnderThreshold = (cbValueUnder.Checked && (val < fAlarmUnderValue));
 
@@ -386,14 +288,14 @@ namespace ZOYI
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
 
         void playAlarmBeepThread()
         {
-            SoundPlayer snd = new SoundPlayer("beep.wav");
+            SoundPlayer snd = new SoundPlayer("Sounds\\beep.wav");
             snd.PlaySync();
             bBeepPlaying = false;
         }
@@ -403,12 +305,23 @@ namespace ZOYI
             displayPanel.changeOpacity(tbPanelOpacity.Value);
         }
 
-        private void cbCOMrawmode_CheckedChanged(object sender, EventArgs e)
+        /*
+         * Tools
+         */
+        private async void btnToolsEdit_Click(object sender, EventArgs e)
         {
-            if (cbCOMrawmode.Checked)
-                bCOMrawmode = true;
-            else
-                bCOMrawmode = false;
+            RichEditor re = new RichEditor(tools);
+            re.loadFile(toolsPath, RichEditor.ENCODING.TOOLS);
+
+            string result = await re.AsyncEdit();
+
+            if (result == "save")
+                tools.refreshTools();
+        }
+
+        private void btnToolsRefresh_Click(object sender, EventArgs e)
+        {
+            tools.refreshTools();
         }
     }
 }

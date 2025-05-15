@@ -9,6 +9,7 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZOYIv2;
 
 namespace ZOYI
 {
@@ -44,10 +45,10 @@ namespace ZOYI
         }
 
         // update label, value, suffix
-        public void updatePanel(string[] lvs)
+        public void updatePanel(LabelValueSuffix lvs)
         {
-            lblLabel.Text = lvs[0];
-            lblValue.Text = lvs[1] + " " + lvs[2];
+            lblLabel.Text = lvs.Label;
+            lblValue.Text = lvs.Value + " " + lvs.Suffix;
         }
 
         /*

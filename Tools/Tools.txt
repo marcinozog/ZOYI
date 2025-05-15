@@ -1,0 +1,10 @@
+﻿----Mierniki
+ZOYI|zoyi.png
+----Schematy
+SI5351|si5351synth.pdf
+----Programy
+Paint|mspaint.exe
+----Inne
+Kolorowanka|kolorowanka.jpg
+----Strony
+NASA|www.nasa.gov
