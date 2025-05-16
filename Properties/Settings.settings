@@ -11,13 +11,13 @@
     <Setting Name="lang" Type="System.String" Scope="User">
       <Value Profile="(Default)">pl</Value>
     </Setting>
-    <Setting Name="panel_label_color" Type="System.String" Scope="User">
+    <Setting Name="panel_std_label_color" Type="System.String" Scope="User">
       <Value Profile="(Default)">White</Value>
     </Setting>
-    <Setting Name="panel_value_color" Type="System.String" Scope="User">
+    <Setting Name="panel_std_value_color" Type="System.String" Scope="User">
       <Value Profile="(Default)">White</Value>
     </Setting>
-    <Setting Name="panel_bg_color" Type="System.String" Scope="User">
+    <Setting Name="panel_std_bg_color" Type="System.String" Scope="User">
       <Value Profile="(Default)">Black</Value>
     </Setting>
     <Setting Name="main_form_pos_x" Type="System.Int32" Scope="User">
@@ -26,11 +26,26 @@
     <Setting Name="main_form_pos_y" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
-    <Setting Name="panel_form_pos_x" Type="System.Int32" Scope="User">
+    <Setting Name="panel_std_form_pos_x" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">200</Value>
     </Setting>
-    <Setting Name="panel_form_pos_y" Type="System.Int32" Scope="User">
+    <Setting Name="panel_std_form_pos_y" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="panel_adv_label_color" Type="System.String" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="panel_adv_value_color" Type="System.String" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="panel_adv_bg_color" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="panel_adv_form_pos_x" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
+    <Setting Name="panel_adv_form_pos_y" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">500</Value>
     </Setting>
   </Settings>
 </SettingsFile>

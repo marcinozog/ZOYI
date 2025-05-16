@@ -32,7 +32,7 @@
             lbListCOMs = new ListBox();
             btnComConnect = new Button();
             tbComOutput = new TextBox();
-            chbShowPanel = new CheckBox();
+            chbStandardPanel = new CheckBox();
             lblBaudRate = new Label();
             tbCOMBaudrate = new TextBox();
             btnClearLog = new Button();
@@ -42,6 +42,7 @@
             btnMinimize = new Button();
             tabControl1 = new TabControl();
             tabPageCOM = new TabPage();
+            chbAdvancedPanel = new CheckBox();
             groupBox2 = new GroupBox();
             button2 = new Button();
             rbCOMparseRaw = new RadioButton();
@@ -74,8 +75,8 @@
             pictureBox1 = new PictureBox();
             label8 = new Label();
             lblComConnStatus = new Label();
-            label9 = new Label();
             lblBTSPPconnStatus = new Label();
+            label9 = new Label();
             tabControl1.SuspendLayout();
             tabPageCOM.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -134,16 +135,18 @@
             tbComOutput.Size = new Size(371, 470);
             tbComOutput.TabIndex = 5;
             // 
-            // chbShowPanel
+            // chbStandardPanel
             // 
-            chbShowPanel.AutoSize = true;
-            chbShowPanel.Location = new Point(621, 447);
-            chbShowPanel.Name = "chbShowPanel";
-            chbShowPanel.Size = new Size(79, 29);
-            chbShowPanel.TabIndex = 6;
-            chbShowPanel.Text = "Panel";
-            chbShowPanel.UseVisualStyleBackColor = true;
-            chbShowPanel.CheckedChanged += chbShowPanel_CheckedChanged;
+            chbStandardPanel.AutoSize = true;
+            chbStandardPanel.Checked = true;
+            chbStandardPanel.CheckState = CheckState.Checked;
+            chbStandardPanel.Location = new Point(621, 396);
+            chbStandardPanel.Name = "chbStandardPanel";
+            chbStandardPanel.Size = new Size(187, 29);
+            chbStandardPanel.TabIndex = 6;
+            chbStandardPanel.Text = "Panel standardowy";
+            chbStandardPanel.UseVisualStyleBackColor = true;
+            chbStandardPanel.CheckedChanged += chbShowPanel_CheckedChanged;
             // 
             // lblBaudRate
             // 
@@ -239,11 +242,12 @@
             // tabPageCOM
             // 
             tabPageCOM.BackColor = SystemColors.Desktop;
+            tabPageCOM.Controls.Add(chbAdvancedPanel);
             tabPageCOM.Controls.Add(groupBox2);
             tabPageCOM.Controls.Add(tbComOutput);
             tabPageCOM.Controls.Add(btnClearLog);
             tabPageCOM.Controls.Add(btnSaveLog);
-            tabPageCOM.Controls.Add(chbShowPanel);
+            tabPageCOM.Controls.Add(chbStandardPanel);
             tabPageCOM.Controls.Add(btnListCOM);
             tabPageCOM.Controls.Add(lbListCOMs);
             tabPageCOM.Controls.Add(btnComConnect);
@@ -255,6 +259,19 @@
             tabPageCOM.Size = new Size(847, 496);
             tabPageCOM.TabIndex = 0;
             tabPageCOM.Text = "COM";
+            // 
+            // chbAdvancedPanel
+            // 
+            chbAdvancedPanel.AutoSize = true;
+            chbAdvancedPanel.Checked = true;
+            chbAdvancedPanel.CheckState = CheckState.Checked;
+            chbAdvancedPanel.Location = new Point(621, 433);
+            chbAdvancedPanel.Name = "chbAdvancedPanel";
+            chbAdvancedPanel.Size = new Size(165, 29);
+            chbAdvancedPanel.TabIndex = 13;
+            chbAdvancedPanel.Text = "Panel z bajerami";
+            chbAdvancedPanel.UseVisualStyleBackColor = true;
+            chbAdvancedPanel.CheckedChanged += chbAdvancedPanel_CheckedChanged;
             // 
             // groupBox2
             // 
@@ -325,7 +342,7 @@
             tabPage2.Location = new Point(4, 34);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(552, 405);
+            tabPage2.Size = new Size(847, 496);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Ustawienia";
             // 
@@ -410,7 +427,7 @@
             tabPage3.Location = new Point(4, 34);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(552, 405);
+            tabPage3.Size = new Size(847, 496);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Alarm";
             // 
@@ -532,14 +549,14 @@
             tabTools.Location = new Point(4, 34);
             tabTools.Name = "tabTools";
             tabTools.Padding = new Padding(3);
-            tabTools.Size = new Size(552, 405);
+            tabTools.Size = new Size(847, 496);
             tabTools.TabIndex = 3;
             tabTools.Text = "Tools";
             // 
             // btnToolsRefresh
             // 
             btnToolsRefresh.BackColor = Color.Black;
-            btnToolsRefresh.Location = new Point(406, 72);
+            btnToolsRefresh.Location = new Point(704, 72);
             btnToolsRefresh.Name = "btnToolsRefresh";
             btnToolsRefresh.Size = new Size(140, 60);
             btnToolsRefresh.TabIndex = 2;
@@ -550,7 +567,7 @@
             // btnToolsEdit
             // 
             btnToolsEdit.BackColor = Color.Black;
-            btnToolsEdit.Location = new Point(406, 6);
+            btnToolsEdit.Location = new Point(704, 6);
             btnToolsEdit.Name = "btnToolsEdit";
             btnToolsEdit.Size = new Size(140, 60);
             btnToolsEdit.TabIndex = 1;
@@ -564,7 +581,7 @@
             panelTools.BorderStyle = BorderStyle.FixedSingle;
             panelTools.Location = new Point(6, 6);
             panelTools.Name = "panelTools";
-            panelTools.Size = new Size(394, 393);
+            panelTools.Size = new Size(692, 484);
             panelTools.TabIndex = 0;
             // 
             // label4
@@ -574,7 +591,7 @@
             label4.Name = "label4";
             label4.Size = new Size(103, 25);
             label4.TabIndex = 15;
-            label4.Text = "Wersja 0.20";
+            label4.Text = "Wersja 0.21";
             // 
             // pictureBox1
             // 
@@ -606,15 +623,6 @@
             lblComConnStatus.TabIndex = 18;
             lblComConnStatus.Text = "rozłączony";
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(212, 604);
-            label9.Name = "label9";
-            label9.Size = new Size(79, 25);
-            label9.TabIndex = 19;
-            label9.Text = "BT (SPP):";
-            // 
             // lblBTSPPconnStatus
             // 
             lblBTSPPconnStatus.AutoSize = true;
@@ -625,6 +633,15 @@
             lblBTSPPconnStatus.Size = new Size(99, 25);
             lblBTSPPconnStatus.TabIndex = 20;
             lblBTSPPconnStatus.Text = "rozłączony";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(212, 604);
+            label9.Name = "label9";
+            label9.Size = new Size(79, 25);
+            label9.TabIndex = 19;
+            label9.Text = "BT (SPP):";
             // 
             // MainWindow
             // 
@@ -677,7 +694,7 @@
         private ListBox lbListCOMs;
         private Button btnComConnect;
         private TextBox tbComOutput;
-        private CheckBox chbShowPanel;
+        private CheckBox chbStandardPanel;
         private Label lblBaudRate;
         private TextBox tbCOMBaudrate;
         private Button btnClearLog;
@@ -719,7 +736,8 @@
         private RadioButton rbCOMparseStd;
         private Label label8;
         private Label lblComConnStatus;
-        private Label label9;
+        private CheckBox chbAdvancedPanel;
         private Label lblBTSPPconnStatus;
+        private Label label9;
     }
 }

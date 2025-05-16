@@ -154,9 +154,14 @@ namespace ZOYI
                                 // dodać bool panel visible
                                 try
                                 {
-                                    displayPanel.Invoke(new Action(() =>
+                                    standardDisplayPanel.Invoke(new Action(() =>
                                     {
-                                        displayPanel.updatePanel(lvs);
+                                        standardDisplayPanel.updatePanel(lvs);
+                                    }));
+
+                                    advancedDisplayPanel.Invoke(new Action(() =>
+                                    {
+                                        advancedDisplayPanel.updatePanel(lvs);
                                     }));
                                 }
                                 catch (Exception)

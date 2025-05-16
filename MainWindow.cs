@@ -17,7 +17,8 @@ namespace ZOYI
         LabelValueSuffix lvs;
 
         COMx comx;
-        DisplayPanel displayPanel;
+        StandardDisplayPanel standardDisplayPanel;
+        AdancedDisplayPanel advancedDisplayPanel;
 
         MLua mLua;
         string luaPath = "MLua\\parse.lua";
@@ -46,8 +47,12 @@ namespace ZOYI
             this.Location = new Point(Properties.Settings.Default.main_form_pos_x,
                 Properties.Settings.Default.main_form_pos_y);
 
-            displayPanel = new DisplayPanel();
+            standardDisplayPanel = new StandardDisplayPanel();
             //displayPanel.StartPosition = FormStartPosition.CenterParent;
+            standardDisplayPanel.Show();
+
+            advancedDisplayPanel = new AdancedDisplayPanel();
+            advancedDisplayPanel.Show();
 
             Directory.CreateDirectory("logs");
             cbAlarmLabel.SelectedItem = "Voltage";
@@ -67,7 +72,7 @@ namespace ZOYI
         {
             //bCOMconnected = false;
             comx.disconnect();
-            displayPanel.Close();
+            standardDisplayPanel.Close();
 
             Properties.Settings.Default.main_form_pos_x = this.Location.X;
             Properties.Settings.Default.main_form_pos_y = this.Location.Y;
@@ -76,13 +81,25 @@ namespace ZOYI
 
         private void chbShowPanel_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbShowPanel.Checked)
+            if (chbStandardPanel.Checked)
             {
-                displayPanel.Show();
+                standardDisplayPanel.Show();
             }
             else
             {
-                displayPanel.Hide();
+                standardDisplayPanel.Hide();
+            }
+        }
+
+        private void chbAdvancedPanel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbAdvancedPanel.Checked)
+            {
+                advancedDisplayPanel.Show();
+            }
+            else
+            {
+                advancedDisplayPanel.Hide();
             }
         }
 
@@ -221,7 +238,7 @@ namespace ZOYI
             cd.AllowFullOpen = false;
 
             if (cd.ShowDialog() == DialogResult.OK)
-                displayPanel.setBackgroundColor(cd.Color);
+                standardDisplayPanel.setBackgroundColor(cd.Color);
         }
 
         private void btnColorLabel_Click(object sender, EventArgs e)
@@ -230,7 +247,7 @@ namespace ZOYI
             cd.AllowFullOpen = false;
 
             if (cd.ShowDialog() == DialogResult.OK)
-                displayPanel.setLabelFontColor(cd.Color);
+                standardDisplayPanel.setLabelFontColor(cd.Color);
         }
 
         private void btnColorValue_Click(object sender, EventArgs e)
@@ -239,7 +256,7 @@ namespace ZOYI
             cd.AllowFullOpen = false;
 
             if (cd.ShowDialog() == DialogResult.OK)
-                displayPanel.setValueFontColor(cd.Color);
+                standardDisplayPanel.setValueFontColor(cd.Color);
         }
 
         /*
@@ -302,7 +319,7 @@ namespace ZOYI
 
         private void tbPanelOpacity_Scroll(object sender, EventArgs e)
         {
-            displayPanel.changeOpacity(tbPanelOpacity.Value);
+            standardDisplayPanel.changeOpacity(tbPanelOpacity.Value);
         }
 
         /*

@@ -62,36 +62,36 @@ namespace ZOYI.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("White")]
-        public string panel_label_color {
+        public string panel_std_label_color {
             get {
-                return ((string)(this["panel_label_color"]));
+                return ((string)(this["panel_std_label_color"]));
             }
             set {
-                this["panel_label_color"] = value;
+                this["panel_std_label_color"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("White")]
-        public string panel_value_color {
+        public string panel_std_value_color {
             get {
-                return ((string)(this["panel_value_color"]));
+                return ((string)(this["panel_std_value_color"]));
             }
             set {
-                this["panel_value_color"] = value;
+                this["panel_std_value_color"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Black")]
-        public string panel_bg_color {
+        public string panel_std_bg_color {
             get {
-                return ((string)(this["panel_bg_color"]));
+                return ((string)(this["panel_std_bg_color"]));
             }
             set {
-                this["panel_bg_color"] = value;
+                this["panel_std_bg_color"] = value;
             }
         }
         
@@ -122,24 +122,84 @@ namespace ZOYI.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("200")]
-        public int panel_form_pos_x {
+        public int panel_std_form_pos_x {
             get {
-                return ((int)(this["panel_form_pos_x"]));
+                return ((int)(this["panel_std_form_pos_x"]));
             }
             set {
-                this["panel_form_pos_x"] = value;
+                this["panel_std_form_pos_x"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("200")]
-        public int panel_form_pos_y {
+        public int panel_std_form_pos_y {
             get {
-                return ((int)(this["panel_form_pos_y"]));
+                return ((int)(this["panel_std_form_pos_y"]));
             }
             set {
-                this["panel_form_pos_y"] = value;
+                this["panel_std_form_pos_y"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public string panel_adv_label_color {
+            get {
+                return ((string)(this["panel_adv_label_color"]));
+            }
+            set {
+                this["panel_adv_label_color"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public string panel_adv_value_color {
+            get {
+                return ((string)(this["panel_adv_value_color"]));
+            }
+            set {
+                this["panel_adv_value_color"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public string panel_adv_bg_color {
+            get {
+                return ((string)(this["panel_adv_bg_color"]));
+            }
+            set {
+                this["panel_adv_bg_color"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public int panel_adv_form_pos_x {
+            get {
+                return ((int)(this["panel_adv_form_pos_x"]));
+            }
+            set {
+                this["panel_adv_form_pos_x"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public int panel_adv_form_pos_y {
+            get {
+                return ((int)(this["panel_adv_form_pos_y"]));
+            }
+            set {
+                this["panel_adv_form_pos_y"] = value;
             }
         }
     }

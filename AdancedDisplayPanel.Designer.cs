@@ -1,6 +1,6 @@
 ﻿namespace ZOYI
 {
-    partial class DisplayPanel
+    partial class AdancedDisplayPanel
     {
         /// <summary>
         /// Required designer variable.
@@ -32,6 +32,7 @@
             lblValue = new Label();
             panelResize = new Panel();
             tableLayoutPanel = new TableLayoutPanel();
+            arcProgressBar1 = new ArcProgressBar();
             tableLayoutPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -69,7 +70,8 @@
             // 
             panelResize.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             panelResize.Cursor = Cursors.SizeNWSE;
-            panelResize.Location = new Point(380, 196);
+            panelResize.Enabled = false;
+            panelResize.Location = new Point(392, 241);
             panelResize.Name = "panelResize";
             panelResize.Size = new Size(33, 31);
             panelResize.TabIndex = 2;
@@ -83,7 +85,7 @@
             tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel.Controls.Add(lblValue, 0, 1);
             tableLayoutPanel.Controls.Add(lblLabel, 0, 0);
-            tableLayoutPanel.Location = new Point(12, 10);
+            tableLayoutPanel.Location = new Point(12, 76);
             tableLayoutPanel.Name = "tableLayoutPanel";
             tableLayoutPanel.RowCount = 2;
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
@@ -91,17 +93,44 @@
             tableLayoutPanel.Size = new Size(389, 204);
             tableLayoutPanel.TabIndex = 3;
             // 
-            // DisplayPanel
+            // arcProgressBar1
+            // 
+            arcProgressBar1.BackColor = Color.Transparent;
+            arcProgressBar1.BarColor1 = Color.Orange;
+            arcProgressBar1.BarColor2 = Color.Orange;
+            arcProgressBar1.BarGradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
+            arcProgressBar1.BarWidth = 14F;
+            arcProgressBar1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            arcProgressBar1.ForeColor = Color.DimGray;
+            arcProgressBar1.LineColor = Color.DimGray;
+            arcProgressBar1.LineWidth = 1;
+            arcProgressBar1.Location = new Point(12, 12);
+            arcProgressBar1.MajorThicksCount = 10L;
+            arcProgressBar1.MaximumTick = 100F;
+            arcProgressBar1.MinimumSize = new Size(100, 40);
+            arcProgressBar1.Name = "arcProgressBar1";
+            arcProgressBar1.ProgressShape = ArcProgressBar._ProgressShape.Flat;
+            arcProgressBar1.Size = new Size(382, 100);
+            arcProgressBar1.TabIndex = 4;
+            arcProgressBar1.Text = "arcProgressBar1";
+            arcProgressBar1.TextMode = ArcProgressBar._TextMode.None;
+            arcProgressBar1.Value = 57F;
+            arcProgressBar1.MouseDown += displayPanel_MouseDown;
+            arcProgressBar1.MouseMove += displayPanel_MouseMove;
+            arcProgressBar1.MouseUp += displayPanel_MouseUp;
+            // 
+            // AdancedDisplayPanel
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Desktop;
-            ClientSize = new Size(413, 226);
+            ClientSize = new Size(425, 271);
+            Controls.Add(arcProgressBar1);
             Controls.Add(panelResize);
             Controls.Add(tableLayoutPanel);
             ForeColor = SystemColors.HighlightText;
             FormBorderStyle = FormBorderStyle.None;
-            Name = "DisplayPanel";
+            Name = "AdancedDisplayPanel";
             StartPosition = FormStartPosition.Manual;
             Text = "displayPanel";
             FormClosed += DisplayPanel_FormClosed;
@@ -118,5 +147,6 @@
         private Label lblValue;
         private Panel panelResize;
         private TableLayoutPanel tableLayoutPanel;
+        private ArcProgressBar arcProgressBar1;
     }
 }

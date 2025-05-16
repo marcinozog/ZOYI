@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,7 +12,7 @@ using ZOYIv2;
 
 namespace ZOYI
 {
-    public partial class DisplayPanel : Form
+    public partial class AdancedDisplayPanel : Form
     {
         // Window move
         bool bDispalyMouseDown = false;
@@ -30,14 +29,14 @@ namespace ZOYI
         Color color_value;
         Color color_bg;
 
-        public DisplayPanel()
+        public AdancedDisplayPanel()
         {
             InitializeComponent();
-            this.Location = new Point(Properties.Settings.Default.panel_form_pos_x, Properties.Settings.Default.panel_form_pos_y);
+            this.Location = new Point(Properties.Settings.Default.panel_adv_form_pos_x, Properties.Settings.Default.panel_adv_form_pos_y);
 
-            color_label = ColorTranslator.FromHtml(Properties.Settings.Default.panel_label_color);
-            color_value = ColorTranslator.FromHtml(Properties.Settings.Default.panel_value_color);
-            color_bg = ColorTranslator.FromHtml(Properties.Settings.Default.panel_bg_color);
+            color_label = ColorTranslator.FromHtml(Properties.Settings.Default.panel_adv_label_color);
+            color_value = ColorTranslator.FromHtml(Properties.Settings.Default.panel_adv_value_color);
+            color_bg = ColorTranslator.FromHtml(Properties.Settings.Default.panel_adv_bg_color);
 
             lblLabel.ForeColor = color_label;
             lblValue.ForeColor = color_value;
@@ -49,6 +48,10 @@ namespace ZOYI
         {
             lblLabel.Text = lvs.Label;
             lblValue.Text = lvs.Value + " " + lvs.Suffix;
+
+            float val = float.Parse(lvs.Value.Replace(',', '.'), CultureInfo.InvariantCulture.NumberFormat);
+            //var valOK = float.TryParse(lvs.Value, CultureInfo.InvariantCulture.NumberFormat, out val);
+            arcProgressBar1.Value = val;
         }
 
         /*
@@ -89,21 +92,21 @@ namespace ZOYI
         public void setBackgroundColor(Color color)
         {
             this.BackColor = color;
-            Properties.Settings.Default.panel_bg_color = ColorTranslator.ToHtml(color);
+            Properties.Settings.Default.panel_adv_bg_color = ColorTranslator.ToHtml(color);
             Properties.Settings.Default.Save();
         }
 
         public void setLabelFontColor(Color color)
         {
             lblLabel.ForeColor = color;
-            Properties.Settings.Default.panel_label_color = ColorTranslator.ToHtml(color);
+            Properties.Settings.Default.panel_adv_label_color = ColorTranslator.ToHtml(color);
             Properties.Settings.Default.Save();
         }
 
         public void setValueFontColor(Color color)
         {
             lblValue.ForeColor = color;
-            Properties.Settings.Default.panel_value_color = ColorTranslator.ToHtml(color); ;
+            Properties.Settings.Default.panel_adv_value_color = ColorTranslator.ToHtml(color); ;
             Properties.Settings.Default.Save();
         }
 
@@ -159,9 +162,10 @@ namespace ZOYI
 
         private void DisplayPanel_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Properties.Settings.Default.panel_form_pos_x = this.Location.X;
-            Properties.Settings.Default.panel_form_pos_y = this.Location.Y;
+            Properties.Settings.Default.panel_adv_form_pos_x = this.Location.X;
+            Properties.Settings.Default.panel_adv_form_pos_y = this.Location.Y;
             Properties.Settings.Default.Save();
         }
     }
 }
+
