@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZOYIv2;
+using static ZOYI.ArcProgressBar;
 
 namespace ZOYI
 {
@@ -63,11 +64,11 @@ namespace ZOYI
             arcProgressBar1.Value = val;
         }
 
-        public void setArcProgressBarTicks (int val)
-        { 
-                Ticks = val;
-                arcProgressBar1.MaximumTick = Ticks;
-                //arcProgressBar1.MajorThicksCount = Ticks;
+        public void setArcProgressBarTicks(int val)
+        {
+            Ticks = val;
+            arcProgressBar1.MaximumTick = Ticks;
+            //arcProgressBar1.MajorThicksCount = Ticks;
         }
 
         public void setArcProgressBarThicksCount(int val)
@@ -148,7 +149,7 @@ namespace ZOYI
             bResizeMouseDown = true;
             pResizeMousePosDown = Control.MousePosition;
             szCurrentFormSize = this.Size;
-            szCurrentTableSize = tableLayoutPanel.Size;
+            //szCurrentTableSize = tableLayoutPanel.Size;
         }
 
         private void panelResize_MouseUp(object sender, MouseEventArgs e)
@@ -167,7 +168,7 @@ namespace ZOYI
                 var distX = currentPos.X - pResizeMousePosDown.X;
                 var distY = currentPos.Y - pResizeMousePosDown.Y;
                 this.Size = new Size(szCurrentFormSize.Width + distX, szCurrentFormSize.Height + distY);
-                tableLayoutPanel.Size = new Size(szCurrentTableSize.Width + distX, szCurrentTableSize.Height + distY);
+                //tableLayoutPanel.Size = new Size(szCurrentTableSize.Width + distX, szCurrentTableSize.Height + distY);
 
                 try
                 {
@@ -189,6 +190,29 @@ namespace ZOYI
             Properties.Settings.Default.panel_adv_ticks = Ticks;
             Properties.Settings.Default.panel_adv_thicks_count = ThicksCount;
             Properties.Settings.Default.Save();
+        }
+
+        private void toolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            if (toolStripMenuItemArcBar.Checked)
+                arcProgressBar1.Visible = true;
+            else
+                arcProgressBar1.Visible = false;
+
+            if (toolStripMenuItemLabel.Checked)
+                lblLabel.Visible = true;
+            else
+                lblLabel.Visible = false;
+
+            if (toolStripMenuItemValue.Checked)
+                lblValue.Visible = true;
+            else
+                lblValue.Visible = false;
+        }
+
+        private void zamknijPanelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

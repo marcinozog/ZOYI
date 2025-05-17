@@ -42,7 +42,7 @@
             lblLabel.ForeColor = SystemColors.HighlightText;
             lblLabel.Location = new Point(3, 0);
             lblLabel.Name = "lblLabel";
-            lblLabel.Size = new Size(383, 102);
+            lblLabel.Size = new Size(383, 68);
             lblLabel.TabIndex = 0;
             lblLabel.Text = "ZOYI 703s";
             lblLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -55,9 +55,9 @@
             lblValue.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblValue.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             lblValue.ForeColor = SystemColors.HighlightText;
-            lblValue.Location = new Point(3, 102);
+            lblValue.Location = new Point(3, 68);
             lblValue.Name = "lblValue";
-            lblValue.Size = new Size(383, 102);
+            lblValue.Size = new Size(383, 69);
             lblValue.TabIndex = 1;
             lblValue.Text = "Podłącz miernik";
             lblValue.TextAlign = ContentAlignment.MiddleCenter;
@@ -69,7 +69,7 @@
             // 
             panelResize.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             panelResize.Cursor = Cursors.SizeNWSE;
-            panelResize.Location = new Point(380, 196);
+            panelResize.Location = new Point(380, 125);
             panelResize.Name = "panelResize";
             panelResize.Size = new Size(33, 31);
             panelResize.TabIndex = 2;
@@ -88,20 +88,20 @@
             tableLayoutPanel.RowCount = 2;
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel.Size = new Size(389, 204);
+            tableLayoutPanel.Size = new Size(389, 137);
             tableLayoutPanel.TabIndex = 3;
             // 
-            // DisplayPanel
+            // StandardDisplayPanel
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Desktop;
-            ClientSize = new Size(413, 226);
+            ClientSize = new Size(413, 155);
             Controls.Add(panelResize);
             Controls.Add(tableLayoutPanel);
             ForeColor = SystemColors.HighlightText;
             FormBorderStyle = FormBorderStyle.None;
-            Name = "DisplayPanel";
+            Name = "StandardDisplayPanel";
             StartPosition = FormStartPosition.Manual;
             Text = "displayPanel";
             FormClosed += DisplayPanel_FormClosed;
