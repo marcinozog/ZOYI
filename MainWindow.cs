@@ -66,6 +66,9 @@ namespace ZOYI
             tools.refreshTools();
 
             refreshCOMlist();
+
+            tbarArcTicks.Value = Properties.Settings.Default.panel_adv_ticks;
+            lblArcTicks.Text = tbarArcTicks.Value.ToString();
         }
 
         private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
@@ -188,6 +191,8 @@ namespace ZOYI
 
         private void button1_Click(object sender, EventArgs e)
         {
+            standardDisplayPanel.Close();
+            advancedDisplayPanel.Close();
             System.Windows.Forms.Application.Exit();
         }
 
@@ -319,7 +324,7 @@ namespace ZOYI
 
         private void tbPanelOpacity_Scroll(object sender, EventArgs e)
         {
-            standardDisplayPanel.changeOpacity(tbPanelOpacity.Value);
+            standardDisplayPanel.changeOpacity(tbarPanelOpacity.Value);
         }
 
         /*
@@ -339,6 +344,12 @@ namespace ZOYI
         private void btnToolsRefresh_Click(object sender, EventArgs e)
         {
             tools.refreshTools();
+        }
+
+        private void tbarArcTicks_Scroll(object sender, EventArgs e)
+        {
+            advancedDisplayPanel.setArcProgressBarTicks(tbarArcTicks.Value);
+            lblArcTicks.Text = tbarArcTicks.Value.ToString();
         }
     }
 }

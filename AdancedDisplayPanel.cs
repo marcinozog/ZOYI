@@ -29,6 +29,8 @@ namespace ZOYI
         Color color_value;
         Color color_bg;
 
+        int Ticks = 0;
+
         public AdancedDisplayPanel()
         {
             InitializeComponent();
@@ -41,6 +43,10 @@ namespace ZOYI
             lblLabel.ForeColor = color_label;
             lblValue.ForeColor = color_value;
             this.BackColor = color_bg;
+
+            Ticks = Properties.Settings.Default.panel_adv_ticks;
+            arcProgressBar1.MaximumTick = Ticks;
+            //arcProgressBar1.MajorThicksCount = Ticks;
         }
 
         // update label, value, suffix
@@ -52,6 +58,13 @@ namespace ZOYI
             float val = float.Parse(lvs.Value.Replace(',', '.'), CultureInfo.InvariantCulture.NumberFormat);
             //var valOK = float.TryParse(lvs.Value, CultureInfo.InvariantCulture.NumberFormat, out val);
             arcProgressBar1.Value = val;
+        }
+
+        public void setArcProgressBarTicks (int val)
+        { 
+                Ticks = val;
+                arcProgressBar1.MaximumTick = Ticks;
+                //arcProgressBar1.MajorThicksCount = Ticks;
         }
 
         /*
@@ -160,10 +173,11 @@ namespace ZOYI
             }
         }
 
-        private void DisplayPanel_FormClosed(object sender, FormClosedEventArgs e)
+        private void AdancedDisplayPanel_FormClosed(object sender, FormClosedEventArgs e)
         {
             Properties.Settings.Default.panel_adv_form_pos_x = this.Location.X;
             Properties.Settings.Default.panel_adv_form_pos_y = this.Location.Y;
+            Properties.Settings.Default.panel_adv_ticks = Ticks;
             Properties.Settings.Default.Save();
         }
     }

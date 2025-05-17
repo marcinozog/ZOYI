@@ -49,9 +49,13 @@
             rbCOMparseLua = new RadioButton();
             rbCOMparseStd = new RadioButton();
             tabPage2 = new TabPage();
+            groupBox3 = new GroupBox();
+            lblArcTicks = new Label();
+            tbarArcTicks = new TrackBar();
+            label10 = new Label();
             groupBox1 = new GroupBox();
             label5 = new Label();
-            tbPanelOpacity = new TrackBar();
+            tbarPanelOpacity = new TrackBar();
             btnPanelColorBg = new Button();
             btnPanelColorLabel = new Button();
             btnPanelColorValue = new Button();
@@ -81,8 +85,10 @@
             tabPageCOM.SuspendLayout();
             groupBox2.SuspendLayout();
             tabPage2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)tbarArcTicks).BeginInit();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)tbPanelOpacity).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tbarPanelOpacity).BeginInit();
             tabPage3.SuspendLayout();
             plAlarm.SuspendLayout();
             tabTools.SuspendLayout();
@@ -338,7 +344,9 @@
             // tabPage2
             // 
             tabPage2.BackColor = SystemColors.Desktop;
+            tabPage2.Controls.Add(groupBox3);
             tabPage2.Controls.Add(groupBox1);
+            tabPage2.ForeColor = SystemColors.HighlightText;
             tabPage2.Location = new Point(4, 34);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -346,41 +354,83 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Ustawienia";
             // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(lblArcTicks);
+            groupBox3.Controls.Add(tbarArcTicks);
+            groupBox3.Controls.Add(label10);
+            groupBox3.ForeColor = SystemColors.HighlightText;
+            groupBox3.Location = new Point(8, 259);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(833, 208);
+            groupBox3.TabIndex = 17;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Panel zaawansowany";
+            // 
+            // lblArcTicks
+            // 
+            lblArcTicks.AutoSize = true;
+            lblArcTicks.Location = new Point(454, 39);
+            lblArcTicks.Name = "lblArcTicks";
+            lblArcTicks.Size = new Size(32, 25);
+            lblArcTicks.TabIndex = 2;
+            lblArcTicks.Text = "25";
+            // 
+            // tbarArcTicks
+            // 
+            tbarArcTicks.Location = new Point(159, 39);
+            tbarArcTicks.Maximum = 100;
+            tbarArcTicks.Minimum = 10;
+            tbarArcTicks.Name = "tbarArcTicks";
+            tbarArcTicks.Size = new Size(289, 69);
+            tbarArcTicks.TabIndex = 1;
+            tbarArcTicks.Value = 25;
+            tbarArcTicks.Scroll += tbarArcTicks_Scroll;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(11, 39);
+            label10.Name = "label10";
+            label10.Size = new Size(50, 25);
+            label10.TabIndex = 0;
+            label10.Text = "Ticks";
+            // 
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.Desktop;
             groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(tbPanelOpacity);
+            groupBox1.Controls.Add(tbarPanelOpacity);
             groupBox1.Controls.Add(btnPanelColorBg);
             groupBox1.Controls.Add(btnPanelColorLabel);
             groupBox1.Controls.Add(btnPanelColorValue);
             groupBox1.ForeColor = SystemColors.HighlightText;
             groupBox1.Location = new Point(6, 10);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(540, 226);
+            groupBox1.Size = new Size(835, 207);
             groupBox1.TabIndex = 16;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Panel miernika";
+            groupBox1.Text = "Panel standardowy";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(13, 141);
+            label5.Location = new Point(13, 131);
             label5.Name = "label5";
             label5.Size = new Size(136, 25);
             label5.TabIndex = 13;
             label5.Text = "Przeźroczystość";
             // 
-            // tbPanelOpacity
+            // tbarPanelOpacity
             // 
-            tbPanelOpacity.Location = new Point(161, 141);
-            tbPanelOpacity.Maximum = 100;
-            tbPanelOpacity.Minimum = 20;
-            tbPanelOpacity.Name = "tbPanelOpacity";
-            tbPanelOpacity.Size = new Size(289, 69);
-            tbPanelOpacity.TabIndex = 12;
-            tbPanelOpacity.Value = 100;
-            tbPanelOpacity.Scroll += tbPanelOpacity_Scroll;
+            tbarPanelOpacity.Location = new Point(161, 131);
+            tbarPanelOpacity.Maximum = 100;
+            tbarPanelOpacity.Minimum = 20;
+            tbarPanelOpacity.Name = "tbarPanelOpacity";
+            tbarPanelOpacity.Size = new Size(289, 69);
+            tbarPanelOpacity.TabIndex = 12;
+            tbarPanelOpacity.Value = 100;
+            tbarPanelOpacity.Scroll += tbPanelOpacity_Scroll;
             // 
             // btnPanelColorBg
             // 
@@ -591,7 +641,7 @@
             label4.Name = "label4";
             label4.Size = new Size(103, 25);
             label4.TabIndex = 15;
-            label4.Text = "Wersja 0.21";
+            label4.Text = "Wersja 0.22";
             // 
             // pictureBox1
             // 
@@ -675,9 +725,12 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             tabPage2.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)tbarArcTicks).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)tbPanelOpacity).EndInit();
+            ((System.ComponentModel.ISupportInitialize)tbarPanelOpacity).EndInit();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
             plAlarm.ResumeLayout(false);
@@ -716,7 +769,7 @@
         private Label label2;
         private Label label3;
         private TextBox tbAlarmOverValue;
-        private TrackBar tbPanelOpacity;
+        private TrackBar tbarPanelOpacity;
         private Label label5;
         private Label label6;
         private CheckBox cbValueUnder;
@@ -739,5 +792,9 @@
         private CheckBox chbAdvancedPanel;
         private Label lblBTSPPconnStatus;
         private Label label9;
+        private GroupBox groupBox3;
+        private TrackBar tbarArcTicks;
+        private Label label10;
+        private Label lblArcTicks;
     }
 }
