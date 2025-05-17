@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZOYIv2
+namespace ZOYI
 {
     public class LabelValueSuffix
     {

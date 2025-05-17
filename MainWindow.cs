@@ -1,7 +1,6 @@
 ﻿using System.Globalization;
 using System.IO.Ports;
 using System.Media;
-using ZOYIv2;
 
 namespace ZOYI
 {
@@ -47,11 +46,10 @@ namespace ZOYI
             this.Location = new Point(Properties.Settings.Default.main_form_pos_x,
                 Properties.Settings.Default.main_form_pos_y);
 
-            standardDisplayPanel = new StandardDisplayPanel();
-            //displayPanel.StartPosition = FormStartPosition.CenterParent;
+            standardDisplayPanel = new StandardDisplayPanel(chbStandardPanel);
             standardDisplayPanel.Show();
 
-            advancedDisplayPanel = new AdancedDisplayPanel();
+            advancedDisplayPanel = new AdancedDisplayPanel(chbAdvancedPanel);
             advancedDisplayPanel.Show();
 
             Directory.CreateDirectory("logs");

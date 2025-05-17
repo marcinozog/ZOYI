@@ -8,8 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ZOYIv2;
-using static ZOYI.ArcProgressBar;
+//using ZOYIv2;
+//using static ZOYI.ArcProgressBar;
 
 namespace ZOYI
 {
@@ -33,7 +33,9 @@ namespace ZOYI
         int Ticks = 0;
         int ThicksCount = 0;
 
-        public AdancedDisplayPanel()
+        CheckBox chbShowHide;
+
+        public AdancedDisplayPanel(CheckBox chb)
         {
             InitializeComponent();
             this.Location = new Point(Properties.Settings.Default.panel_adv_form_pos_x, Properties.Settings.Default.panel_adv_form_pos_y);
@@ -51,6 +53,8 @@ namespace ZOYI
 
             ThicksCount = Properties.Settings.Default.panel_adv_thicks_count;
             arcProgressBar1.MajorThicksCount = ThicksCount;
+
+            chbShowHide = chb;
         }
 
         // update label, value, suffix
@@ -213,6 +217,7 @@ namespace ZOYI
         private void zamknijPanelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
+            chbShowHide.Checked = false;
         }
     }
 }

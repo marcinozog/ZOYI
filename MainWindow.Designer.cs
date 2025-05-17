@@ -678,7 +678,7 @@
             label4.Name = "label4";
             label4.Size = new Size(103, 25);
             label4.TabIndex = 15;
-            label4.Text = "Wersja 0.22";
+            label4.Text = "Wersja 0.23";
             // 
             // pictureBox1
             // 

@@ -35,8 +35,8 @@
             arcProgressBar1 = new ArcProgressBar();
             contextMenuAdvDisp = new ContextMenuStrip(components);
             toolStripMenuItemArcBar = new ToolStripMenuItem();
-            toolStripMenuItemLabel = new ToolStripMenuItem();
             toolStripMenuItemValue = new ToolStripMenuItem();
+            toolStripMenuItemLabel = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             zamknijPanelToolStripMenuItem = new ToolStripMenuItem();
             contextMenuAdvDisp.SuspendLayout();
@@ -67,7 +67,7 @@
             lblValue.Name = "lblValue";
             lblValue.Size = new Size(264, 59);
             lblValue.TabIndex = 1;
-            lblValue.Text = "Podłącz";
+            lblValue.Text = "-0.0004 DC";
             lblValue.TextAlign = ContentAlignment.MiddleCenter;
             lblValue.MouseDown += displayPanel_MouseDown;
             lblValue.MouseMove += displayPanel_MouseMove;
@@ -118,7 +118,7 @@
             contextMenuAdvDisp.Items.AddRange(new ToolStripItem[] { toolStripMenuItemArcBar, toolStripMenuItemValue, toolStripMenuItemLabel, toolStripSeparator1, zamknijPanelToolStripMenuItem });
             contextMenuAdvDisp.Name = "contextMenuAdvDisp";
             contextMenuAdvDisp.ShowCheckMargin = true;
-            contextMenuAdvDisp.Size = new Size(263, 171);
+            contextMenuAdvDisp.Size = new Size(217, 138);
             // 
             // toolStripMenuItemArcBar
             // 
@@ -126,19 +126,9 @@
             toolStripMenuItemArcBar.CheckOnClick = true;
             toolStripMenuItemArcBar.CheckState = CheckState.Checked;
             toolStripMenuItemArcBar.Name = "toolStripMenuItemArcBar";
-            toolStripMenuItemArcBar.Size = new Size(262, 32);
+            toolStripMenuItemArcBar.Size = new Size(216, 32);
             toolStripMenuItemArcBar.Text = "ArcBar";
             toolStripMenuItemArcBar.CheckedChanged += toolStripMenuItem_CheckedChanged;
-            // 
-            // toolStripMenuItemLabel
-            // 
-            toolStripMenuItemLabel.Checked = true;
-            toolStripMenuItemLabel.CheckOnClick = true;
-            toolStripMenuItemLabel.CheckState = CheckState.Checked;
-            toolStripMenuItemLabel.Name = "toolStripMenuItemLabel";
-            toolStripMenuItemLabel.Size = new Size(262, 32);
-            toolStripMenuItemLabel.Text = "Label";
-            toolStripMenuItemLabel.CheckedChanged += toolStripMenuItem_CheckedChanged;
             // 
             // toolStripMenuItemValue
             // 
@@ -146,19 +136,29 @@
             toolStripMenuItemValue.CheckOnClick = true;
             toolStripMenuItemValue.CheckState = CheckState.Checked;
             toolStripMenuItemValue.Name = "toolStripMenuItemValue";
-            toolStripMenuItemValue.Size = new Size(262, 32);
+            toolStripMenuItemValue.Size = new Size(216, 32);
             toolStripMenuItemValue.Text = "Value";
             toolStripMenuItemValue.CheckedChanged += toolStripMenuItem_CheckedChanged;
+            // 
+            // toolStripMenuItemLabel
+            // 
+            toolStripMenuItemLabel.Checked = true;
+            toolStripMenuItemLabel.CheckOnClick = true;
+            toolStripMenuItemLabel.CheckState = CheckState.Checked;
+            toolStripMenuItemLabel.Name = "toolStripMenuItemLabel";
+            toolStripMenuItemLabel.Size = new Size(216, 32);
+            toolStripMenuItemLabel.Text = "Label";
+            toolStripMenuItemLabel.CheckedChanged += toolStripMenuItem_CheckedChanged;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(259, 6);
+            toolStripSeparator1.Size = new Size(213, 6);
             // 
             // zamknijPanelToolStripMenuItem
             // 
             zamknijPanelToolStripMenuItem.Name = "zamknijPanelToolStripMenuItem";
-            zamknijPanelToolStripMenuItem.Size = new Size(262, 32);
+            zamknijPanelToolStripMenuItem.Size = new Size(216, 32);
             zamknijPanelToolStripMenuItem.Text = "Zamknij panel";
             zamknijPanelToolStripMenuItem.Click += zamknijPanelToolStripMenuItem_Click;
             // 

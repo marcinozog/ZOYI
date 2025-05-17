@@ -28,11 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lblLabel = new Label();
             lblValue = new Label();
             panelResize = new Panel();
             tableLayoutPanel = new TableLayoutPanel();
+            contextMenuStdDisp = new ContextMenuStrip(components);
+            toolStripMenuItemValue = new ToolStripMenuItem();
+            toolStripMenuItemLabel = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
+            zamknijPaneToolStripMenuItem = new ToolStripMenuItem();
             tableLayoutPanel.SuspendLayout();
+            contextMenuStdDisp.SuspendLayout();
             SuspendLayout();
             // 
             // lblLabel
@@ -91,12 +98,52 @@
             tableLayoutPanel.Size = new Size(389, 137);
             tableLayoutPanel.TabIndex = 3;
             // 
+            // contextMenuStdDisp
+            // 
+            contextMenuStdDisp.ImageScalingSize = new Size(24, 24);
+            contextMenuStdDisp.Items.AddRange(new ToolStripItem[] { toolStripMenuItemLabel, toolStripMenuItemValue, toolStripSeparator1, zamknijPaneToolStripMenuItem });
+            contextMenuStdDisp.Name = "contextMenuStdDisp";
+            contextMenuStdDisp.Size = new Size(241, 139);
+            // 
+            // toolStripMenuItemValue
+            // 
+            toolStripMenuItemValue.Checked = true;
+            toolStripMenuItemValue.CheckOnClick = true;
+            toolStripMenuItemValue.CheckState = CheckState.Checked;
+            toolStripMenuItemValue.Name = "toolStripMenuItemValue";
+            toolStripMenuItemValue.Size = new Size(240, 32);
+            toolStripMenuItemValue.Text = "Value";
+            toolStripMenuItemValue.CheckedChanged += toolStripMenuItem_CheckedChanged;
+            // 
+            // toolStripMenuItemLabel
+            // 
+            toolStripMenuItemLabel.Checked = true;
+            toolStripMenuItemLabel.CheckOnClick = true;
+            toolStripMenuItemLabel.CheckState = CheckState.Checked;
+            toolStripMenuItemLabel.Name = "toolStripMenuItemLabel";
+            toolStripMenuItemLabel.Size = new Size(240, 32);
+            toolStripMenuItemLabel.Text = "Label";
+            toolStripMenuItemLabel.CheckedChanged += toolStripMenuItem_CheckedChanged;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(237, 6);
+            // 
+            // zamknijPaneToolStripMenuItem
+            // 
+            zamknijPaneToolStripMenuItem.Name = "zamknijPaneToolStripMenuItem";
+            zamknijPaneToolStripMenuItem.Size = new Size(240, 32);
+            zamknijPaneToolStripMenuItem.Text = "Zamknij panel";
+            zamknijPaneToolStripMenuItem.Click += zamknijPanelToolStripMenuItem_Click;
+            // 
             // StandardDisplayPanel
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Desktop;
             ClientSize = new Size(413, 155);
+            ContextMenuStrip = contextMenuStdDisp;
             Controls.Add(panelResize);
             Controls.Add(tableLayoutPanel);
             ForeColor = SystemColors.HighlightText;
@@ -109,6 +156,7 @@
             MouseMove += displayPanel_MouseMove;
             MouseUp += displayPanel_MouseUp;
             tableLayoutPanel.ResumeLayout(false);
+            contextMenuStdDisp.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -118,5 +166,10 @@
         private Label lblValue;
         private Panel panelResize;
         private TableLayoutPanel tableLayoutPanel;
+        private ContextMenuStrip contextMenuStdDisp;
+        private ToolStripMenuItem toolStripMenuItemValue;
+        private ToolStripMenuItem toolStripMenuItemLabel;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem zamknijPaneToolStripMenuItem;
     }
 }

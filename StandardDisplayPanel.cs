@@ -9,7 +9,6 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ZOYIv2;
 
 namespace ZOYI
 {
@@ -30,7 +29,9 @@ namespace ZOYI
         Color color_value;
         Color color_bg;
 
-        public StandardDisplayPanel()
+        CheckBox chbShowHide;
+
+        public StandardDisplayPanel(CheckBox chb)
         {
             InitializeComponent();
             this.Location = new Point(Properties.Settings.Default.panel_std_form_pos_x, Properties.Settings.Default.panel_std_form_pos_y);
@@ -42,6 +43,8 @@ namespace ZOYI
             lblLabel.ForeColor = color_label;
             lblValue.ForeColor = color_value;
             this.BackColor = color_bg;
+
+            chbShowHide = chb;
         }
 
         // update label, value, suffix
@@ -162,6 +165,25 @@ namespace ZOYI
             Properties.Settings.Default.panel_std_form_pos_x = this.Location.X;
             Properties.Settings.Default.panel_std_form_pos_y = this.Location.Y;
             Properties.Settings.Default.Save();
+        }
+
+        private void toolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            if (toolStripMenuItemLabel.Checked)
+                lblLabel.Visible = true;
+            else
+                lblLabel.Visible = false;
+
+            if (toolStripMenuItemValue.Checked)
+                lblValue.Visible = true;
+            else
+                lblValue.Visible = false;
+        }
+
+        private void zamknijPanelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            chbShowHide.Checked = false;
         }
     }
 }
