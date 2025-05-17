@@ -50,6 +50,9 @@
             rbCOMparseStd = new RadioButton();
             tabPage2 = new TabPage();
             groupBox3 = new GroupBox();
+            lblThicksCount = new Label();
+            tbarThicksCount = new TrackBar();
+            label11 = new Label();
             lblArcTicks = new Label();
             tbarArcTicks = new TrackBar();
             label10 = new Label();
@@ -86,6 +89,7 @@
             groupBox2.SuspendLayout();
             tabPage2.SuspendLayout();
             groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)tbarThicksCount).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbarArcTicks).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tbarPanelOpacity).BeginInit();
@@ -356,6 +360,9 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(lblThicksCount);
+            groupBox3.Controls.Add(tbarThicksCount);
+            groupBox3.Controls.Add(label11);
             groupBox3.Controls.Add(lblArcTicks);
             groupBox3.Controls.Add(tbarArcTicks);
             groupBox3.Controls.Add(label10);
@@ -366,6 +373,35 @@
             groupBox3.TabIndex = 17;
             groupBox3.TabStop = false;
             groupBox3.Text = "Panel zaawansowany";
+            // 
+            // lblThicksCount
+            // 
+            lblThicksCount.AutoSize = true;
+            lblThicksCount.Location = new Point(461, 123);
+            lblThicksCount.Name = "lblThicksCount";
+            lblThicksCount.Size = new Size(32, 25);
+            lblThicksCount.TabIndex = 5;
+            lblThicksCount.Text = "10";
+            // 
+            // tbarThicksCount
+            // 
+            tbarThicksCount.Location = new Point(159, 114);
+            tbarThicksCount.Maximum = 50;
+            tbarThicksCount.Minimum = 5;
+            tbarThicksCount.Name = "tbarThicksCount";
+            tbarThicksCount.Size = new Size(289, 69);
+            tbarThicksCount.TabIndex = 4;
+            tbarThicksCount.Value = 5;
+            tbarThicksCount.Scroll += tbarThicksCount_Scroll;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(11, 126);
+            label11.Name = "label11";
+            label11.Size = new Size(110, 25);
+            label11.TabIndex = 3;
+            label11.Text = "Thicks count";
             // 
             // lblArcTicks
             // 
@@ -379,11 +415,12 @@
             // tbarArcTicks
             // 
             tbarArcTicks.Location = new Point(159, 39);
-            tbarArcTicks.Maximum = 100;
+            tbarArcTicks.Maximum = 250;
             tbarArcTicks.Minimum = 10;
             tbarArcTicks.Name = "tbarArcTicks";
             tbarArcTicks.Size = new Size(289, 69);
             tbarArcTicks.TabIndex = 1;
+            tbarArcTicks.TickFrequency = 5;
             tbarArcTicks.Value = 25;
             tbarArcTicks.Scroll += tbarArcTicks_Scroll;
             // 
@@ -727,6 +764,7 @@
             tabPage2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)tbarThicksCount).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbarArcTicks).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -796,5 +834,8 @@
         private TrackBar tbarArcTicks;
         private Label label10;
         private Label lblArcTicks;
+        private TrackBar tbarThicksCount;
+        private Label label11;
+        private Label lblThicksCount;
     }
 }

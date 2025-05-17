@@ -30,6 +30,7 @@ namespace ZOYI
         Color color_bg;
 
         int Ticks = 0;
+        int ThicksCount = 0;
 
         public AdancedDisplayPanel()
         {
@@ -46,7 +47,9 @@ namespace ZOYI
 
             Ticks = Properties.Settings.Default.panel_adv_ticks;
             arcProgressBar1.MaximumTick = Ticks;
-            //arcProgressBar1.MajorThicksCount = Ticks;
+
+            ThicksCount = Properties.Settings.Default.panel_adv_thicks_count;
+            arcProgressBar1.MajorThicksCount = ThicksCount;
         }
 
         // update label, value, suffix
@@ -65,6 +68,12 @@ namespace ZOYI
                 Ticks = val;
                 arcProgressBar1.MaximumTick = Ticks;
                 //arcProgressBar1.MajorThicksCount = Ticks;
+        }
+
+        public void setArcProgressBarThicksCount(int val)
+        {
+            ThicksCount = val;
+            arcProgressBar1.MajorThicksCount = ThicksCount;
         }
 
         /*
@@ -178,6 +187,7 @@ namespace ZOYI
             Properties.Settings.Default.panel_adv_form_pos_x = this.Location.X;
             Properties.Settings.Default.panel_adv_form_pos_y = this.Location.Y;
             Properties.Settings.Default.panel_adv_ticks = Ticks;
+            Properties.Settings.Default.panel_adv_thicks_count = ThicksCount;
             Properties.Settings.Default.Save();
         }
     }

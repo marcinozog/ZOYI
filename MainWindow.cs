@@ -69,6 +69,8 @@ namespace ZOYI
 
             tbarArcTicks.Value = Properties.Settings.Default.panel_adv_ticks;
             lblArcTicks.Text = tbarArcTicks.Value.ToString();
+            tbarThicksCount.Value = Properties.Settings.Default.panel_adv_thicks_count;
+            lblThicksCount.Text = tbarThicksCount.Value.ToString();
         }
 
         private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
@@ -348,8 +350,28 @@ namespace ZOYI
 
         private void tbarArcTicks_Scroll(object sender, EventArgs e)
         {
+            if(tbarArcTicks.Value < tbarThicksCount.Value)
+            {
+                tbarThicksCount.Value = tbarArcTicks.Value;
+                lblThicksCount.Text = tbarThicksCount.Value.ToString();
+                advancedDisplayPanel.setArcProgressBarThicksCount(tbarThicksCount.Value);
+            }
+
             advancedDisplayPanel.setArcProgressBarTicks(tbarArcTicks.Value);
             lblArcTicks.Text = tbarArcTicks.Value.ToString();
+        }
+
+        private void tbarThicksCount_Scroll(object sender, EventArgs e)
+        {
+            if(tbarThicksCount.Value > tbarArcTicks.Value)
+            {
+                tbarArcTicks.Value = tbarThicksCount.Value;
+                lblArcTicks.Text = tbarArcTicks.Value.ToString();
+                advancedDisplayPanel.setArcProgressBarTicks(tbarArcTicks.Value);
+            }
+
+            advancedDisplayPanel.setArcProgressBarThicksCount(tbarThicksCount.Value);
+            lblThicksCount.Text = tbarThicksCount.Value.ToString();
         }
     }
 }

@@ -214,5 +214,17 @@ namespace ZOYI.Properties {
                 this["panel_adv_ticks"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int panel_adv_thicks_count {
+            get {
+                return ((int)(this["panel_adv_thicks_count"]));
+            }
+            set {
+                this["panel_adv_thicks_count"] = value;
+            }
+        }
     }
 }
