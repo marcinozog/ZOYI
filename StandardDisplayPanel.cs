@@ -34,7 +34,23 @@ namespace ZOYI
         public StandardDisplayPanel(CheckBox chb)
         {
             InitializeComponent();
-            this.Location = new Point(Properties.Settings.Default.panel_std_form_pos_x, Properties.Settings.Default.panel_std_form_pos_y);
+
+            int xPos = Properties.Settings.Default.panel_std_form_pos_x;
+            int yPos = Properties.Settings.Default.panel_std_form_pos_y;
+
+            int screenWidth = Screen.PrimaryScreen.Bounds.Width;
+            int screenHeight = Screen.PrimaryScreen.Bounds.Height;
+
+            // prevent display panel outside screen
+            if (xPos > screenWidth || xPos < 0)
+                xPos = screenWidth / 3;
+
+            if (yPos > screenHeight || yPos < 0)
+                yPos = screenHeight / 3;
+
+            this.Location = new Point(xPos, yPos);
+
+            //this.Location = new Point(Properties.Settings.Default.panel_std_form_pos_x, Properties.Settings.Default.panel_std_form_pos_y);
 
             color_label = ColorTranslator.FromHtml(Properties.Settings.Default.panel_std_label_color);
             color_value = ColorTranslator.FromHtml(Properties.Settings.Default.panel_std_value_color);
