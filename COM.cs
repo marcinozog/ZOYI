@@ -21,10 +21,12 @@ namespace ZOYI
         {
             if (rbCOMparseStd.Checked)
                 COMparseMode = PARSE_MODE.STD;
+            else if (rbCOMparseExt.Checked)
+                COMparseMode = PARSE_MODE.EXT;
             else if (rbCOMparseLua.Checked)
             {
                 COMparseMode = PARSE_MODE.LUA;
-                mLua.LuaReload(luaPath);
+                frame_dec.LuaReload(luaPath);
             }
             else
                 COMparseMode = PARSE_MODE.RAW;
@@ -103,6 +105,8 @@ namespace ZOYI
         async Task readCom(CancellationToken token)
         {
             String buff = "";
+            byte[] bytesArray = new byte[18];
+            int indexBytesArray = 0;
 
             try
             {
@@ -117,6 +121,7 @@ namespace ZOYI
 
                         char c = (char)readByte;
 
+                        // RAW
                         if (COMparseMode == PARSE_MODE.RAW)
                         {
                             tbComOutput.Invoke(new Action(() =>
@@ -124,29 +129,54 @@ namespace ZOYI
                                 tbComOutput.AppendText(c.ToString());
                             }));
                         }
+                        // EXTENDED
+                        else if (COMparseMode == PARSE_MODE.EXT)
+                        {
+                            if ((byte)readByte == 0xFF)
+                            {
+                                indexBytesArray = 0;
+                                bytesArray[indexBytesArray++] = (byte)readByte;
+                            }
+                            while (indexBytesArray < 18)
+                            {
+                                bytesArray[indexBytesArray++] = (byte)await comx.readByteAsync();
+                            }
+                            frame_dec.DecodeExtended(bytesArray);
+
+                            tbComOutput.Invoke(new Action(() =>
+                            {
+                                tbComOutput.AppendText(
+                                    $"{frame_dec.Value} {frame_dec.Unit2} {frame_dec.Mode2} {frame_dec.Freq} {frame_dec.Mode1}");
+                                tbComOutput.AppendText(Environment.NewLine);
+                            }));
+
+                            standardDisplayPanel.Invoke(new Action(() =>
+                            {
+                                standardDisplayPanel.updatePanel(frame_dec);
+                            }));
+
+                            advancedDisplayPanel.Invoke(new Action(() =>
+                            {
+                                advancedDisplayPanel.updatePanel(frame_dec);
+                            }));
+                        }
+                        // STANDARD/LUA
                         else
                         {
                             buff += c;
 
                             if (c == ' ')
                             {
-                                // label, value, suffix
-                                //string[] lvs;
-                                //if (COMparseMode == PARSE_MODE.LUA)
-                                //    lvs = mLua.parseLabelValueSuffix_LUA(buff);
-                                //else
-                                //    lvs = parseLabelValueSuffix_STD(buff);
-
-                                if (COMparseMode == PARSE_MODE.LUA)
-                                    lvs.SetFromArray(mLua.parseLabelValueSuffix_LUA(buff));
-                                else
-                                    lvs.SetFromArray(parseLabelValueSuffix_STD(buff));
+                                if (COMparseMode == PARSE_MODE.STD)
+                                    frame_dec.DecodeStdandard(buff);
+                                else if (COMparseMode == PARSE_MODE.LUA)
+                                    frame_dec.DecodeLua(buff);
 
                                 buff = "";
 
                                 tbComOutput.Invoke(new Action(() =>
                                 {
-                                    tbComOutput.AppendText(lvs.Label + " : " + lvs.Value + " " + lvs.Suffix);
+                                    tbComOutput.AppendText($"{frame_dec.Label} : {frame_dec.Value} {frame_dec.Unit2}");
                                     tbComOutput.AppendText(Environment.NewLine);
                                 }));
 
@@ -156,12 +186,12 @@ namespace ZOYI
                                 {
                                     standardDisplayPanel.Invoke(new Action(() =>
                                     {
-                                        standardDisplayPanel.updatePanel(lvs);
+                                        standardDisplayPanel.updatePanel(frame_dec);
                                     }));
 
                                     advancedDisplayPanel.Invoke(new Action(() =>
                                     {
-                                        advancedDisplayPanel.updatePanel(lvs);
+                                        advancedDisplayPanel.updatePanel(frame_dec);
                                     }));
                                 }
                                 catch (Exception)
@@ -170,7 +200,7 @@ namespace ZOYI
                                 }
 
                                 if (bAlarmEnable)
-                                    alarmProcess(lvs.Label, lvs.Value);
+                                    alarmProcess(frame_dec.Label, frame_dec.Value);
                             }
                         }
                     }

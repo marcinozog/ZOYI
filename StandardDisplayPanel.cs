@@ -64,10 +64,11 @@ namespace ZOYI
         }
 
         // update label, value, suffix
-        public void updatePanel(LabelValueSuffix lvs)
+        public void updatePanel(FrameDecoder frame_decoder)
         {
-            lblLabel.Text = lvs.Label;
-            lblValue.Text = lvs.Value + " " + lvs.Suffix;
+            lblLabel.Text = frame_decoder.Label;
+            lblValue.Text = frame_decoder.Value + " " + frame_decoder.Unit2;
+            lblFreq.Text = frame_decoder.Freq + " " + frame_decoder.Mode1;
         }
 
         /*

@@ -34,10 +34,11 @@
             panelResize = new Panel();
             tableLayoutPanel = new TableLayoutPanel();
             contextMenuStdDisp = new ContextMenuStrip(components);
-            toolStripMenuItemValue = new ToolStripMenuItem();
             toolStripMenuItemLabel = new ToolStripMenuItem();
+            toolStripMenuItemValue = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             zamknijPaneToolStripMenuItem = new ToolStripMenuItem();
+            lblFreq = new Label();
             tableLayoutPanel.SuspendLayout();
             contextMenuStdDisp.SuspendLayout();
             SuspendLayout();
@@ -76,7 +77,7 @@
             // 
             panelResize.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             panelResize.Cursor = Cursors.SizeNWSE;
-            panelResize.Location = new Point(380, 125);
+            panelResize.Location = new Point(380, 160);
             panelResize.Name = "panelResize";
             panelResize.Size = new Size(33, 31);
             panelResize.TabIndex = 2;
@@ -103,17 +104,7 @@
             contextMenuStdDisp.ImageScalingSize = new Size(24, 24);
             contextMenuStdDisp.Items.AddRange(new ToolStripItem[] { toolStripMenuItemLabel, toolStripMenuItemValue, toolStripSeparator1, zamknijPaneToolStripMenuItem });
             contextMenuStdDisp.Name = "contextMenuStdDisp";
-            contextMenuStdDisp.Size = new Size(241, 139);
-            // 
-            // toolStripMenuItemValue
-            // 
-            toolStripMenuItemValue.Checked = true;
-            toolStripMenuItemValue.CheckOnClick = true;
-            toolStripMenuItemValue.CheckState = CheckState.Checked;
-            toolStripMenuItemValue.Name = "toolStripMenuItemValue";
-            toolStripMenuItemValue.Size = new Size(240, 32);
-            toolStripMenuItemValue.Text = "Value";
-            toolStripMenuItemValue.CheckedChanged += toolStripMenuItem_CheckedChanged;
+            contextMenuStdDisp.Size = new Size(195, 106);
             // 
             // toolStripMenuItemLabel
             // 
@@ -121,29 +112,49 @@
             toolStripMenuItemLabel.CheckOnClick = true;
             toolStripMenuItemLabel.CheckState = CheckState.Checked;
             toolStripMenuItemLabel.Name = "toolStripMenuItemLabel";
-            toolStripMenuItemLabel.Size = new Size(240, 32);
+            toolStripMenuItemLabel.Size = new Size(194, 32);
             toolStripMenuItemLabel.Text = "Label";
             toolStripMenuItemLabel.CheckedChanged += toolStripMenuItem_CheckedChanged;
+            // 
+            // toolStripMenuItemValue
+            // 
+            toolStripMenuItemValue.Checked = true;
+            toolStripMenuItemValue.CheckOnClick = true;
+            toolStripMenuItemValue.CheckState = CheckState.Checked;
+            toolStripMenuItemValue.Name = "toolStripMenuItemValue";
+            toolStripMenuItemValue.Size = new Size(194, 32);
+            toolStripMenuItemValue.Text = "Value";
+            toolStripMenuItemValue.CheckedChanged += toolStripMenuItem_CheckedChanged;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(237, 6);
+            toolStripSeparator1.Size = new Size(191, 6);
             // 
             // zamknijPaneToolStripMenuItem
             // 
             zamknijPaneToolStripMenuItem.Name = "zamknijPaneToolStripMenuItem";
-            zamknijPaneToolStripMenuItem.Size = new Size(240, 32);
+            zamknijPaneToolStripMenuItem.Size = new Size(194, 32);
             zamknijPaneToolStripMenuItem.Text = "Zamknij panel";
             zamknijPaneToolStripMenuItem.Click += zamknijPanelToolStripMenuItem_Click;
+            // 
+            // lblFreq
+            // 
+            lblFreq.AutoSize = true;
+            lblFreq.Location = new Point(15, 160);
+            lblFreq.Name = "lblFreq";
+            lblFreq.Size = new Size(59, 25);
+            lblFreq.TabIndex = 4;
+            lblFreq.Text = "label1";
             // 
             // StandardDisplayPanel
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Desktop;
-            ClientSize = new Size(413, 155);
+            ClientSize = new Size(413, 190);
             ContextMenuStrip = contextMenuStdDisp;
+            Controls.Add(lblFreq);
             Controls.Add(panelResize);
             Controls.Add(tableLayoutPanel);
             ForeColor = SystemColors.HighlightText;
@@ -158,6 +169,7 @@
             tableLayoutPanel.ResumeLayout(false);
             contextMenuStdDisp.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -171,5 +183,6 @@
         private ToolStripMenuItem toolStripMenuItemLabel;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem zamknijPaneToolStripMenuItem;
+        private Label lblFreq;
     }
 }

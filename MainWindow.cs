@@ -9,18 +9,19 @@ namespace ZOYI
         public enum PARSE_MODE
         {
             STD,
+            EXT,
             LUA,
             RAW
         }
 
-        LabelValueSuffix lvs;
+        FrameDecoder frame_dec;
 
         COMx comx;
         StandardDisplayPanel standardDisplayPanel;
         AdancedDisplayPanel advancedDisplayPanel;
 
         MLua mLua;
-        string luaPath = "MLua\\parse.lua";
+        string luaPath = "FrameDecoder\\parse_std.lua";
         Tools tools;
         string toolsPath = "Tools\\Tools.txt";
 
@@ -55,10 +56,9 @@ namespace ZOYI
             Directory.CreateDirectory("logs");
             cbAlarmLabel.SelectedItem = "Voltage";
 
-            lvs = new LabelValueSuffix();
+            frame_dec = new FrameDecoder();
 
             comx = new COMx();
-            mLua = new MLua();
 
             tools = new Tools(toolsPath, panelTools);
             tools.refreshTools();
@@ -114,79 +114,6 @@ namespace ZOYI
         private void btnSaveLog_Click(object sender, EventArgs e)
         {
             File.WriteAllText("logs\\" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".log", tbComOutput.Text);
-        }
-
-        /*
-         * 
-         * Parse data from COM port
-         * 
-         */
-        string[] parseLabelValueSuffix_STD(string buff)
-        {
-            string[] label_value = buff.Split(':');
-            // label, value, suffix
-            string[] ret = new string[3];
-            ret[1] = label_value[1];
-
-            switch (label_value[0])
-            {
-                case "Electricity":
-                    ret[0] = "Ampery";
-                    ret[2] += "A";
-                    break;
-                case "AElectricity":
-                    ret[0] = "Ampery";
-                    ret[2] = "A";
-                    break;
-                case "mAElectricity":
-                    ret[0] = "Ampery";
-                    ret[2] = "mA";
-                    break;
-                case "MOMResistance":
-                    ret[0] = "Rezystancja";
-                    ret[2] = "MΩ";
-                    break;
-                case "OMResistance":
-                    ret[0] = "Rezystancja";
-                    ret[2] = "Ω";
-                    break;
-                case "KOMResistance":
-                    ret[0] = "Rezystancja";
-                    ret[2] = "KΩ";
-                    break;
-                case "OMbeep":
-                    ret[0] = "Buzzer";
-                    ret[2] = "";
-                    break;
-                case "VDiode":
-                    ret[0] = "Tryb diody";
-                    ret[2] = "mV";
-                    if (!ret[1].Contains("0,"))
-                        ret[2] = "V";
-                    break;
-                case "nFCap":
-                    ret[0] = "Pojemność nF";
-                    ret[2] = "nF";
-                    break;
-                case "uFCap":
-                    ret[0] = "Pojemność uF";
-                    ret[2] = "uF";
-                    break;
-                case "mFCap":
-                    ret[0] = "Pojemność mF";
-                    ret[2] = "mF";
-                    break;
-                case "VVoltage":
-                    ret[0] = "DC Voltage";
-                    ret[2] = "DC";
-                    break;
-                default:
-                    ret[0] = label_value[0];
-                    ret[2] = "";
-                    break;
-            }
-
-            return ret;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -348,7 +275,7 @@ namespace ZOYI
 
         private void tbarArcTicks_Scroll(object sender, EventArgs e)
         {
-            if(tbarArcTicks.Value < tbarThicksCount.Value)
+            if (tbarArcTicks.Value < tbarThicksCount.Value)
             {
                 tbarThicksCount.Value = tbarArcTicks.Value;
                 lblThicksCount.Text = tbarThicksCount.Value.ToString();
@@ -361,7 +288,7 @@ namespace ZOYI
 
         private void tbarThicksCount_Scroll(object sender, EventArgs e)
         {
-            if(tbarThicksCount.Value > tbarArcTicks.Value)
+            if (tbarThicksCount.Value > tbarArcTicks.Value)
             {
                 tbarArcTicks.Value = tbarThicksCount.Value;
                 lblArcTicks.Text = tbarArcTicks.Value.ToString();

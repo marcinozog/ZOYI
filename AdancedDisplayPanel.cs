@@ -77,12 +77,12 @@ namespace ZOYI
         }
 
         // update label, value, suffix
-        public void updatePanel(LabelValueSuffix lvs)
+        public void updatePanel(FrameDecoder frame_decode)
         {
-            lblLabel.Text = lvs.Label;
-            lblValue.Text = lvs.Value + " " + lvs.Suffix;
+            lblLabel.Text = frame_decode.Label;
+            lblValue.Text = frame_decode.Value + " " + frame_decode.Unit2;
 
-            float val = float.Parse(lvs.Value.Replace(',', '.'), CultureInfo.InvariantCulture.NumberFormat);
+            float val = float.Parse(frame_decode.Value.Replace(',', '.'), CultureInfo.InvariantCulture.NumberFormat);
             //var valOK = float.TryParse(lvs.Value, CultureInfo.InvariantCulture.NumberFormat, out val);
             arcProgressBar1.Value = val;
         }
