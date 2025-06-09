@@ -135,7 +135,8 @@ namespace ZOYI
 
         private void DecodeDigits(byte[] frame)
         {
-            Value = "";
+            // space for minus/avoid shifting values
+            Value = " ";
 
             if (new ArraySegment<byte>(frame, 1, 5).SequenceEqual(OL))
             {
@@ -211,13 +212,17 @@ namespace ZOYI
                     break;
             }
 
-            
+            if (Unit2 == "F")
+            {
+                Unit2 = Unit1 + Unit2;
+            }
         }
 
         private void DecodeMode(byte[] frame)
         {
             Mode1 = "";
             Mode2 = "";
+            Freq_unit = "";
 
             byte mode1 = frame[10];
             byte mode2 = frame[11];
@@ -234,8 +239,7 @@ namespace ZOYI
 
             if ((mode2 & DC) > 0)
                 Mode2 += " DC";
-
-            if ((mode2 & AC) > 0)
+            else if ((mode2 & AC) > 0)
                 Mode2 += " AC";
 
             if ((mode2 & HOLD) > 0)
@@ -249,17 +253,15 @@ namespace ZOYI
             byte DIODE = 0x80;
 
             if ((mode1 & Hz) > 0)
-                Mode1 = "HZ";
+                Freq_unit = "HZ";
             else if ((mode1 & kHz) > 0)
-                Mode1 = "kHz";
+                Freq_unit = "kHz";
             else if ((mode1 & RELATIVE_M) > 0)
                 Mode1 = "RELATIVE";
             else if ((mode1 & CONTINUE) > 0)
                 Mode1 = "CONTINUE";
             else if ((mode1 & DIODE) > 0)
                 Mode1 = "DIODE";
-            else
-                Mode1 = "";
         }
 
         private void DecodeFreq(byte[] frame)

@@ -11,7 +11,7 @@ namespace ZOYI
     public partial class MainWindow : Form
     {
         String? COMportName = "";
-        PARSE_MODE COMparseMode = PARSE_MODE.STD;
+        PARSE_MODE COMparseMode = PARSE_MODE.EXT;
         CancellationTokenSource ctsReadCOM;
 
         /*
@@ -139,6 +139,7 @@ namespace ZOYI
                             }
                             while (indexBytesArray < 18)
                             {
+                                Console.WriteLine(indexBytesArray);
                                 bytesArray[indexBytesArray++] = (byte)await comx.readByteAsync();
                             }
                             frame_dec.DecodeExtended(bytesArray);

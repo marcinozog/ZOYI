@@ -44,6 +44,7 @@
             tabPageCOM = new TabPage();
             chbAdvancedPanel = new CheckBox();
             groupBox2 = new GroupBox();
+            rbCOMparseExt = new RadioButton();
             button2 = new Button();
             rbCOMparseRaw = new RadioButton();
             rbCOMparseLua = new RadioButton();
@@ -84,7 +85,6 @@
             lblComConnStatus = new Label();
             lblBTSPPconnStatus = new Label();
             label9 = new Label();
-            rbCOMparseExt = new RadioButton();
             tabControl1.SuspendLayout();
             tabPageCOM.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -174,7 +174,7 @@
             tbCOMBaudrate.Name = "tbCOMBaudrate";
             tbCOMBaudrate.Size = new Size(90, 31);
             tbCOMBaudrate.TabIndex = 8;
-            tbCOMBaudrate.Text = "115200";
+            tbCOMBaudrate.Text = "9600";
             tbCOMBaudrate.TextAlign = HorizontalAlignment.Center;
             // 
             // btnClearLog
@@ -299,6 +299,19 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Tryb wyświetlania";
             // 
+            // rbCOMparseExt
+            // 
+            rbCOMparseExt.AutoSize = true;
+            rbCOMparseExt.Checked = true;
+            rbCOMparseExt.Location = new Point(6, 82);
+            rbCOMparseExt.Name = "rbCOMparseExt";
+            rbCOMparseExt.Size = new Size(110, 29);
+            rbCOMparseExt.TabIndex = 16;
+            rbCOMparseExt.TabStop = true;
+            rbCOMparseExt.Text = "Extended";
+            rbCOMparseExt.UseVisualStyleBackColor = true;
+            rbCOMparseExt.CheckedChanged += rbComParse_CheckedChanged;
+            // 
             // button2
             // 
             button2.BackColor = SystemColors.Desktop;
@@ -321,7 +334,7 @@
             rbCOMparseRaw.TabIndex = 14;
             rbCOMparseRaw.Text = "RAW";
             rbCOMparseRaw.UseVisualStyleBackColor = true;
-            rbCOMparseRaw.CheckedChanged += this.rbComParse_CheckedChanged;
+            rbCOMparseRaw.CheckedChanged += rbComParse_CheckedChanged;
             // 
             // rbCOMparseLua
             // 
@@ -332,20 +345,18 @@
             rbCOMparseLua.TabIndex = 13;
             rbCOMparseLua.Text = "Lua (std)";
             rbCOMparseLua.UseVisualStyleBackColor = true;
-            rbCOMparseLua.CheckedChanged += this.rbComParse_CheckedChanged;
+            rbCOMparseLua.CheckedChanged += rbComParse_CheckedChanged;
             // 
             // rbCOMparseStd
             // 
             rbCOMparseStd.AutoSize = true;
-            rbCOMparseStd.Checked = true;
             rbCOMparseStd.Location = new Point(6, 47);
             rbCOMparseStd.Name = "rbCOMparseStd";
             rbCOMparseStd.Size = new Size(108, 29);
             rbCOMparseStd.TabIndex = 12;
-            rbCOMparseStd.TabStop = true;
             rbCOMparseStd.Text = "Standard";
             rbCOMparseStd.UseVisualStyleBackColor = true;
-            rbCOMparseStd.CheckedChanged += this.rbComParse_CheckedChanged;
+            rbCOMparseStd.CheckedChanged += rbComParse_CheckedChanged;
             // 
             // tabPage2
             // 
@@ -731,18 +742,6 @@
             label9.Size = new Size(79, 25);
             label9.TabIndex = 19;
             label9.Text = "BT (SPP):";
-            // 
-            // rbCOMparseExt
-            // 
-            rbCOMparseExt.AutoSize = true;
-            rbCOMparseExt.Location = new Point(6, 82);
-            rbCOMparseExt.Name = "rbCOMparseExt";
-            rbCOMparseExt.Size = new Size(110, 29);
-            rbCOMparseExt.TabIndex = 16;
-            rbCOMparseExt.TabStop = true;
-            rbCOMparseExt.Text = "Extended";
-            rbCOMparseExt.UseVisualStyleBackColor = true;
-            rbCOMparseExt.CheckedChanged += this.rbComParse_CheckedChanged;
             // 
             // MainWindow
             // 

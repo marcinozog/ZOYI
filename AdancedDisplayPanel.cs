@@ -82,8 +82,10 @@ namespace ZOYI
             lblLabel.Text = frame_decode.Label;
             lblValue.Text = frame_decode.Value + " " + frame_decode.Unit2;
 
-            float val = float.Parse(frame_decode.Value.Replace(',', '.'), CultureInfo.InvariantCulture.NumberFormat);
-            //var valOK = float.TryParse(lvs.Value, CultureInfo.InvariantCulture.NumberFormat, out val);
+            float val = 0;
+
+            //float val = float.Parse(frame_decode.Value.Replace(',', '.'), CultureInfo.InvariantCulture.NumberFormat);
+            float.TryParse(frame_decode.Value, CultureInfo.InvariantCulture.NumberFormat, out val);
             arcProgressBar1.Value = val;
         }
 
