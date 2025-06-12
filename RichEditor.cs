@@ -19,7 +19,7 @@ namespace ZOYI
             TOOLS
         }
 
-        MLua? mLua;
+        FrameDecoder frame_decoder;
         Tools? tools;
 
         private string filePath = "";
@@ -37,10 +37,10 @@ namespace ZOYI
         /*
          * RichEditor(MLua mlua)
          */
-        public RichEditor(MLua mlua)
+        public RichEditor(FrameDecoder frm_decoder)
         {
             InitializeComponent();
-            this.mLua = mlua;
+            frame_decoder = frm_decoder;
         }
 
         /*
@@ -51,7 +51,7 @@ namespace ZOYI
             switch (enc)
             {
                 case ENCODING.LUA:
-                    mLua!.luaHighlightRichTextBox(text, rtbEditor);
+                    frame_decoder!.luaHighlightRichTextBox(text, rtbEditor);
                     break;
                 case ENCODING.TOOLS:
                     rtbEditor.Text = text;

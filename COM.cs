@@ -37,7 +37,7 @@ namespace ZOYI
          */
         private async void btnCOMluaEdit_Click(object sender, EventArgs e)
         {
-            RichEditor re = new RichEditor(mLua);
+            RichEditor re = new RichEditor(frame_dec);
             re.loadFile(luaPath, RichEditor.ENCODING.LUA);
 
             string result = await re.AsyncEdit();
