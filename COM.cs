@@ -147,7 +147,7 @@ namespace ZOYI
                             tbComOutput.Invoke(new Action(() =>
                             {
                                 tbComOutput.AppendText(
-                                    $"{frame_dec.Value} {frame_dec.Unit2} {frame_dec.Mode2} {frame_dec.Freq} {frame_dec.Mode1}");
+                                    $"{frame_dec.Value} {frame_dec.Unit} {frame_dec.Mode2} {frame_dec.Freq} {frame_dec.Mode1}");
                                 tbComOutput.AppendText(Environment.NewLine);
                             }));
 
@@ -177,7 +177,7 @@ namespace ZOYI
 
                                 tbComOutput.Invoke(new Action(() =>
                                 {
-                                    tbComOutput.AppendText($"{frame_dec.Label} : {frame_dec.Value} {frame_dec.Unit2}");
+                                    tbComOutput.AppendText($"{frame_dec.Label} : {frame_dec.Value} {frame_dec.Unit}");
                                     tbComOutput.AppendText(Environment.NewLine);
                                 }));
 

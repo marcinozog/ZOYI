@@ -26,9 +26,9 @@ namespace ZOYI
         // STD
         public string? Label { get; private set; }
         // EXT
-        public string? Unit1 { get; private set; }
+        public string? Cap_unit { get; private set; }
         // STD, EXT
-        public string? Unit2 { get; private set; }
+        public string? Unit { get; private set; }
         // EXT
         public string? Mode1 { get; private set; }
         // EXT
@@ -115,7 +115,7 @@ namespace ZOYI
             }
 
             Label = ret[0];
-            Unit2 = ret[1];
+            Unit = ret[1];
         }
 
         /*
@@ -165,8 +165,8 @@ namespace ZOYI
 
         private void DecodeUnit(byte[] frame)
         {
-            Unit1 = "";
-            Unit2 = "";
+            Cap_unit = "";
+            Unit = "";
 
             byte unit1 = frame[15];
             byte unit2 = frame[16];
@@ -174,47 +174,47 @@ namespace ZOYI
             switch (unit1)
             {
                 case 0x40:
-                    Unit1 = "n";
+                    Cap_unit = "n";
                     break;
                 case 0x80:
-                    Unit1 = "u";
+                    Cap_unit = "u";
                     break;
                 case 0x0C:
-                    Unit1 = "m";
+                    Cap_unit = "m";
                     break;
             }
 
             switch (unit2)
             {
                 case 0x01:
-                    Unit2 = "A";
+                    Unit = "A";
                     break;
                 case 0x02:
-                    Unit2 = "V";
+                    Unit = "V";
                     break;
                 case 0x04:
-                    Unit2 = "F";
+                    Unit = "F";
                     break;
                 case 0x09:
-                    Unit2 = "mA";
+                    Unit = "mA";
                     break;
                 case 0x0A:
-                    Unit2 = "mV";
+                    Unit = "mV";
                     break;
                 case 0x40:
-                    Unit2 = "Ω";
+                    Unit = "Ω";
                     break;
                 case 0x50:
-                    Unit2 = "MΩ";
+                    Unit = "MΩ";
                     break;
                 case 0x60:
-                    Unit2 = "kΩ";
+                    Unit = "kΩ";
                     break;
             }
 
-            if (Unit2 == "F")
+            if (Unit == "F")
             {
-                Unit2 = Unit1 + Unit2;
+                Unit = Cap_unit + Unit;
             }
         }
 
@@ -306,8 +306,8 @@ namespace ZOYI
             {
                 Value = this.Value,
                 Label = this.Label,
-                Unit1 = this.Unit1,
-                Unit2 = this.Unit2,
+                Unit = this.Unit,
+                Cap_unit = this.Cap_unit,
                 Mode1 = this.Mode1,
                 Mode2 = this.Mode2,
                 Freq = this.Freq,
@@ -327,7 +327,7 @@ namespace ZOYI
 
             Label = ret[0];
             Value = ret[1];
-            Unit2 = ret[2];
+            Unit = ret[2];
         }
 
         public void LuaReload(String path)

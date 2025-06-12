@@ -80,7 +80,7 @@ namespace ZOYI
         public void updatePanel(FrameDecoder frame_decode)
         {
             lblLabel.Text = frame_decode.Label;
-            lblValue.Text = frame_decode.Value + " " + frame_decode.Unit2;
+            lblValue.Text = frame_decode.Value + " " + frame_decode.Unit;
 
             float val = 0;
 

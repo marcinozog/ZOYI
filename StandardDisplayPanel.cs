@@ -67,8 +67,9 @@ namespace ZOYI
         public void updatePanel(FrameDecoder frame_decoder)
         {
             lblLabel.Text = frame_decoder.Label;
-            lblValue.Text = frame_decoder.Value + " " + frame_decoder.Unit2;
-            lblFreq.Text = frame_decoder.Freq + " " + frame_decoder.Mode1;
+            lblValue.Text = frame_decoder.Value + " " + frame_decoder.Unit;
+            lblFreq.Text = frame_decoder.Freq + " " + frame_decoder.Freq_unit;
+            lblMode.Text = frame_decoder.Mode1;
         }
 
         /*

@@ -39,6 +39,7 @@
             toolStripSeparator1 = new ToolStripSeparator();
             zamknijPaneToolStripMenuItem = new ToolStripMenuItem();
             lblFreq = new Label();
+            lblMode = new Label();
             tableLayoutPanel.SuspendLayout();
             contextMenuStdDisp.SuspendLayout();
             SuspendLayout();
@@ -143,9 +144,18 @@
             lblFreq.AutoSize = true;
             lblFreq.Location = new Point(15, 160);
             lblFreq.Name = "lblFreq";
-            lblFreq.Size = new Size(59, 25);
+            lblFreq.Size = new Size(40, 25);
             lblFreq.TabIndex = 4;
-            lblFreq.Text = "label1";
+            lblFreq.Text = "----";
+            // 
+            // lblMode
+            // 
+            lblMode.AutoSize = true;
+            lblMode.Location = new Point(164, 160);
+            lblMode.Name = "lblMode";
+            lblMode.Size = new Size(40, 25);
+            lblMode.TabIndex = 5;
+            lblMode.Text = "----";
             // 
             // StandardDisplayPanel
             // 
@@ -154,6 +164,7 @@
             BackColor = SystemColors.Desktop;
             ClientSize = new Size(413, 190);
             ContextMenuStrip = contextMenuStdDisp;
+            Controls.Add(lblMode);
             Controls.Add(lblFreq);
             Controls.Add(panelResize);
             Controls.Add(tableLayoutPanel);
@@ -184,5 +195,6 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem zamknijPaneToolStripMenuItem;
         private Label lblFreq;
+        private Label lblMode;
     }
 }
