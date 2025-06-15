@@ -226,5 +226,72 @@ namespace ZOYI.Properties {
                 this["panel_adv_thicks_count"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Font panel_adv_label_font {
+            get {
+                return ((global::System.Drawing.Font)(this["panel_adv_label_font"]));
+            }
+            set {
+                this["panel_adv_label_font"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Font panel_adv_value_font {
+            get {
+                return ((global::System.Drawing.Font)(this["panel_adv_value_font"]));
+            }
+            set {
+                this["panel_adv_value_font"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Font panel_std_label_font {
+            get {
+                return ((global::System.Drawing.Font)(this["panel_std_label_font"]));
+            }
+            set {
+                this["panel_std_label_font"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Font panel_std_value_font {
+            get {
+                return ((global::System.Drawing.Font)(this["panel_std_value_font"]));
+            }
+            set {
+                this["panel_std_value_font"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Font panel_std_footer_font {
+            get {
+                return ((global::System.Drawing.Font)(this["panel_std_footer_font"]));
+            }
+            set {
+                this["panel_std_footer_font"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string panel_std_footer_color {
+            get {
+                return ((string)(this["panel_std_footer_color"]));
+            }
+            set {
+                this["panel_std_footer_color"] = value;
+            }
+        }
     }
 }

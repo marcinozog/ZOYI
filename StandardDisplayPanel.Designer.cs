@@ -35,11 +35,18 @@
             tableLayoutPanel = new TableLayoutPanel();
             contextMenuStdDisp = new ContextMenuStrip(components);
             toolStripMenuItemLabel = new ToolStripMenuItem();
+            toolStripMenuItemFontLabel = new ToolStripMenuItem();
+            toolStripSeparator2 = new ToolStripSeparator();
             toolStripMenuItemValue = new ToolStripMenuItem();
+            toolStripMenuItemFontValue = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
+            toolStripMenuItemFooter = new ToolStripMenuItem();
+            toolStripSeparator3 = new ToolStripSeparator();
             zamknijPaneToolStripMenuItem = new ToolStripMenuItem();
             lblFreq = new Label();
             lblMode = new Label();
+            fontDialog = new FontDialog();
+            toolStripMenuItemFontFooter = new ToolStripMenuItem();
             tableLayoutPanel.SuspendLayout();
             contextMenuStdDisp.SuspendLayout();
             SuspendLayout();
@@ -103,9 +110,9 @@
             // contextMenuStdDisp
             // 
             contextMenuStdDisp.ImageScalingSize = new Size(24, 24);
-            contextMenuStdDisp.Items.AddRange(new ToolStripItem[] { toolStripMenuItemLabel, toolStripMenuItemValue, toolStripSeparator1, zamknijPaneToolStripMenuItem });
+            contextMenuStdDisp.Items.AddRange(new ToolStripItem[] { toolStripMenuItemLabel, toolStripMenuItemFontLabel, toolStripSeparator2, toolStripMenuItemValue, toolStripMenuItemFontValue, toolStripSeparator1, toolStripMenuItemFooter, toolStripMenuItemFontFooter, toolStripSeparator3, zamknijPaneToolStripMenuItem });
             contextMenuStdDisp.Name = "contextMenuStdDisp";
-            contextMenuStdDisp.Size = new Size(195, 106);
+            contextMenuStdDisp.Size = new Size(241, 279);
             // 
             // toolStripMenuItemLabel
             // 
@@ -113,9 +120,21 @@
             toolStripMenuItemLabel.CheckOnClick = true;
             toolStripMenuItemLabel.CheckState = CheckState.Checked;
             toolStripMenuItemLabel.Name = "toolStripMenuItemLabel";
-            toolStripMenuItemLabel.Size = new Size(194, 32);
-            toolStripMenuItemLabel.Text = "Label";
+            toolStripMenuItemLabel.Size = new Size(240, 32);
+            toolStripMenuItemLabel.Text = "Etykieta";
             toolStripMenuItemLabel.CheckedChanged += toolStripMenuItem_CheckedChanged;
+            // 
+            // toolStripMenuItemFontLabel
+            // 
+            toolStripMenuItemFontLabel.Name = "toolStripMenuItemFontLabel";
+            toolStripMenuItemFontLabel.Size = new Size(240, 32);
+            toolStripMenuItemFontLabel.Text = "Czcionka";
+            toolStripMenuItemFontLabel.Click += toolStripMenuItemFontLabel_Click;
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(237, 6);
             // 
             // toolStripMenuItemValue
             // 
@@ -123,19 +142,41 @@
             toolStripMenuItemValue.CheckOnClick = true;
             toolStripMenuItemValue.CheckState = CheckState.Checked;
             toolStripMenuItemValue.Name = "toolStripMenuItemValue";
-            toolStripMenuItemValue.Size = new Size(194, 32);
+            toolStripMenuItemValue.Size = new Size(240, 32);
             toolStripMenuItemValue.Text = "Value";
             toolStripMenuItemValue.CheckedChanged += toolStripMenuItem_CheckedChanged;
+            // 
+            // toolStripMenuItemFontValue
+            // 
+            toolStripMenuItemFontValue.Name = "toolStripMenuItemFontValue";
+            toolStripMenuItemFontValue.Size = new Size(240, 32);
+            toolStripMenuItemFontValue.Text = "Czcionka";
+            toolStripMenuItemFontValue.Click += toolStripMenuItemFontValue_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(191, 6);
+            toolStripSeparator1.Size = new Size(237, 6);
+            // 
+            // toolStripMenuItemFooter
+            // 
+            toolStripMenuItemFooter.Checked = true;
+            toolStripMenuItemFooter.CheckOnClick = true;
+            toolStripMenuItemFooter.CheckState = CheckState.Checked;
+            toolStripMenuItemFooter.Name = "toolStripMenuItemFooter";
+            toolStripMenuItemFooter.Size = new Size(240, 32);
+            toolStripMenuItemFooter.Text = "Stopka";
+            toolStripMenuItemFooter.CheckedChanged += toolStripMenuItem_CheckedChanged;
+            // 
+            // toolStripSeparator3
+            // 
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(237, 6);
             // 
             // zamknijPaneToolStripMenuItem
             // 
             zamknijPaneToolStripMenuItem.Name = "zamknijPaneToolStripMenuItem";
-            zamknijPaneToolStripMenuItem.Size = new Size(194, 32);
+            zamknijPaneToolStripMenuItem.Size = new Size(240, 32);
             zamknijPaneToolStripMenuItem.Text = "Zamknij panel";
             zamknijPaneToolStripMenuItem.Click += zamknijPanelToolStripMenuItem_Click;
             // 
@@ -156,6 +197,13 @@
             lblMode.Size = new Size(40, 25);
             lblMode.TabIndex = 5;
             lblMode.Text = "----";
+            // 
+            // toolStripMenuItemFontFooter
+            // 
+            toolStripMenuItemFontFooter.Name = "toolStripMenuItemFontFooter";
+            toolStripMenuItemFontFooter.Size = new Size(240, 32);
+            toolStripMenuItemFontFooter.Text = "Czcionka";
+            toolStripMenuItemFontFooter.Click += toolStripMenuItemFontFooter_Click;
             // 
             // StandardDisplayPanel
             // 
@@ -196,5 +244,12 @@
         private ToolStripMenuItem zamknijPaneToolStripMenuItem;
         private Label lblFreq;
         private Label lblMode;
+        private ToolStripMenuItem toolStripMenuItemFontLabel;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem toolStripMenuItemFontValue;
+        private FontDialog fontDialog;
+        private ToolStripMenuItem toolStripMenuItemFooter;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem toolStripMenuItemFontFooter;
     }
 }
