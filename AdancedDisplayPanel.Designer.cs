@@ -44,6 +44,8 @@
             toolStripSeparator1 = new ToolStripSeparator();
             zamknijPanelToolStripMenuItem = new ToolStripMenuItem();
             fontDialog = new FontDialog();
+            lblFreq = new Label();
+            lblMode = new Label();
             contextMenuAdvDisp.SuspendLayout();
             SuspendLayout();
             // 
@@ -192,6 +194,24 @@
             zamknijPanelToolStripMenuItem.Text = "Zamknij panel";
             zamknijPanelToolStripMenuItem.Click += zamknijPanelToolStripMenuItem_Click;
             // 
+            // lblFreq
+            // 
+            lblFreq.AutoSize = true;
+            lblFreq.Location = new Point(12, 173);
+            lblFreq.Name = "lblFreq";
+            lblFreq.Size = new Size(40, 25);
+            lblFreq.TabIndex = 5;
+            lblFreq.Text = "----";
+            // 
+            // lblMode
+            // 
+            lblMode.AutoSize = true;
+            lblMode.Location = new Point(294, 178);
+            lblMode.Name = "lblMode";
+            lblMode.Size = new Size(40, 25);
+            lblMode.TabIndex = 6;
+            lblMode.Text = "----";
+            // 
             // AdancedDisplayPanel
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -199,6 +219,8 @@
             BackColor = SystemColors.Desktop;
             ClientSize = new Size(426, 203);
             ContextMenuStrip = contextMenuAdvDisp;
+            Controls.Add(lblMode);
+            Controls.Add(lblFreq);
             Controls.Add(lblLabel);
             Controls.Add(lblValue);
             Controls.Add(panelResize);
@@ -214,6 +236,7 @@
             MouseUp += displayPanel_MouseUp;
             contextMenuAdvDisp.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -233,5 +256,7 @@
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem toolStripMenuItemLabelFont;
         private FontDialog fontDialog;
+        private Label lblFreq;
+        private Label lblMode;
     }
 }

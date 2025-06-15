@@ -82,19 +82,21 @@ namespace ZOYI
 
             chbShowHide = chb;
 
-            lblValue.Parent = arcProgressBar1;
+            //lblValue.Parent = arcProgressBar1;
         }
 
         // update label, value, suffix
-        public void updatePanel(FrameDecoder frame_decode)
+        public void updatePanel(FrameDecoder frame_decoder)
         {
-            lblLabel.Text = frame_decode.Label;
-            lblValue.Text = frame_decode.Value + " " + frame_decode.Unit;
+            lblLabel.Text = frame_decoder.Label;
+            lblValue.Text = frame_decoder.Value + " " + frame_decoder.Unit;
+            lblFreq.Text = frame_decoder.Freq + " " + frame_decoder.Freq_unit;
+            lblMode.Text = frame_decoder.Mode1;
 
             float val = 0;
 
             //float val = float.Parse(frame_decode.Value.Replace(',', '.'), CultureInfo.InvariantCulture.NumberFormat);
-            float.TryParse(frame_decode.Value, CultureInfo.InvariantCulture.NumberFormat, out val);
+            float.TryParse(frame_decoder.Value, CultureInfo.InvariantCulture.NumberFormat, out val);
             arcProgressBar1.Value = val;
         }
 
