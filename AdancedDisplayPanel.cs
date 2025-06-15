@@ -27,8 +27,12 @@ namespace ZOYI
         Size szCurrentFormSize = Size.Empty;
         Size szCurrentTableSize = Size.Empty;
 
+        Font font_label;
+        Font font_value;
+        //Font font_footer;
         Color color_label;
         Color color_value;
+        Color color_footer;
         Color color_bg;
 
         int Ticks = 0;
@@ -57,10 +61,15 @@ namespace ZOYI
 
             //this.Location = new Point(Properties.Settings.Default.panel_adv_form_pos_x, Properties.Settings.Default.panel_adv_form_pos_y);
 
+            font_label = Properties.Settings.Default.panel_adv_label_font;
+            font_value = Properties.Settings.Default.panel_adv_value_font;
+            //font_footer = Properties.Settings.Default.panel_adv_footer_font;
             color_label = ColorTranslator.FromHtml(Properties.Settings.Default.panel_adv_label_color);
             color_value = ColorTranslator.FromHtml(Properties.Settings.Default.panel_adv_value_color);
             color_bg = ColorTranslator.FromHtml(Properties.Settings.Default.panel_adv_bg_color);
 
+            lblLabel.Font = font_label;
+            lblValue.Font = font_value;
             lblLabel.ForeColor = color_label;
             lblValue.ForeColor = color_value;
             this.BackColor = color_bg;
@@ -239,6 +248,40 @@ namespace ZOYI
         {
             this.Hide();
             chbShowHide.Checked = false;
+        }
+
+        private void toolStripMenuItemLabelFont_Click(object sender, EventArgs e)
+        {
+            fontDialog.ShowColor = true;
+            fontDialog.Font = lblLabel.Font;
+            fontDialog.Color = lblLabel.ForeColor;
+
+            if (fontDialog.ShowDialog() != DialogResult.Cancel)
+            {
+                lblLabel.Font = fontDialog.Font;
+                lblLabel.ForeColor = fontDialog.Color;
+
+                Properties.Settings.Default.panel_adv_label_font = lblLabel.Font;
+                Properties.Settings.Default.panel_adv_label_color = ColorTranslator.ToHtml(lblLabel.ForeColor);
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void toolStripMenuItemValueFont_Click(object sender, EventArgs e)
+        {
+            fontDialog.ShowColor = true;
+            fontDialog.Font = lblValue.Font;
+            fontDialog.Color = lblValue.ForeColor;
+
+            if (fontDialog.ShowDialog() != DialogResult.Cancel)
+            {
+                lblValue.Font = fontDialog.Font;
+                lblValue.ForeColor = fontDialog.Color;
+
+                Properties.Settings.Default.panel_adv_value_font = lblValue.Font;
+                Properties.Settings.Default.panel_adv_value_color = ColorTranslator.ToHtml(lblValue.ForeColor);
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }

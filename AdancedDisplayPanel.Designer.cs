@@ -35,10 +35,15 @@
             arcProgressBar1 = new ArcProgressBar();
             contextMenuAdvDisp = new ContextMenuStrip(components);
             toolStripMenuItemArcBar = new ToolStripMenuItem();
+            toolStripSeparator2 = new ToolStripSeparator();
             toolStripMenuItemValue = new ToolStripMenuItem();
+            toolStripMenuItemValueFont = new ToolStripMenuItem();
+            toolStripSeparator3 = new ToolStripSeparator();
             toolStripMenuItemLabel = new ToolStripMenuItem();
+            toolStripMenuItemLabelFont = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             zamknijPanelToolStripMenuItem = new ToolStripMenuItem();
+            fontDialog = new FontDialog();
             contextMenuAdvDisp.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,10 +53,9 @@
             lblLabel.BackColor = Color.Transparent;
             lblLabel.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             lblLabel.ForeColor = SystemColors.HighlightText;
-            lblLabel.Location = new Point(72, 77);
-            lblLabel.Margin = new Padding(2, 0, 2, 0);
+            lblLabel.Location = new Point(103, 128);
             lblLabel.Name = "lblLabel";
-            lblLabel.Size = new Size(148, 30);
+            lblLabel.Size = new Size(211, 50);
             lblLabel.TabIndex = 0;
             lblLabel.Text = "ZOYI 703s";
             lblLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -65,10 +69,9 @@
             lblValue.BackColor = Color.Transparent;
             lblValue.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             lblValue.ForeColor = SystemColors.HighlightText;
-            lblValue.Location = new Point(55, 42);
-            lblValue.Margin = new Padding(2, 0, 2, 0);
+            lblValue.Location = new Point(79, 70);
             lblValue.Name = "lblValue";
-            lblValue.Size = new Size(185, 35);
+            lblValue.Size = new Size(264, 58);
             lblValue.TabIndex = 1;
             lblValue.Text = "-0.0004 DC";
             lblValue.TextAlign = ContentAlignment.MiddleCenter;
@@ -81,10 +84,9 @@
             panelResize.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             panelResize.Cursor = Cursors.SizeNWSE;
             panelResize.Enabled = false;
-            panelResize.Location = new Point(274, 104);
-            panelResize.Margin = new Padding(2, 2, 2, 2);
+            panelResize.Location = new Point(391, 173);
             panelResize.Name = "panelResize";
-            panelResize.Size = new Size(23, 19);
+            panelResize.Size = new Size(33, 32);
             panelResize.TabIndex = 2;
             panelResize.MouseDown += panelResize_MouseDown;
             panelResize.MouseMove += panelResize_MouseMove;
@@ -101,14 +103,13 @@
             arcProgressBar1.ForeColor = Color.DimGray;
             arcProgressBar1.LineColor = Color.DimGray;
             arcProgressBar1.LineWidth = 1;
-            arcProgressBar1.Location = new Point(2, -1);
+            arcProgressBar1.Location = new Point(3, -2);
             arcProgressBar1.MajorThicksCount = 5L;
-            arcProgressBar1.Margin = new Padding(2, 2, 2, 2);
             arcProgressBar1.MaximumTick = 100F;
-            arcProgressBar1.MinimumSize = new Size(70, 24);
+            arcProgressBar1.MinimumSize = new Size(100, 40);
             arcProgressBar1.Name = "arcProgressBar1";
             arcProgressBar1.ProgressShape = ArcProgressBar._ProgressShape.Flat;
-            arcProgressBar1.Size = new Size(295, 91);
+            arcProgressBar1.Size = new Size(421, 152);
             arcProgressBar1.TabIndex = 4;
             arcProgressBar1.Text = "arcProgressBar1";
             arcProgressBar1.TextMode = ArcProgressBar._TextMode.None;
@@ -120,10 +121,10 @@
             // contextMenuAdvDisp
             // 
             contextMenuAdvDisp.ImageScalingSize = new Size(24, 24);
-            contextMenuAdvDisp.Items.AddRange(new ToolStripItem[] { toolStripMenuItemArcBar, toolStripMenuItemValue, toolStripMenuItemLabel, toolStripSeparator1, zamknijPanelToolStripMenuItem });
+            contextMenuAdvDisp.Items.AddRange(new ToolStripItem[] { toolStripMenuItemArcBar, toolStripSeparator2, toolStripMenuItemValue, toolStripMenuItemValueFont, toolStripSeparator3, toolStripMenuItemLabel, toolStripMenuItemLabelFont, toolStripSeparator1, zamknijPanelToolStripMenuItem });
             contextMenuAdvDisp.Name = "contextMenuAdvDisp";
             contextMenuAdvDisp.ShowCheckMargin = true;
-            contextMenuAdvDisp.Size = new Size(172, 98);
+            contextMenuAdvDisp.Size = new Size(217, 214);
             // 
             // toolStripMenuItemArcBar
             // 
@@ -131,9 +132,14 @@
             toolStripMenuItemArcBar.CheckOnClick = true;
             toolStripMenuItemArcBar.CheckState = CheckState.Checked;
             toolStripMenuItemArcBar.Name = "toolStripMenuItemArcBar";
-            toolStripMenuItemArcBar.Size = new Size(171, 22);
+            toolStripMenuItemArcBar.Size = new Size(216, 32);
             toolStripMenuItemArcBar.Text = "ArcBar";
             toolStripMenuItemArcBar.CheckedChanged += toolStripMenuItem_CheckedChanged;
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(213, 6);
             // 
             // toolStripMenuItemValue
             // 
@@ -141,9 +147,21 @@
             toolStripMenuItemValue.CheckOnClick = true;
             toolStripMenuItemValue.CheckState = CheckState.Checked;
             toolStripMenuItemValue.Name = "toolStripMenuItemValue";
-            toolStripMenuItemValue.Size = new Size(171, 22);
+            toolStripMenuItemValue.Size = new Size(216, 32);
             toolStripMenuItemValue.Text = "Value";
             toolStripMenuItemValue.CheckedChanged += toolStripMenuItem_CheckedChanged;
+            // 
+            // toolStripMenuItemValueFont
+            // 
+            toolStripMenuItemValueFont.Name = "toolStripMenuItemValueFont";
+            toolStripMenuItemValueFont.Size = new Size(216, 32);
+            toolStripMenuItemValueFont.Text = "Czcionka";
+            toolStripMenuItemValueFont.Click += toolStripMenuItemValueFont_Click;
+            // 
+            // toolStripSeparator3
+            // 
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(213, 6);
             // 
             // toolStripMenuItemLabel
             // 
@@ -151,28 +169,35 @@
             toolStripMenuItemLabel.CheckOnClick = true;
             toolStripMenuItemLabel.CheckState = CheckState.Checked;
             toolStripMenuItemLabel.Name = "toolStripMenuItemLabel";
-            toolStripMenuItemLabel.Size = new Size(171, 22);
+            toolStripMenuItemLabel.Size = new Size(216, 32);
             toolStripMenuItemLabel.Text = "Label";
             toolStripMenuItemLabel.CheckedChanged += toolStripMenuItem_CheckedChanged;
+            // 
+            // toolStripMenuItemLabelFont
+            // 
+            toolStripMenuItemLabelFont.Name = "toolStripMenuItemLabelFont";
+            toolStripMenuItemLabelFont.Size = new Size(216, 32);
+            toolStripMenuItemLabelFont.Text = "Czcionka";
+            toolStripMenuItemLabelFont.Click += toolStripMenuItemLabelFont_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(168, 6);
+            toolStripSeparator1.Size = new Size(213, 6);
             // 
             // zamknijPanelToolStripMenuItem
             // 
             zamknijPanelToolStripMenuItem.Name = "zamknijPanelToolStripMenuItem";
-            zamknijPanelToolStripMenuItem.Size = new Size(171, 22);
+            zamknijPanelToolStripMenuItem.Size = new Size(216, 32);
             zamknijPanelToolStripMenuItem.Text = "Zamknij panel";
             zamknijPanelToolStripMenuItem.Click += zamknijPanelToolStripMenuItem_Click;
             // 
             // AdancedDisplayPanel
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Desktop;
-            ClientSize = new Size(298, 122);
+            ClientSize = new Size(426, 203);
             ContextMenuStrip = contextMenuAdvDisp;
             Controls.Add(lblLabel);
             Controls.Add(lblValue);
@@ -180,7 +205,6 @@
             Controls.Add(arcProgressBar1);
             ForeColor = SystemColors.HighlightText;
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 2, 2, 2);
             Name = "AdancedDisplayPanel";
             StartPosition = FormStartPosition.Manual;
             Text = "displayPanel";
@@ -204,5 +228,10 @@
         private ToolStripMenuItem toolStripMenuItemValue;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem zamknijPanelToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem toolStripMenuItemValueFont;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem toolStripMenuItemLabelFont;
+        private FontDialog fontDialog;
     }
 }
